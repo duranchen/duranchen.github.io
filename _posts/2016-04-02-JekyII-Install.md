@@ -5,6 +5,13 @@ date:   2016-04-02 20:37:55 +0800
 categories: method
 ---
 
+### 0. 最终效果
+
+ 请参考[JekyII blog]( http://duranchen.github.io) http://duranchen.github.io
+
+界面比较简陋，主要是是功能：1 .写博客，2.可评论。
+
+
 ### 1. 建立github repo和站点
 
 官方文档最权威，请参考https://pages.github.com
@@ -80,6 +87,25 @@ categories: method
    Here is my page (GitHub Flavored Markdown ).
    ```
 
-2. Post内容写法，请参考GitHub Flavored Markdown写法。https://guides.github.com/features/mastering-markdown/
+1. Post内容写法，请参考GitHub Flavored Markdown写法。https://guides.github.com/features/mastering-markdown/
+
+### 5. 添加comments功能
+
+请参考https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions
+
+1. 在https://disqus.com/admin/signup/ 注册一个账户和讨论站点。
+
+2. Add a variable called `comments` to the [YAML Front Matter](https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter) and set its value to `true`. A sample front matter might look like:
+   ```
+   ...
+   layout: default
+   comments: true
+   # other options
+   ...
+   ```
+
+1. In between a `{% if post.comments %}` and a `{% endif %}` tag, add the[Universal Embed Code](http://docs.disqus.com/developers/universal/) in the appropriate template where you'd like Disqus to load.
+
+   *Comments can be disabled per-page by setting `comments: false` or by not including the `comments` option at all.*
 
    ​
