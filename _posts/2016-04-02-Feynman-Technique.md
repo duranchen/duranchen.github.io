@@ -1,4 +1,9 @@
-# 费曼技巧
+---
+layout: post
+title:  "Feynman Technique 费曼技巧"
+date:   2016-04-02 20:37:55 +0800
+categories: Concept
+---
 
 ## 什么是费曼技巧
 

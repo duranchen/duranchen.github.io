@@ -1,6 +1,0 @@
----
-published: true
-title: hello
-layout: post
----
-my first post 
