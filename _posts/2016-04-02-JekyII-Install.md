@@ -32,7 +32,7 @@ categories: method
 
    Enter the project folder and add an index.html file:
 
-   ```
+   ```shell
    ~$cd username.github.io
    ~$echo "Hello World" > index.html
    ```
@@ -41,11 +41,13 @@ categories: method
 
    Add, commit, and push your changes:
 
+   ``` shell
    ~$git add --all
 
    ~$git commit -m "Initial commit"
 
    ~$git push -u origin master
+   ```
 
 5. #### …and you're done!
 
@@ -76,7 +78,7 @@ categories: method
 
 ### 4. Blogging with Jekyll
 
-1. Jekyll Post Format, 请参考http://jekyllrb.com/docs/frontmatter/
+1. Jekyll Post Format, 请参考[http://jekyllrb.com/docs/frontmatter/](http://jekyllrb.com/docs/frontmatter/)
 
    ```
    ---
@@ -87,7 +89,7 @@ categories: method
    Here is my page (GitHub Flavored Markdown ).
    ```
 
-1. Post内容写法，请参考GitHub Flavored Markdown写法。https://guides.github.com/features/mastering-markdown/
+2. Post内容写法，请参考GitHub Flavored Markdown写法。https://guides.github.com/features/mastering-markdown/
 
 ### 5. 添加comments功能
 
@@ -96,16 +98,15 @@ categories: method
 1. 在https://disqus.com/admin/signup/ 注册一个账户和讨论站点。
 
 2. Add a variable called `comments` to the [YAML Front Matter](https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter) and set its value to `true`. A sample front matter might look like:
-   ```
-   ...
-   layout: default
-   comments: true
-   # other options
-   ...
-   ```
+
+  ```
+  ...
+  layout: default
+  comments: true
+  # other options
+  ...
+  ```
 
 1. In between a `{% if post.comments %}` and a `{% endif %}` tag, add the[Universal Embed Code](http://docs.disqus.com/developers/universal/) in the appropriate template where you'd like Disqus to load.
 
    *Comments can be disabled per-page by setting `comments: false` or by not including the `comments` option at all.*
-
-   ​
