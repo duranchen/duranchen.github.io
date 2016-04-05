@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How to use NCE?"
-date:   2016-04-05 12:37:55 +0800
+date:   2016-04-04 12:37:55 +0800
 categories: method
 ---
 
