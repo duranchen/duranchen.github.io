@@ -110,3 +110,8 @@ categories: method
 1. In between a `{% if post.comments %}` and a `{% endif %}` tag, add the[Universal Embed Code](http://docs.disqus.com/developers/universal/) in the appropriate template where you'd like Disqus to load.
 
    *Comments can be disabled per-page by setting `comments: false` or by not including the `comments` option at all.*
+
+### 6.本地预览
+ ```shell
+ $ bundle exec jekyll serve
+ ```
