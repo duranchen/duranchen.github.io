@@ -14,7 +14,7 @@ siteLocalDir: ""
 # directory to drafts from siteLocalDir
 siteDraftsDir: "_drafts/"
 # directory to posts from siteLocalDir
-sitePostsDir: "_posts/{year}/"
+sitePostsDir: "_posts/"
 # directory to images from siteLocalDir
 siteImagesDir: "images/{year}/{month}/"
 

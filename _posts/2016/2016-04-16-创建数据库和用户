@@ -1,0 +1,21 @@
+1. 创建数据库
+ ```sql
+ CREATE DATABASE dbname;
+ ```
+2. 创建用户
+ 创建用户并赋予于权限
+ ```sql
+ GRANT privileges [columns]
+ ON items
+ TO user_name [IDENTIFIED BY 'password']
+ [REQUIRE ssl_options]
+ [WITH [GRANT OPTION | limit_options]]
+ ```
+ user_name 可以有域名，不同域名的相同用户名，代表不同用户，可以分别授权。
+
+ 为web应用建立用户:
+ ```sql
+ grant select,insert,delete,update
+ on books.*
+ to bookorama indentified by 'bookorama123';
+ ```

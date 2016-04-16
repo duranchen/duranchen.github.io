@@ -1,7 +1,5 @@
 # MY NCE Journal
 
-[TOC]
-
 ## Lesson 58
 
 **Did he** take the reward?
@@ -29,7 +27,10 @@ He ran to the station **to** catch the train.
 Our neighbour, Max,  raised a dog years ago, it was call Rex, Rex used to sit outside the front gate and bark, evertime he wanted to come into the garden he would bark until someone opened the gate, even in the middlenight, I complained of the noisy many times to Max, he gave me a promise that he would sovle this. he spent weeks teaching Rex to open the gate by pressing his paw on the latch. Rex was a smart dog,  he soon became an expert at opening the gate.However when I went by the Max's house last week. I noticed that Rex was barking again, this time he was in the garden and waiting someone to let  him outside!  I immidately told Max about it. Max got anoyed , he removed the gate.  Rex could never bark for someone to open the gate. Rex got anoyed, since then I have never seen Rex.
 
 ## Lesson 60
+
 foretell
+
+I **am visiting** Mary this evenint
 
 #### fortune-teller view
 I am a fortune-teller, people call me Madam Bellinsky. I set up a tent in a village fair to make money.
@@ -38,4 +39,54 @@ yesterday a man visited me, he came into my tent and I told him to sit down. aft
 as soon as he went outside, I totally forgot him and what I said. the following morning, he returned to my tent and told me all I had foretold correctly, as soon as he went outside, his wife hurried towards to him and asked him where he had been hiding, she had been looking for him all the afternoon, she told him that his sister would be here in less than an hour, they had to be at the station to meet her. they were late already. as she walked away, he followed her out of the fare.
 
 #### writer's wife view
-my husband believes that fortune can be known by fortune-teller. a few days ago he visited a fortune-teller called Madam Bellinsky at a village fair. he went into the tent. it was dark inside. the fortune-teller told him to sit down, after he had given her some money, she asked him to keep queit while she was working,then she looked into a crystal ball and said: a relative of yours is comming to see you, she will be arriving this eveninng. she intends to stay for a few days. the moment you leave this tent, a woman you know well will rush toward you and speak to you. She will lead you out of this place. that is all.  as soon as he went outside, he forgot all about Madam Bellinsky because I hurried towards to him, I had been looking for him for all the afternoon."where have you been hiding" I asked impationtly. 'your sister will be here in less than an hour, we must be at the station to meet her. we are late already'. as I walked away, he followed me out of the fair. 
+my husband believes that fortune can be known by fortune-teller. a few days ago he visited a fortune-teller called Madam Bellinsky at a village fair. he went into the tent. it was dark inside. the fortune-teller told him to sit down, after he had given her some money, she asked him to keep queit while she was working,then she looked into a crystal ball and said: a relative of yours is comming to see you, she will be arriving this eveninng. she intends to stay for a few days. the moment you leave this tent, a woman you know well will rush toward you and speak to you. She will lead you out of this place. that is all.  as soon as he went outside, he forgot all about Madam Bellinsky because I hurried towards to him, I had been looking for him for all the afternoon."where have you been hiding" I asked impationtly. 'your sister will be here in less than an hour, we must be at the station to meet her. we are late already'. as I walked away, he followed me out of the fair.
+
+## Lesson 61
+**distant**
+that is a distant thing, I can not remember.
+
+How many projects **have you completed** now?
+when I **have finished** this one, I **will have completed** ten.
+How many books have you read now?
+when I have read this one, I will have read 2 books.
+
+### astronaut's view.
+
+I'm an astronaut in USA, I am working at NASA, recently NASA lauched a telescope called Hubble into space. since then there was a trouble wiht the Hublle. the main mirror was fautly, the pictures it sent us were dispointing. so NASA is going to send four astronauts to repair it. the astronauts will take the shuttle Endeavour to the Hubble. the Endeavour will grab and hold the Hubble by a robot-arm while the astronauts repaires the Hubble.of course, the Hubble is outside of the earth's atmosphere, so it will send us the clearest pictures of the stars and distant galaxies that we have ever seen. it will tell us about the age and size of the universe. by the time your read this, the Hubble will have sent us thousands and thousands of wonderful pictures.
+
+### NASA's View
+The Hubble was lauched into space on april 20, 1990, since then it has sent us thousands and thousands of wonderful pictures. The hubble is above the earth's atmophere, so the pictures of the stars and distant galaxies are clearer than we have ever seen. our scientist can figure out the age and size of universe by these pictures. but there was a trouble with the Hubble right from the start, its main mirror has some problems since it was sent into space. so soon we sent four astronauts to repairs it.the shuttle Endeavour took the astronauts to the hubble. While the astronauts was making the neccessary repaires, the shuttle grabed and hold the Hubble.
+
+## lessson 62
+desolate
+some places are desolate in the west of china.
+
+I had been studying for years befor I got this job.
+
+### villager's view
+I was living in a tiny village. one year, the forest fire started near our village. the firemen soon came to fight it. the fire was very fiere. after three weeks, the fire finally was under control by the firemen's effort. but the great trees, which had been covering the ground for miles around, was burnt down, now smoke rose up from the ground over the hills.
+the winter was coming, as the rain was heavy in the season, the hills threatoned our village with destruction, for the heavy rain would not only wash away the soil but would cause floods as well. when the fire had been put out, the forest authorites ordered several tons of a sepecail type of grass seed which would grow quickly. the seed was sprayed over the ground in huge quatities by planes. the planes had been planting seed for nearly a month when it began to rain, however, the grass had already taken root. in places of the great tree which had been growing there for centuries, pacthes of green had begun to appear in the blackened soil.
+
+### firemen's view
+last year we recived a call, there was a fire in the countryside. as soon as we had arrived, we began to fight the fire, the fire was firce. before we could get the fire under control, we had been fighting it for nearly three weeks. this is the longest fire time I had ever seen.
+smoke rose up from the groud over the hills. there had been great tree for mils around befor the fire began. the winter was comming, the rain would be very heavy so that the floods would be caused. when we had at last put out the fire, the forest authorites ordered several tons of a special tpye of grass seed. the seed could grow quickly. the seed was sprayed over the ground in huge quatities by planes. the planes had been planting for nearly a month when it began to rain. In place of the great trees which had been growing for centuries, patches of green had begun to appear in the blackened soil.
+
+## Lesson 63
+
+Jeremy's view
+
+I have a large circle of friends and I am very popular at parties. everybody admires me for my great sense of humour. everybody, that is. Except my six-year-old daughter, rencently I was asked to make a speech at a wedding reception by one of my closest freinds. this is the sort of thing I love, I prepared the speech carefully and went to the party with Jenny. I had included a large number of funny stories in the speech and, of course, it was great success. as soon as I had finished, Jenny told me that she wanted to go home, I was a little dispointed by this but I did as my daughter asked. on the way home, I asked her if she had enjoyed the speech. to my suprise, she said she hadn't, then I asked why this was so, she told me that she did not like to see so many people laughing at me.
+
+Jenny's View
+
+my father has a large circle of freinds and is very popular at parties. everybody admires him for his great sense of humour. except me. recentlly. one of his closest freinds asked him to make a speech at a wedding party, this is the sort of thing he loves. he prepared the speech carefully and went  to the party with me. He had included a large number of funny stories and, of course, it was great success. but I felt very embarrassed, everbody had been laughing from the start. as soon as he had finshed, I told him that I wanted to go home. he was a little dispointed by this but he did as I asked. On the way home, he asked me if I had enjoyed the speech, I said I hadn't, he was so suprise, then asked me why this was so, I told him that I did not like to see so many people laughing at him.
+
+## Lesson 64
+
+Aime's view
+
+I am Aime from french. I am engneer. in 1858, I arrived in England. I had a plan for a twenty-one miles tunnel under the English Channel. in this plan a platform was possible to build in the center of the tunnel. it would serve as a port and railway station. the tall chimneys would be built above the sea level to make the tunnel well-ventilated. but the british thought my plas was not good enough. two year later, a better plan was put forwardd by an Englishman, Williams Low. He said a double railway shoud be built. it would sovle the problem of ventilation. for when a train enterd the tunnel. it would draw in fresh air behind it. though the plan was perfect, the tunnel was actually begun forty two years later. soon it was stoped, for the war began, the british feard the invasion. until I died I could not see the tunnel was begun again.
+
+William's View.
+
+The Engish Channel is twenty-tow miles from Britain to French. It was possible to build a tunnel under it. recenlty  a French engneer called Aime came to English with a plan for the tunnel. He suggested that it would be possible to build a platform in the centre of the Channel. Tall chemneys above the sea level would be built to sovle the problems of the ventilation. but the british did not agree the plan, for it is not posibble to build a lot of chimneys above the sea. Based on Aime's plan, I designed another plan. in my plan I suggested that we should built a double railways. it would  make the tunnel well-ventilated. because the trains would bring fresh air into the tunnel when it entered the tunnnel. but they refused my plan neither. forty-two years later a tunnel was begun, if the warfare had not begun and the british had not been afraid of the invasion, it would have been completed and conneted Britain and the European continent.
