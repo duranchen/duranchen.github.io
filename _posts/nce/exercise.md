@@ -1,3 +1,42 @@
+## Lesson 69
+### Summary writing
+When Mr.Eames had driven successfully in heavy traffic during his third driving test, the examiner instructed him to drive out of town.
+He told him to suppose that a child would cross the road in front of him.
+Mr.eames would have to stop the car within five feet when the examiner tapped on the window.
+Though he tapped loudly, Mr.Eames did not react quickly eough and ~~he~~ was told that he had just killed that child.
+
+## Composition
+Three months later Eames appeared for his fourth test, while driving, he was told to stop again. as soon as he heard the tap, he pressed the brake padel very hard. the examiner was thrown forward, but the child's life was save, Eames passed his test, but the examiner said,'you almost killed me this time!'.
+
+## Lesson 68
+### Summary writing
+
+Even thought Elizabeth tried to avoid meeting Nigel, she was not able to so.
+
+As he always insists on accompanying her, she had to think of a way preventing him from following her all morning.
+
+When she told him she wa going to the dentist, he sain he would come with her because there's always plenty to read in the waiting room.
+
+### Composition
+As there was a dentist nearby whome she knew well. Elizabeth decided to go there in order to explan what had happened.
+
+While Nigel was in the waiting room. Elizabeth spoke to the dentist and he told her leave at once through another door.
+
+after Elizabeth left, the dentist went into  the waiting room and asked Nigel if he wanted his teeth examined.
+
+## Lesson 67
+
+### Summary writing
+Tazieff, the Polish scientist, went to lake Kivu to observe a new volcano which he called Kiturou.
+after he took photographs, he had to leave almost at once because a river of liquid rocks threatened to surround him.
+He escaped just in time but he returned two days later when the volcano had become queit.
+He climed into the mouth of the volcano this time in order to take photographs and measure temperatures.
+
+### Composition
+Tazieff went into the mouth of Kituro.
+he saw the boiling red centre with ash and lumps of rock shooting up.
+In great danger, he took photographs and then return to camp.
+
 ## Lesson 60
 
 ### Summary writing
@@ -42,3 +81,25 @@ When Jeremy was invited to a wedding party, he immediately agree to do so, who i
 
 ### Composition
 Jeremy was amused by Jenney's answer. he explained why everybody laughed. some time later there was an another reception, Jeremy was invite to make a speech too, but this time the speech was not funy. as soon as he finished, jenny asked him why no one laughed.
+
+## Lesson 65
+
+### Summary writing
+after having decide to take some presents to a children's hospital, the circus owner, Jimmy Gates, dressed up as Father Christmas and set off down the main street of the city riding an elephant called Jumbo.
+On being told that he was holding up the traffic, Jimmy agreed to go a side street, but Jumbo refused to move, so fifteen policemen had to push him off the main street.
+as he had a good record, however, Jumbo was not arrested.
+
+### Composition
+The children were waiting at the hospital, When Jimmy and the guard of honour arrived, the children gave them  a great welome. Jimmy gave presents to the childrens, they rode on Jumbo, it was time to leave, Jumbo refused to move again.
+
+## Lesson 66
+### Summary writting
+the Lancaster bomber was not badly damaged when it crashed on a remote island in the south Pacific.
+Then the wreck remained undisturbed until it was accidentally rediscovered.
+The French authorities had the plane packaged and moved in parts back to France where a group of enthusiasts will be having it restored.
+They will have to have three engines rebuilt, but the fourth engine still in perfect condition because a colony of bees had turned the engine into a hive and it was totally perserved in beeswax.
+
+### Composition
+When the Lancaster bomber crashed it was not too badly damaged, but the island was so remote that the plane remained undisturbed for more than twenty years.
+Now some enthusiasts who are absolutely delighted in France plan to have the plane restored.
+They will only need to have three of engines rebuilt because the forth engine is preserved in beeswax and it is still sweet as honey.
