@@ -1,0 +1,14 @@
+---
+layout: "post"
+title: "从文本导入数据到数据库"
+date: "2016-04-17 21:52"
+---
+
+```sql
+LOAD DATA INFILE "newbooks.txt" INTO TABLE books;
+```
+默认
+1. 字段以tabs分隔
+2. 记录以newline（\n）分隔
+3. 特殊字符使用slash(\) 进行转义
+4. 使用该命令需要FILE权限

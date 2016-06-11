@@ -1,0 +1,16 @@
+---
+layout: "post"
+title: "存储引擎（表类型）"
+date: "2016-04-17 22:00"
+---
+```sql
+CREATE TABLE table TYPE= myisam
+ALTER TABLE table TYPE = innodb
+```
+常用类型
+* MyISAM
+
+ 拥有很多工具去检查和修复表，能被压缩，支持全文本搜索，但不支持事务和外键
+
+* innoDB
+ 支持事务，提供commit和rollback能力，支持外键，但是比MyISAM慢。

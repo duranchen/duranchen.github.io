@@ -1,0 +1,63 @@
+---
+layout: "post"
+title: "名词词短语与冠词"
+date: "2016-05-16 05:49"
+---
+## 名词短语
+名词短语可以做主语，宾语，补语。
+
+名词短语= 限定词+形容词+名词
+a new book
+三部分，每一部分都可以省略。
+
+## 什么时候不需要限定词？
+名词复数
+unmarried men
+抽象名词
+Honesty Fresh water
+
+## 专有名词与补语位置
+专有名词代表独一无二，所以仅不加a（an），暗示有另一个存在，也不加-s。
+Genghis Khan Taibei Sunday
+
+**补语位置的专有名词**，当补语和主语或宾语之间是**同等关系**时，补语也被当做专有名词
+
+Mr.Chan was CTO of the group.
+
+Clinton made Gorle campaign partner of the Presidential election.
+
+## 定冠词the的用法
+The可视为that或those的弱化。
+当上下文有明指或暗示时，表示“那个”的指示功能，就要使用定冠词“the”。
+He should be home，I saw light in his house.
+turn off the portal light.
+
+##  定冠词和专有名词
+专有名词和定冠词是不能并存的，在意义上他们有冲突。
+专有名词是世界上独一无二的东西，而定冠词却又明指或暗示有其他的存在。
+
+This is not the John I know.
+暗示有另一个John存在
+
+例外不例外
+海洋，山川，河流，岛屿被列为例外。
+其实他们并不列外，只是省略了第三部分名词的名词短语。
+The Pacific （Ocean）
+The Atlantic （Ocean）
+The Indian Ocean
+The Mediterranean （Sea）
+The Dead sea
+
+The Alp
+
+The Titanic （ship）
+
+如果把这些名词短语的第三部还原，都是普通名词，可以加定冠词，来指示那个叫什么的海洋，山脉或船。
+
+The United States of America
+the United Nations
+
+一、名词短语包括限定词、形容词、名词三部分。任一部分可以省略。
+二、如果名词短语不加限定词，是因为该词不适合加a(an
+).
+三、a（an）是one的弱化结果，the是that/those的弱化结果。
