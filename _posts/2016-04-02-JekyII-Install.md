@@ -14,7 +14,7 @@ categories: method
 
 ### 1. 建立github repo和站点
 
-官方文档最权威，请参考https://pages.github.com
+官方文档最权威，请参考[github pages](https://pages.github.com)
 
 1. Create a repository
 
@@ -55,7 +55,7 @@ categories: method
 
 ### 2. 安装JekyII
 
-请参考https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/
+请参考[setting-up-your-github-pages-site-locally-with-jekyll](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/)
 
 如果有错误，需要安装ruby DevKit，请参考https://github.com/oneclick/rubyinstaller/wiki/Development-Kit
 

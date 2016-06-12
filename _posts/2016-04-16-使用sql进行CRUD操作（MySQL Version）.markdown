@@ -10,7 +10,8 @@ categories: Method
 1. Create
 
  新建数据，即插入数据。
-```sql
+
+ ```
  INSERT [into] table [(column1,column2,column3,...)] VALUES
  (value1, value2, value3,...);
  ```
@@ -18,7 +19,8 @@ categories: Method
 2. Read
 
  读取数据，即查询数据。
- ```sql
+
+ ```
  SELECT [options] items
  [into file_details]
  FROM tables
@@ -30,12 +32,14 @@ categories: Method
  [PROCEDURE proc_name(arguments)]
  [lock_options];
  ```
+
  除此之外，还有多表查询和子查询。
 
 3. Update
 
  更新数据。
- ```sql
+
+ ```
  UPDATE [LOW_PRIORITY] [IGNORE] tablename
  SET column1=expression1,column2=expression2,...
  [WHERE condition]
@@ -45,7 +49,8 @@ categories: Method
 
 4. Delete
   删除数据。
-  ```sql
+
+  ```
   DELETE [LOW_PRIORITY] [QUICK] [IGNORE] FROM table
   [WHERE condition]
   [ORDER BY order_cols]
