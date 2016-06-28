@@ -1,57 +1,24 @@
 ---
 layout: post
-title:  "怎么样在github pages上搭建JekyII blog？"
+title:  "怎么样在github pages上搭建Jekyll博客？"
 date:   2016-04-02 20:37:55 +0800
 categories: method
 ---
 
 ### 0. 最终效果
 
- 请参考[JekyII blog]( http://duranchen.github.io) http://duranchen.github.io
+ 请看[JekyII blog]( http://duranchen.github.io) http://duranchen.github.io
 
-界面比较简陋，主要是是功能：1 .写博客，2.可评论。
+博客的主要是是功能：
+1. 写博客
+2. 可评论
+
+下面先建立博客，然后加评论功能。
 
 
-### 1. 建立github repo和站点
+### 1. 在github上创建一个Repo
 
-官方文档最权威，请参考[github pages](https://pages.github.com)
-
-1. Create a repository
-
-   Head over to GitHub and create a new repository named 'username.github.io', where username is your username (or organization name) on GitHub.
-
-2. Clone the repository
-
-   Go to the folder where you want to store your project, and clone the new repository:
-
-   ```shell
-   ~$git clone https://github.com/username/username.github.io
-   ```
-
-3. Hello World
-
-   Enter the project folder and add an index.html file:
-
-   ```shell
-   ~$cd username.github.io
-   ~$echo "Hello World" > index.html
-   ```
-
-4. #### Push it
-
-   Add, commit, and push your changes:
-
-   ``` shell
-   ~$git add --all
-
-   ~$git commit -m "Initial commit"
-
-   ~$git push -u origin master
-   ```
-
-5. #### …and you're done!
-
-   Fire up a browser and go to **http://username.github.io**.
+   在浏览中登陆github，创建一个新Repo，命名为'username.github.io'，这里username就是你在github的账户名。
 
 ### 2. 安装JekyII
 
@@ -76,7 +43,7 @@ categories: method
 特别注意
 **input: GFM # Enable GitHub Flavored Markdown (fenced code blocks)**
 
-### 4. Blogging with Jekyll
+### 4. 如何写博客
 
 1. Jekyll Post Format, 请参考[http://jekyllrb.com/docs/frontmatter/](http://jekyllrb.com/docs/frontmatter/)
 
