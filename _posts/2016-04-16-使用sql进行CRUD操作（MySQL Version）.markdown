@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "使用sql进行CRUD操作（MySQL Version）"
-date: "2016-04-16 08:47 +0800"
+date: "2016-04-16 08:47"
 categories: Method
 ---
 示例数据库：[sakila database](http://downloads.mysql.com/docs/sakila-db.tar.gz)，[详细介绍](http://dev.mysql.com/doc/sakila/en/)。

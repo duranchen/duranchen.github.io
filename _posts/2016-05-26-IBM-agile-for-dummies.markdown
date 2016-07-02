@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "IBM Agile for Dummies"
-date: "2016-05-26 18:12 +0800"
+date: "2016-05-26 18:12"
 ---
 [TOC]
 

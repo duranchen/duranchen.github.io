@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "Javascript函数"
-date: "2016-06-12 17:29 +0800"
+date: "2016-06-12 17:29"
 ---
 ## 什么是JavaScript函数？
 在所有编程语言里，函数是用来包含需要重复执行的代码块，Javascript也不例外。

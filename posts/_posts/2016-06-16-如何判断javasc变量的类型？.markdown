@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "如何判断javascritp变量的类型？"
-date: "2016-06-16 22:13"
+date: "2016-06-16 22:13 +0800"
 ---
 在javascript变量的类型可以是以下这些：
 * 函数

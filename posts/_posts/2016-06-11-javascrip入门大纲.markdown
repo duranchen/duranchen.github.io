@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "javascrip入门大纲"
-date: "2016-06-11 22:51"
+date: "2016-06-11 22:51 +0800"
 ---
 ## chapter 1: Javascript basic
 
