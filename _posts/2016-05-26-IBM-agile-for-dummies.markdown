@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Agile for Dummies"
+title: "IBM Agile for Dummies"
 date: "2016-05-26 18:12"
 ---
 [TOC]
@@ -17,8 +17,17 @@ software was deliverd all at once, in a "big bang"
 
 ### Waterfall
 1. Requirement
- 2. Design
-   3. Development
-    4. Integration
-     5. Testing
-      6. Deployment
+2. Design
+3. Development
+4. Integration
+5. Testing
+6. Deployment
+
+Waterfall presented a step forward from Code-and-Fix.
+
+Problems:
+1. Schedule risk
+2. limited flexibility
+3. Reduced customer involvement
+
+### The Spiral model

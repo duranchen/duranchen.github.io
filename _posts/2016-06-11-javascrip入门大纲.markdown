@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "javascrip终极入门"
+title: "javascrip入门大纲"
 date: "2016-06-11 22:51"
 ---
 ## chapter 1: Javascript basic
