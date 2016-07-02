@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "获取数据库信息"
-date: "2016-04-16 14:28"
+date: "2016-04-16 14:28 +0800"
 ---
 ```sql
 show tables;

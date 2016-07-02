@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "Moodle javascript Module"
-date: "2016-04-16 14:28"
+date: "2016-04-16 14:28 +0800"
 ---
 ## 1 Javascript Modules
 
