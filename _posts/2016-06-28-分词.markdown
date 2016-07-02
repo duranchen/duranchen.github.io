@@ -1,0 +1,62 @@
+---
+layout: "post"
+title: "分词"
+date: "2016-06-28 21:18"
+---
+
+下面两种分词均可视为形容词
+1. 现在分词
+2. 过去分词
+
+## 分词与形容词的比较
+
+形容词位置
+1. 名词短语中
+2. 补语位置
+
+### 一、现在分词作为形容词
+The black dog doesn't bite
+A **barking** dog doesn't bite
+
+在名词短语中，现在分词barking暗示“正在叫，一直叫”。有”正在进行“”的含义。
+
+The dog is black.
+The dog is barking.
+S + V + C
+
+在补语位置中，现在分词barking，暗示“正在叫”。
+
+### 二、过去分词作为形容词
+
+Clean water is safe to drink
+**Boiled** water is sate to drink
+
+在名词短语中，过去分词boiled，暗示“被煮过”，有“被动，完成”的意思。
+
+The water is clean.
+The water is boiled.
+
+在补语位置上，过去分词boiled，还是解释为“被煮过的”，有“被动”的意思。
+
+### 三、带有“完成”暗示，而非“被动”的过去分词
+
+I cannot find my wallet. It's gone.
+
+It is gone
+S + V + C
+
+go是不及物动词，没有被动态，所以过去分词gone是形容词补语，有“完成”的暗示，解释为“跑掉了，不见了”。
+
+The leaves are all fallen, now that winter is here.
+
+fall也是不及物动词，也没有被动态。
+
+The leaves are fallen.
+S + V + C
+
+fallen解释为“落下来了”。
+
+
+I’m done. It's all yours.
+
+do是及物动词，但am done不是被动态，done是带有“完成”意思的形容词补语，解释为“做完了”。

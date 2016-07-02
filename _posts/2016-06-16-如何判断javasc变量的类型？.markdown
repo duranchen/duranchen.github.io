@@ -1,0 +1,62 @@
+---
+layout: "post"
+title: "如何判断javascritp变量的类型？"
+date: "2016-06-16 22:13"
+---
+在javascript变量的类型可以是以下这些：
+* 函数
+* 对象
+* 数组
+* 字符串
+* 数字
+* null
+
+那么如何判断一个变量是什么类型呢？
+我们可以用typeof来得到变量的类型,例如：
+```javascript
+
+
+//函数
+var myFunction = function(){
+  console.log('hello');
+};
+//对象
+var myObject = {
+  foo:'bar'
+};
+
+// 数组
+var myArray = ['a','b','c'];
+
+// 字符串
+var myString = 'hello';
+
+// 数字
+var myNumber = 3;
+
+console.log(typeof myFunction); // 输出function
+console.log(typeof myObject); // 输出object
+console.log(typeof myArray); // 输出object --careful!
+console.log(typeof myString); // 输出string
+console.log(typeof myNumber); // 输出number
+
+console.log(typeof null); // 输出object --carefull!
+```
+注意到数组和null被判断成对象类型。
+
+那么怎么判断一个typeof判断成对象的变量，是不是数组呢?
+
+可以用下面的方法：
+```javascript
+if(myArray.push && myArray.slice && myArray.join)
+{
+  //基本可以判断是数组
+  console.log('可能是数组');
+}
+
+if(Object.prototype.toString.call(myArray) === '[object Array]')
+{
+  console.log('一定是数组!');
+}
+
+```
