@@ -257,8 +257,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/02/thinking/2016-04-02-Feynman-Technique/" itemprop="url">
-                  Feynman Technique 费曼技巧
+                <a class="post-title-link" href="/2016/04/02/programming/2016-04-02-怎么样在github pages上搭建Jekyll博客/" itemprop="url">
+                  怎么样在github pages上搭建Jekyll博客？
                 </a>
               
             
@@ -285,8 +285,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Concept/" itemprop="url" rel="index">
-                    <span itemprop="name">Concept</span>
+                  <a href="/categories/method/" itemprop="url" rel="index">
+                    <span itemprop="name">method</span>
                   </a>
                 </span>
 
@@ -301,8 +301,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/02/thinking/2016-04-02-Feynman-Technique/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/04/02/thinking/2016-04-02-Feynman-Technique/" itemprop="commentsCount"></span>
+                <a href="/2016/04/02/programming/2016-04-02-怎么样在github pages上搭建Jekyll博客/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/04/02/programming/2016-04-02-怎么样在github pages上搭建Jekyll博客/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -327,40 +327,38 @@
       
         
           
-            <h2 id="什么是费曼技巧"><a href="#什么是费曼技巧" class="headerlink" title="什么是费曼技巧"></a>什么是费曼技巧</h2><p>费曼技巧是一种以教促学的学习方法。</p>
-<h2 id="适用的学习内容"><a href="#适用的学习内容" class="headerlink" title="适用的学习内容"></a>适用的学习内容</h2><p>适用于概念和概念应用的学习<br>例如XXX是什么，怎么使用XXX。</p>
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ol>
-<li>学习一个新的或者是你不是很明白的想法或概念，</li>
-<li>记住一个你已经明白的想法或者概念。</li>
-<li>用于考试学习，快速深入理解一个想法或者概念，并转化成长期记忆。</li>
+            <h3 id="0-最终效果"><a href="#0-最终效果" class="headerlink" title="0. 最终效果"></a>0. 最终效果</h3><p> 请看<a href="http://duranchen.github.io" target="_blank" rel="external">JekyII blog</a> <a href="http://duranchen.github.io" target="_blank" rel="external">http://duranchen.github.io</a></p>
+<p>博客的主要是是功能：</p>
+<ol>
+<li>写博客</li>
+<li>可评论</li>
 </ol>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li><p>选择一个新概念</p>
+<p>下面先建立博客，然后加评论功能。</p>
+<h3 id="1-在github上创建一个Repo"><a href="#1-在github上创建一个Repo" class="headerlink" title="1. 在github上创建一个Repo"></a>1. 在github上创建一个Repo</h3><p>   在浏览中登陆github，创建一个新Repo，命名为’username.github.io’，这里username就是你在github的账户名。</p>
+<h3 id="2-安装JekyII"><a href="#2-安装JekyII" class="headerlink" title="2. 安装JekyII"></a>2. 安装JekyII</h3><p>请参考<a href="https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/" target="_blank" rel="external">setting-up-your-github-pages-site-locally-with-jekyll</a></p>
+<p>如果有错误，需要安装ruby DevKit，请参考<a href="https://github.com/oneclick/rubyinstaller/wiki/Development-Kit" target="_blank" rel="external">https://github.com/oneclick/rubyinstaller/wiki/Development-Kit</a></p>
+<h3 id="3-配置-Jekyll"><a href="#3-配置-Jekyll" class="headerlink" title="3. 配置 Jekyll"></a>3. 配置 Jekyll</h3><p>请参考<a href="https://help.github.com/articles/configuring-jekyll/" target="_blank" rel="external">https://help.github.com/articles/configuring-jekyll/</a></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attr">github:</span> [metadata]</div><div class="line"><span class="attr">kramdown:</span></div><div class="line"><span class="attr">  input:</span> GFM <span class="comment"># Enable GitHub Flavored Markdown (fenced code blocks)</span></div><div class="line"><span class="attr">  hard_wrap:</span> <span class="literal">false</span></div><div class="line"><span class="attr">gems:</span></div><div class="line"><span class="bullet">  -</span> jekyll-coffeescript</div><div class="line"><span class="bullet">  -</span> jekyll-paginate</div></pre></td></tr></table></figure>
+<p>特别注意<br><strong>input: GFM # Enable GitHub Flavored Markdown (fenced code blocks)</strong></p>
+<h3 id="4-如何写博客"><a href="#4-如何写博客" class="headerlink" title="4. 如何写博客"></a>4. 如何写博客</h3><ol>
+<li><p>Jekyll Post Format, 请参考<a href="http://jekyllrb.com/docs/frontmatter/" target="_blank" rel="external">http://jekyllrb.com/docs/frontmatter/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: This is my title</div><div class="line">layout: post</div><div class="line">---</div><div class="line"></div><div class="line">Here is my page (GitHub Flavored Markdown ).</div></pre></td></tr></table></figure>
 </li>
-<li><p>假装你在教授这个概念给学生。</p>
-</li>
-<li><p>无论什么时候卡壳，立刻查资料，直达通顺。</p>
-</li>
-<li><p>最后简化表达，适当使用类比。</p>
+<li><p>Post内容写法，请参考GitHub Flavored Markdown写法。<a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="external">https://guides.github.com/features/mastering-markdown/</a></p>
 </li>
 </ol>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="1-理解扭矩"><a href="#1-理解扭矩" class="headerlink" title="1.理解扭矩"></a>1.理解扭矩</h3><p>扭矩是一种转动的力</p>
-<p>想象一个扳手，正在转动一个螺帽 ，左转松，右转紧 。</p>
-<h3 id="2-理解递归"><a href="#2-理解递归" class="headerlink" title="2. 理解递归"></a>2. 理解递归</h3><p>这里学习资料，来自维基百科:<a href="https://zh.wikipedia.org/wiki/%E9%80%92%E5%BD%92" target="_blank" rel="external">递归</a></p>
-<p>在方法中使用方法本身，同时不断缩小问题规模，直至小到我们知道怎么解决。</p>
-<p>比如吃苹果</p>
-<p>吃苹果的方法： 拿一个苹果削皮切块用牙签吃。</p>
-<p>吃苹果的方法已经知道，用递归吃100个苹果的方法是什么？</p>
-<p>先从100个苹果拿1个苹果放一边，想剩下99个怎么吃？然后再把1个苹果放一边，想剩下98个怎么吃？最终问题将变成1个苹果怎么吃？而你吃1个苹果的方法已经知道了！</p>
-<p>问题已经从吃100个苹果的问题，变成吃99个苹果的问题，最后变成吃1个苹果的问题。</p>
-<p>下面用代码表示递归吃苹果。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">eatApples</span><span class="params">($n)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"I am goint to eat $n apples\n"</span>;</div><div class="line"></div><div class="line">    <span class="comment">//n&gt;1个苹果的吃法不知道，缩小问题规模，直到变成n=1个苹果的问题</span></div><div class="line">    <span class="keyword">if</span> ($n &gt; <span class="number">1</span>) &#123;</div><div class="line"></div><div class="line">        eatApples($n - <span class="number">1</span>);</div><div class="line"></div><div class="line">        <span class="comment">// n-1个苹果的方法</span></div><div class="line">        <span class="keyword">echo</span> <span class="string">"I have eaten $n apples so far\n"</span>;</div><div class="line"></div><div class="line">    <span class="comment">//n=1个苹果的吃法已经知道</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line"></div><div class="line">        <span class="keyword">echo</span> <span class="string">"I have eaten  1 apple so far\n"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果不理解，可以在看看下面示例。</p>
-<p>经典递归示例 - 阶乘</p>
-<p>n = 0, fact(n) =1</p>
-<p>n &gt; 0, n *fact(n-1)</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">($n)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>($n == <span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125; <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> $n * f($n<span class="number">-1</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>   ​</p>
+<h3 id="5-添加comments功能"><a href="#5-添加comments功能" class="headerlink" title="5. 添加comments功能"></a>5. 添加comments功能</h3><p>请参考<a href="https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions" target="_blank" rel="external">https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions</a></p>
+<ol>
+<li><p>在<a href="https://disqus.com/admin/signup/" target="_blank" rel="external">https://disqus.com/admin/signup/</a> 注册一个账户和讨论站点。</p>
+</li>
+<li><p>Add a variable called <code>comments</code> to the <a href="https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter" target="_blank" rel="external">YAML Front Matter</a> and set its value to <code>true</code>. A sample front matter might look like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">layout: default</div><div class="line">comments: true</div><div class="line"># other options</div><div class="line">...</div></pre></td></tr></table></figure>
+</li>
+<li><p>In between a <code></code> tag, add the<a href="http://docs.disqus.com/developers/universal/" target="_blank" rel="external">Universal Embed Code</a> in the appropriate template where you’d like Disqus to load.</p>
+<p><em>Comments can be disabled per-page by setting <code>comments: false</code> or by not including the <code>comments</code> option at all.</em></p>
+</li>
+</ol>
+<h3 id="6-本地预览"><a href="#6-本地预览" class="headerlink" title="6.本地预览"></a>6.本地预览</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bundle exec jekyll serve</div></pre></td></tr></table></figure>
 
           
         
@@ -571,8 +569,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/02/programming/2016-04-02-怎么样在github pages上搭建Jekyll博客/" itemprop="url">
-                  怎么样在github pages上搭建Jekyll博客？
+                <a class="post-title-link" href="/2016/04/02/growth/thinking/2016-04-02-Feynman-Technique/" itemprop="url">
+                  Feynman Technique 费曼技巧
                 </a>
               
             
@@ -599,8 +597,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/method/" itemprop="url" rel="index">
-                    <span itemprop="name">method</span>
+                  <a href="/categories/Concept/" itemprop="url" rel="index">
+                    <span itemprop="name">Concept</span>
                   </a>
                 </span>
 
@@ -615,8 +613,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/02/programming/2016-04-02-怎么样在github pages上搭建Jekyll博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/04/02/programming/2016-04-02-怎么样在github pages上搭建Jekyll博客/" itemprop="commentsCount"></span>
+                <a href="/2016/04/02/growth/thinking/2016-04-02-Feynman-Technique/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/04/02/growth/thinking/2016-04-02-Feynman-Technique/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -641,38 +639,40 @@
       
         
           
-            <h3 id="0-最终效果"><a href="#0-最终效果" class="headerlink" title="0. 最终效果"></a>0. 最终效果</h3><p> 请看<a href="http://duranchen.github.io" target="_blank" rel="external">JekyII blog</a> <a href="http://duranchen.github.io" target="_blank" rel="external">http://duranchen.github.io</a></p>
-<p>博客的主要是是功能：</p>
-<ol>
-<li>写博客</li>
-<li>可评论</li>
+            <h2 id="什么是费曼技巧"><a href="#什么是费曼技巧" class="headerlink" title="什么是费曼技巧"></a>什么是费曼技巧</h2><p>费曼技巧是一种以教促学的学习方法。</p>
+<h2 id="适用的学习内容"><a href="#适用的学习内容" class="headerlink" title="适用的学习内容"></a>适用的学习内容</h2><p>适用于概念和概念应用的学习<br>例如XXX是什么，怎么使用XXX。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ol>
+<li>学习一个新的或者是你不是很明白的想法或概念，</li>
+<li>记住一个你已经明白的想法或者概念。</li>
+<li>用于考试学习，快速深入理解一个想法或者概念，并转化成长期记忆。</li>
 </ol>
-<p>下面先建立博客，然后加评论功能。</p>
-<h3 id="1-在github上创建一个Repo"><a href="#1-在github上创建一个Repo" class="headerlink" title="1. 在github上创建一个Repo"></a>1. 在github上创建一个Repo</h3><p>   在浏览中登陆github，创建一个新Repo，命名为’username.github.io’，这里username就是你在github的账户名。</p>
-<h3 id="2-安装JekyII"><a href="#2-安装JekyII" class="headerlink" title="2. 安装JekyII"></a>2. 安装JekyII</h3><p>请参考<a href="https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/" target="_blank" rel="external">setting-up-your-github-pages-site-locally-with-jekyll</a></p>
-<p>如果有错误，需要安装ruby DevKit，请参考<a href="https://github.com/oneclick/rubyinstaller/wiki/Development-Kit" target="_blank" rel="external">https://github.com/oneclick/rubyinstaller/wiki/Development-Kit</a></p>
-<h3 id="3-配置-Jekyll"><a href="#3-配置-Jekyll" class="headerlink" title="3. 配置 Jekyll"></a>3. 配置 Jekyll</h3><p>请参考<a href="https://help.github.com/articles/configuring-jekyll/" target="_blank" rel="external">https://help.github.com/articles/configuring-jekyll/</a></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attr">github:</span> [metadata]</div><div class="line"><span class="attr">kramdown:</span></div><div class="line"><span class="attr">  input:</span> GFM <span class="comment"># Enable GitHub Flavored Markdown (fenced code blocks)</span></div><div class="line"><span class="attr">  hard_wrap:</span> <span class="literal">false</span></div><div class="line"><span class="attr">gems:</span></div><div class="line"><span class="bullet">  -</span> jekyll-coffeescript</div><div class="line"><span class="bullet">  -</span> jekyll-paginate</div></pre></td></tr></table></figure>
-<p>特别注意<br><strong>input: GFM # Enable GitHub Flavored Markdown (fenced code blocks)</strong></p>
-<h3 id="4-如何写博客"><a href="#4-如何写博客" class="headerlink" title="4. 如何写博客"></a>4. 如何写博客</h3><ol>
-<li><p>Jekyll Post Format, 请参考<a href="http://jekyllrb.com/docs/frontmatter/" target="_blank" rel="external">http://jekyllrb.com/docs/frontmatter/</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: This is my title</div><div class="line">layout: post</div><div class="line">---</div><div class="line"></div><div class="line">Here is my page (GitHub Flavored Markdown ).</div></pre></td></tr></table></figure>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p>选择一个新概念</p>
 </li>
-<li><p>Post内容写法，请参考GitHub Flavored Markdown写法。<a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="external">https://guides.github.com/features/mastering-markdown/</a></p>
+<li><p>假装你在教授这个概念给学生。</p>
+</li>
+<li><p>无论什么时候卡壳，立刻查资料，直达通顺。</p>
+</li>
+<li><p>最后简化表达，适当使用类比。</p>
 </li>
 </ol>
-<h3 id="5-添加comments功能"><a href="#5-添加comments功能" class="headerlink" title="5. 添加comments功能"></a>5. 添加comments功能</h3><p>请参考<a href="https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions" target="_blank" rel="external">https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions</a></p>
-<ol>
-<li><p>在<a href="https://disqus.com/admin/signup/" target="_blank" rel="external">https://disqus.com/admin/signup/</a> 注册一个账户和讨论站点。</p>
-</li>
-<li><p>Add a variable called <code>comments</code> to the <a href="https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter" target="_blank" rel="external">YAML Front Matter</a> and set its value to <code>true</code>. A sample front matter might look like:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">layout: default</div><div class="line">comments: true</div><div class="line"># other options</div><div class="line">...</div></pre></td></tr></table></figure>
-</li>
-<li><p>In between a <code></code> tag, add the<a href="http://docs.disqus.com/developers/universal/" target="_blank" rel="external">Universal Embed Code</a> in the appropriate template where you’d like Disqus to load.</p>
-<p><em>Comments can be disabled per-page by setting <code>comments: false</code> or by not including the <code>comments</code> option at all.</em></p>
-</li>
-</ol>
-<h3 id="6-本地预览"><a href="#6-本地预览" class="headerlink" title="6.本地预览"></a>6.本地预览</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bundle exec jekyll serve</div></pre></td></tr></table></figure>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="1-理解扭矩"><a href="#1-理解扭矩" class="headerlink" title="1.理解扭矩"></a>1.理解扭矩</h3><p>扭矩是一种转动的力</p>
+<p>想象一个扳手，正在转动一个螺帽 ，左转松，右转紧 。</p>
+<h3 id="2-理解递归"><a href="#2-理解递归" class="headerlink" title="2. 理解递归"></a>2. 理解递归</h3><p>这里学习资料，来自维基百科:<a href="https://zh.wikipedia.org/wiki/%E9%80%92%E5%BD%92" target="_blank" rel="external">递归</a></p>
+<p>在方法中使用方法本身，同时不断缩小问题规模，直至小到我们知道怎么解决。</p>
+<p>比如吃苹果</p>
+<p>吃苹果的方法： 拿一个苹果削皮切块用牙签吃。</p>
+<p>吃苹果的方法已经知道，用递归吃100个苹果的方法是什么？</p>
+<p>先从100个苹果拿1个苹果放一边，想剩下99个怎么吃？然后再把1个苹果放一边，想剩下98个怎么吃？最终问题将变成1个苹果怎么吃？而你吃1个苹果的方法已经知道了！</p>
+<p>问题已经从吃100个苹果的问题，变成吃99个苹果的问题，最后变成吃1个苹果的问题。</p>
+<p>下面用代码表示递归吃苹果。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">eatApples</span><span class="params">($n)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"I am goint to eat $n apples\n"</span>;</div><div class="line"></div><div class="line">    <span class="comment">//n&gt;1个苹果的吃法不知道，缩小问题规模，直到变成n=1个苹果的问题</span></div><div class="line">    <span class="keyword">if</span> ($n &gt; <span class="number">1</span>) &#123;</div><div class="line"></div><div class="line">        eatApples($n - <span class="number">1</span>);</div><div class="line"></div><div class="line">        <span class="comment">// n-1个苹果的方法</span></div><div class="line">        <span class="keyword">echo</span> <span class="string">"I have eaten $n apples so far\n"</span>;</div><div class="line"></div><div class="line">    <span class="comment">//n=1个苹果的吃法已经知道</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line"></div><div class="line">        <span class="keyword">echo</span> <span class="string">"I have eaten  1 apple so far\n"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果不理解，可以在看看下面示例。</p>
+<p>经典递归示例 - 阶乘</p>
+<p>n = 0, fact(n) =1</p>
+<p>n &gt; 0, n *fact(n-1)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">($n)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>($n == <span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125; <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> $n * f($n<span class="number">-1</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>   ​</p>
 
           
         
