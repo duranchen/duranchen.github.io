@@ -484,101 +484,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/06/programming/Slim数据库连接错误/" itemprop="url">
-                  Slim数据库连接错误
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-08-06T22:39:15+08:00" content="2016-08-06">
-              2016-08-06
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Slim数据库连接错误"><a href="#Slim数据库连接错误" class="headerlink" title="Slim数据库连接错误"></a>Slim数据库连接错误</h1><h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">Slim Application Error</div><div class="line">The application could not run because of the following error:</div><div class="line"></div><div class="line">Details</div><div class="line"></div><div class="line">Type: PDOException</div><div class="line">Code: 2002</div><div class="line">Message: SQLSTATE[HY000] [2002] No such file or directory</div><div class="line">File: /Users/duranchen/Sites/Slim/vendor/illuminate/database/Connectors/Connector.php</div><div class="line">Line: 55</div><div class="line">Trace</div><div class="line"></div><div class="line">#0 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Connectors/Connector.php(55): PDO-&gt;__construct(&apos;mysql:host=loca...&apos;, &apos;root&apos;, &apos;1&apos;, Array)</div><div class="line">#1 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector-&gt;createConnection(&apos;mysql:host=loca...&apos;, Array, Array)</div><div class="line">#2 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Connectors/ConnectionFactory.php(61): Illuminate\Database\Connectors\MySqlConnector-&gt;connect(Array)</div><div class="line">#3 [internal function]: Illuminate\Database\Connectors\ConnectionFactory-&gt;Illuminate\Database\Connectors\&#123;closure&#125;()</div><div class="line">#4 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Connection.php(908): call_user_func(Object(Closure))</div><div class="line">#5 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Connection.php(776): Illuminate\Database\Connection-&gt;getPdo()</div><div class="line">#6 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Connection.php(661): Illuminate\Database\Connection-&gt;reconnectIfMissingConnection()</div><div class="line">#7 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Connection.php(342): Illuminate\Database\Connection-&gt;run(&apos;select * from `...&apos;, Array, Object(Closure))</div><div class="line">#8 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Query/Builder.php(1583): Illuminate\Database\Connection-&gt;select(&apos;select * from `...&apos;, Array, true)</div><div class="line">#9 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Query/Builder.php(1569): Illuminate\Database\Query\Builder-&gt;runSelect()</div><div class="line">#10 /Users/duranchen/Sites/Slim/src/routes.php(18): Illuminate\Database\Query\Builder-&gt;get()</div><div class="line">#11 [internal function]: Closure-&gt;&#123;closure&#125;(Object(Slim\Http\Request), Object(Slim\Http\Response), Array)</div><div class="line">#12 /Users/duranchen/Sites/Slim/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php(41): call_user_func(Object(Closure), Object(Slim\Http\Request), Object(Slim\Http\Response), Array)</div><div class="line">#13 /Users/duranchen/Sites/Slim/vendor/slim/slim/Slim/Route.php(325): Slim\Handlers\Strategies\RequestResponse-&gt;__invoke(Object(Closure), Object(Slim\Http\Request), Object(Slim\Http\Response), Array)</div><div class="line">#14 /Users/duranchen/Sites/Slim/vendor/slim/slim/Slim/MiddlewareAwareTrait.php(116): Slim\Route-&gt;__invoke(Object(Slim\Http\Request), Object(Slim\Http\Response))</div><div class="line">#15 /Users/duranchen/Sites/Slim/vendor/slim/slim/Slim/Route.php(297): Slim\Route-&gt;callMiddlewareStack(Object(Slim\Http\Request), Object(Slim\Http\Response))</div><div class="line">#16 /Users/duranchen/Sites/Slim/vendor/slim/slim/Slim/App.php(443): Slim\Route-&gt;run(Object(Slim\Http\Request), Object(Slim\Http\Response))</div><div class="line">#17 /Users/duranchen/Sites/Slim/vendor/slim/slim/Slim/MiddlewareAwareTrait.php(116): Slim\App-&gt;__invoke(Object(Slim\Http\Request), Object(Slim\Http\Response))</div><div class="line">#18 /Users/duranchen/Sites/Slim/vendor/slim/slim/Slim/App.php(337): Slim\App-&gt;callMiddlewareStack(Object(Slim\Http\Request), Object(Slim\Http\Response))</div><div class="line">#19 /Users/duranchen/Sites/Slim/vendor/slim/slim/Slim/App.php(298): Slim\App-&gt;process(Object(Slim\Http\Request), Object(Slim\Http\Response))</div><div class="line">#20 /Users/duranchen/Sites/Slim/public/index.php(32): Slim\App-&gt;run()</div><div class="line">#21 &#123;main&#125;</div></pre></td></tr></table></figure>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">DurandeMacBook-Pro:phpproject duranchen$ sudo find / -name mysql.sock</div><div class="line">Password:</div><div class="line">find: /dev/fd/3: Not a directory</div><div class="line">find: /dev/fd/4: Not a directory</div><div class="line">/private/tmp/mysql.sock</div><div class="line">DurandeMacBook-Pro:phpproject duranchen$ sudo mkdir /var/mysql</div><div class="line">DurandeMacBook-Pro:phpproject duranchen$ ls /var/mysql/</div><div class="line">DurandeMacBook-Pro:phpproject duranchen$ sudo ln -s /private/tmp/mysql.sock /var/mysql/mysql.sock</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/08/06/programming/Slim容器的实现/" itemprop="url">
                   Slim容器分析
                 </a>
@@ -683,6 +588,101 @@
 <li>使用回调函数实现依赖注入，达到控制反转的目的。</li>
 <li>在使用组件时，才实例化组件，并单例化。</li>
 </ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/06/programming/Slim数据库连接错误/" itemprop="url">
+                  Slim数据库连接错误
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-08-06T22:39:15+08:00" content="2016-08-06">
+              2016-08-06
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Slim数据库连接错误"><a href="#Slim数据库连接错误" class="headerlink" title="Slim数据库连接错误"></a>Slim数据库连接错误</h1><h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">Slim Application Error</div><div class="line">The application could not run because of the following error:</div><div class="line"></div><div class="line">Details</div><div class="line"></div><div class="line">Type: PDOException</div><div class="line">Code: 2002</div><div class="line">Message: SQLSTATE[HY000] [2002] No such file or directory</div><div class="line">File: /Users/duranchen/Sites/Slim/vendor/illuminate/database/Connectors/Connector.php</div><div class="line">Line: 55</div><div class="line">Trace</div><div class="line"></div><div class="line">#0 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Connectors/Connector.php(55): PDO-&gt;__construct(&apos;mysql:host=loca...&apos;, &apos;root&apos;, &apos;1&apos;, Array)</div><div class="line">#1 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector-&gt;createConnection(&apos;mysql:host=loca...&apos;, Array, Array)</div><div class="line">#2 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Connectors/ConnectionFactory.php(61): Illuminate\Database\Connectors\MySqlConnector-&gt;connect(Array)</div><div class="line">#3 [internal function]: Illuminate\Database\Connectors\ConnectionFactory-&gt;Illuminate\Database\Connectors\&#123;closure&#125;()</div><div class="line">#4 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Connection.php(908): call_user_func(Object(Closure))</div><div class="line">#5 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Connection.php(776): Illuminate\Database\Connection-&gt;getPdo()</div><div class="line">#6 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Connection.php(661): Illuminate\Database\Connection-&gt;reconnectIfMissingConnection()</div><div class="line">#7 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Connection.php(342): Illuminate\Database\Connection-&gt;run(&apos;select * from `...&apos;, Array, Object(Closure))</div><div class="line">#8 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Query/Builder.php(1583): Illuminate\Database\Connection-&gt;select(&apos;select * from `...&apos;, Array, true)</div><div class="line">#9 /Users/duranchen/Sites/Slim/vendor/illuminate/database/Query/Builder.php(1569): Illuminate\Database\Query\Builder-&gt;runSelect()</div><div class="line">#10 /Users/duranchen/Sites/Slim/src/routes.php(18): Illuminate\Database\Query\Builder-&gt;get()</div><div class="line">#11 [internal function]: Closure-&gt;&#123;closure&#125;(Object(Slim\Http\Request), Object(Slim\Http\Response), Array)</div><div class="line">#12 /Users/duranchen/Sites/Slim/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php(41): call_user_func(Object(Closure), Object(Slim\Http\Request), Object(Slim\Http\Response), Array)</div><div class="line">#13 /Users/duranchen/Sites/Slim/vendor/slim/slim/Slim/Route.php(325): Slim\Handlers\Strategies\RequestResponse-&gt;__invoke(Object(Closure), Object(Slim\Http\Request), Object(Slim\Http\Response), Array)</div><div class="line">#14 /Users/duranchen/Sites/Slim/vendor/slim/slim/Slim/MiddlewareAwareTrait.php(116): Slim\Route-&gt;__invoke(Object(Slim\Http\Request), Object(Slim\Http\Response))</div><div class="line">#15 /Users/duranchen/Sites/Slim/vendor/slim/slim/Slim/Route.php(297): Slim\Route-&gt;callMiddlewareStack(Object(Slim\Http\Request), Object(Slim\Http\Response))</div><div class="line">#16 /Users/duranchen/Sites/Slim/vendor/slim/slim/Slim/App.php(443): Slim\Route-&gt;run(Object(Slim\Http\Request), Object(Slim\Http\Response))</div><div class="line">#17 /Users/duranchen/Sites/Slim/vendor/slim/slim/Slim/MiddlewareAwareTrait.php(116): Slim\App-&gt;__invoke(Object(Slim\Http\Request), Object(Slim\Http\Response))</div><div class="line">#18 /Users/duranchen/Sites/Slim/vendor/slim/slim/Slim/App.php(337): Slim\App-&gt;callMiddlewareStack(Object(Slim\Http\Request), Object(Slim\Http\Response))</div><div class="line">#19 /Users/duranchen/Sites/Slim/vendor/slim/slim/Slim/App.php(298): Slim\App-&gt;process(Object(Slim\Http\Request), Object(Slim\Http\Response))</div><div class="line">#20 /Users/duranchen/Sites/Slim/public/index.php(32): Slim\App-&gt;run()</div><div class="line">#21 &#123;main&#125;</div></pre></td></tr></table></figure>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">DurandeMacBook-Pro:phpproject duranchen$ sudo find / -name mysql.sock</div><div class="line">Password:</div><div class="line">find: /dev/fd/3: Not a directory</div><div class="line">find: /dev/fd/4: Not a directory</div><div class="line">/private/tmp/mysql.sock</div><div class="line">DurandeMacBook-Pro:phpproject duranchen$ sudo mkdir /var/mysql</div><div class="line">DurandeMacBook-Pro:phpproject duranchen$ ls /var/mysql/</div><div class="line">DurandeMacBook-Pro:phpproject duranchen$ sudo ln -s /private/tmp/mysql.sock /var/mysql/mysql.sock</div></pre></td></tr></table></figure>
 
           
         
@@ -1412,8 +1412,8 @@
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
-               alt="John Doe" />
-          <p class="site-author-name" itemprop="name">John Doe</p>
+               alt="Duran CHEN" />
+          <p class="site-author-name" itemprop="name">Duran CHEN</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
@@ -1477,7 +1477,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">Duran CHEN</span>
 </div>
 
 <div class="powered-by">
