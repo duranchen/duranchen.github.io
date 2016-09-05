@@ -85,24 +85,18 @@
 
 
 <meta name="description" content="ProvisioningServer SetupFirst login1ssh root@192.168.1.1
-Software Udapte1yum update
-Nonroot User12345adduser deploypasswd deployusermod -a -G wheel deploy
-SSH Key-Pair Authentication1ssh deploy@192.16">
+Software Udapte1yum update">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Provisioning">
 <meta property="og:url" content="http://duranchen.github.io/2016/09/06/programming/Provisioning/index.html">
 <meta property="og:site_name" content="十八般武艺">
 <meta property="og:description" content="ProvisioningServer SetupFirst login1ssh root@192.168.1.1
-Software Udapte1yum update
-Nonroot User12345adduser deploypasswd deployusermod -a -G wheel deploy
-SSH Key-Pair Authentication1ssh deploy@192.16">
-<meta property="og:updated_time" content="2016-09-03T05:56:07.000Z">
+Software Udapte1yum update">
+<meta property="og:updated_time" content="2016-09-05T10:37:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Provisioning">
 <meta name="twitter:description" content="ProvisioningServer SetupFirst login1ssh root@192.168.1.1
-Software Udapte1yum update
-Nonroot User12345adduser deploypasswd deployusermod -a -G wheel deploy
-SSH Key-Pair Authentication1ssh deploy@192.16">
+Software Udapte1yum update">
 
 
 
@@ -313,6 +307,7 @@ SSH Key-Pair Authentication1ssh deploy@192.16">
       
         <h1 id="Provisioning"><a href="#Provisioning" class="headerlink" title="Provisioning"></a>Provisioning</h1><h2 id="Server-Setup"><a href="#Server-Setup" class="headerlink" title="Server Setup"></a>Server Setup</h2><h3 id="First-login"><a href="#First-login" class="headerlink" title="First login"></a>First login</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh root@192.168.1.1</div></pre></td></tr></table></figure>
 <h3 id="Software-Udapte"><a href="#Software-Udapte" class="headerlink" title="Software Udapte"></a>Software Udapte</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum update</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="Nonroot-User"><a href="#Nonroot-User" class="headerlink" title="Nonroot User"></a>Nonroot User</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">adduser deploy</div><div class="line"></div><div class="line">passwd deploy</div><div class="line"></div><div class="line">usermod -a -G wheel deploy</div></pre></td></tr></table></figure>
 <h3 id="SSH-Key-Pair-Authentication"><a href="#SSH-Key-Pair-Authentication" class="headerlink" title="SSH Key-Pair Authentication"></a>SSH Key-Pair Authentication</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh deploy@192.168.1.1</div></pre></td></tr></table></figure>
 <p>in your local machine if you do not have key-Pair</p>
