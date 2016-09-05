@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-programming/Javascript箭头函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/19/programming/Javascript箭头函数/" class="article-date">
+  <time datetime="2016-07-19T13:37:12.000Z" itemprop="datePublished">2016-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/19/programming/Javascript箭头函数/">Javascript箭头函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Javascript箭头函数"><a href="#Javascript箭头函数" class="headerlink" title="Javascript箭头函数"></a>Javascript箭头函数</h1><h2 id="什么是箭头函数"><a href="#什么是箭头函数" class="headerlink" title="什么是箭头函数"></a>什么是箭头函数</h2><p>ES6新增一种函数：箭头函数，箭头函数相当于匿名函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">x=&gt;x+y</div></pre></td></tr></table></figure>
+<p>等同于</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x+y;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当有多个参数，多条语句时</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> f = (x,y)=&gt;&#123;</div><div class="line"></div><div class="line">  <span class="keyword">if</span>(x&gt;y) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span>(x&lt;y)&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(f(<span class="number">1</span>,<span class="number">3</span>));</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/19/programming/Javascript箭头函数/" data-id="cisppf5co002darte1i4esv47" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-programming/javascript高阶函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/15/programming/javascript高阶函数/" class="article-date">
+  <time datetime="2016-07-14T16:08:05.000Z" itemprop="datePublished">2016-07-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/15/programming/javascript高阶函数/">javascript高阶函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<ul>
+<li><a href="#javascript高阶函数">Javascript高阶函数</a><ul>
+<li><a href="#什么是高阶函数">什么是高阶函数？</a></li>
+<li><a href="#一个简单的高阶函数">一个简单的高阶函数</a></li>
+<li><a href="#javacritp中的高阶函数">javacritp中的高阶函数</a><ul>
+<li><a href="#map">map</a></li>
+<li><a href="#reduce">reduce</a></li>
+<li><a href="#filter">filter</a></li>
+<li><a href="#sort">sort</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="Javascript高阶函数"><a href="#Javascript高阶函数" class="headerlink" title="Javascript高阶函数"></a>Javascript高阶函数</h1><h2 id="什么是高阶函数？"><a href="#什么是高阶函数？" class="headerlink" title="什么是高阶函数？"></a>什么是高阶函数？</h2><p>接受另一个函数作为参数的函数，就叫做高阶函数</p>
+<h2 id="一个简单的高阶函数"><a href="#一个简单的高阶函数" class="headerlink" title="一个简单的高阶函数"></a>一个简单的高阶函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">a,b,fn</span>)</div><div class="line"></span>&#123;</div><div class="line">    <span class="keyword">return</span> fn(a,b);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</div><div class="line">   <span class="keyword">if</span>(a&gt;b)&#123;</div><div class="line">     <span class="built_in">console</span>.log(<span class="string">'a&gt;b'</span>);</div><div class="line">   &#125; <span class="keyword">else</span> <span class="keyword">if</span> (a==b)&#123;</div><div class="line">     <span class="built_in">console</span>.log(<span class="string">'a=b'</span>);</div><div class="line">   &#125; <span class="keyword">else</span> &#123;</div><div class="line">     <span class="built_in">console</span>.log(<span class="string">'a&lt;b'</span>);</div><div class="line">   &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">a =<span class="number">3</span> ;</div><div class="line">b = <span class="number">2</span>;</div><div class="line"></div><div class="line">compare(a,b,fn);</div></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2016/07/15/programming/javascript高阶函数/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/15/programming/javascript高阶函数/" data-id="cisppf5d3002rartedrpvo0k9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-纳尼亚传奇读书天数统计" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/14/纳尼亚传奇读书天数统计/" class="article-date">
+  <time datetime="2016-07-14T12:52:21.000Z" itemprop="datePublished">2016-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/English/">English</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/14/纳尼亚传奇读书天数统计/">纳尼亚传奇读书天数统计</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我是从四月份开始读纳尼亚传奇，具体开始时间没有记录，还用每次读完一本，在微信朋友圈有发记录，下面是读一本书所用天数统计。 每天大概2个多小时。</p>
+<table>
+<thead>
+<tr>
+<th>书名</th>
+<th>开始时间</th>
+<th>结束时间</th>
+<th>天数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Lion,The Witch and The Wardrobe</td>
+<td>未知</td>
+<td>4月20日</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>Prince Caspian</td>
+<td>4月21日</td>
+<td>5月18日</td>
+<td>28天</td>
+</tr>
+<tr>
+<td>The Voyage of The Dawn Treader</td>
+<td>5月19日</td>
+<td>6月2日</td>
+<td>15天</td>
+</tr>
+<tr>
+<td>The Silver Chair</td>
+<td>6月3日</td>
+<td>7月3日</td>
+<td>30天</td>
+</tr>
+<tr>
+<td>The Horse and His Boy</td>
+<td>7月4日</td>
+<td>7月11日</td>
+<td>8天</td>
+</tr>
+<tr>
+<td>The Magician’s Nephew</td>
+<td>7月20日</td>
+<td>7月27日</td>
+<td>8天</td>
+</tr>
+<tr>
+<td>Last Battle</td>
+<td>7月31日</td>
+<td>8月6日</td>
+<td>7天</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/14/纳尼亚传奇读书天数统计/" data-id="cisppf54j000darte37i2fhdh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English/">English</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-thinking/花钱是为了更好的挣钱" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/09/thinking/花钱是为了更好的挣钱/" class="article-date">
+  <time datetime="2016-07-09T12:02:35.000Z" itemprop="datePublished">2016-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/09/thinking/花钱是为了更好的挣钱/">花钱是为了更好的挣钱</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="花钱是为了更好的挣钱"><a href="#花钱是为了更好的挣钱" class="headerlink" title="花钱是为了更好的挣钱"></a>花钱是为了更好的挣钱</h1><h2 id="1-周围那些“拎不清”的人们"><a href="#1-周围那些“拎不清”的人们" class="headerlink" title="1.周围那些“拎不清”的人们"></a>1.周围那些“拎不清”的人们</h2><p>找朋友代购和在国内买便宜不了多少。</p>
+<h2 id="2-生活的本质是交换"><a href="#2-生活的本质是交换" class="headerlink" title="2.生活的本质是交换"></a>2.生活的本质是交换</h2><p>时间成本<br>信用成本<br>心情成本</p>
+<p>哪一个成本最重要？<br>时间成本。</p>
+<h2 id="3-租房为什么要离公司近"><a href="#3-租房为什么要离公司近" class="headerlink" title="3.租房为什么要离公司近"></a>3.租房为什么要离公司近</h2><p>更多的时间，可以用来提升自己。</p>
+<h2 id="4-花钱是为了更好的挣钱"><a href="#4-花钱是为了更好的挣钱" class="headerlink" title="4.花钱是为了更好的挣钱"></a>4.花钱是为了更好的挣钱</h2><p>用钱换时间</p>
+<p>花在学习上的钱不能少， 比如培训，买书。</p>
+<p>开始写文章</p>
+<ol>
+<li>逻辑清晰</li>
+<li>每天坚持写，就有进步</li>
+<li>加入共同成长，开始语言学习的分享</li>
+<li>加入新生大学创作大学。</li>
+</ol>
+<h2 id="5-真正的困境，不知道失去什么？"><a href="#5-真正的困境，不知道失去什么？" class="headerlink" title="5.真正的困境，不知道失去什么？"></a>5.真正的困境，不知道失去什么？</h2><p>因为从来没有得到拥有习得一种能力的好处，所以从来不觉得生活中失去了什么。</p>
+<h2 id="6-钱和梦想其实有相同的内核"><a href="#6-钱和梦想其实有相同的内核" class="headerlink" title="6.钱和梦想其实有相同的内核"></a>6.钱和梦想其实有相同的内核</h2><p>钱和梦想之间选择什么？</p>
+<p>赚钱和实现梦想都需要勤奋、坚持、上进。</p>
+<p>另外实现梦想还需要钱。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/09/thinking/花钱是为了更好的挣钱/" data-id="cisppf5bu001rartex0bd4c4f" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-english/2016-06-28-形容词" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/09/english/2016-06-28-形容词/" class="article-date">
+  <time datetime="2016-07-09T01:16:02.000Z" itemprop="datePublished">2016-07-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/English/">English</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/09/english/2016-06-28-形容词/">形容词</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><a href="#形容词">形容词</a><ul>
+<li><a href="#名词短语中的形容词">名词短语中的形容词</a><ul>
+<li><a href="#一、放在名词后面的形容词">一、放在名词后面的形容词</a></li>
+<li><a href="#二、名词专用为形容词">二、名词专用为形容词</a></li>
+<li><a href="#三、复合词形容词">三、复合词形容词</a></li>
+</ul>
+</li>
+<li><a href="#名词短语中形容词的顺序">名词短语中形容词的顺序</a></li>
+<li><a href="#形容词在名词短语位置与补语位置的比较">形容词在名词短语位置与补语位置的比较</a></li>
+<li><a href="#补语位置的形容词">补语位置的形容词</a></li>
+<li><a href="#形容词的比较级">形容词的比较级</a><ul>
+<li><a href="#一、比较级的拼法">一、比较级的拼法</a></li>
+<li><a href="#二、定冠词的判断">二、定冠词的判断</a></li>
+<li><a href="#三、that和those的使用">三、that和those的使用</a></li>
+<li><a href="#四、比较级的倒装">四、比较级的倒装</a></li>
+</ul>
+</li>
+<li><a href="#结语">结语</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="形容词"><a href="#形容词" class="headerlink" title="形容词"></a>形容词</h1><p>形容词的作用是修饰名词。</p>
+<p>广义的形容词包括</p>
+<ol>
+<li>形容词从句</li>
+<li>简化形容词从句（分词短语、同位语、不定词）</li>
+<li>介词</li>
+<li>复合词及单词等等。</li>
+</ol>
+<p>主要讲解单词形状的形容词， 他们在句子中只有两个位置：</p>
+<ul>
+<li>名词短语中</li>
+<li>补语位置</li>
+</ul>
+<h2 id="名词短语中的形容词"><a href="#名词短语中的形容词" class="headerlink" title="名词短语中的形容词"></a>名词短语中的形容词</h2><p>一般出现在限定词和名词中间，用来表示该名词属性,叫做attributive adjectives。</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/07/09/english/2016-06-28-形容词/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/09/english/2016-06-28-形容词/" data-id="cisppf5an000rarteol1y09xp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English/">English</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-english/读《文法俱乐部》分析长句—从句简化成分词结构" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/04/english/读《文法俱乐部》分析长句—从句简化成分词结构/" class="article-date">
+  <time datetime="2016-07-04T11:46:48.000Z" itemprop="datePublished">2016-07-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/English/">English</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/04/english/读《文法俱乐部》分析长句—从句简化成分词结构/">读《文法俱乐部》分析长句——从句简化成分词结构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="读《文法俱乐部》分析长句—从句简化成分词结构"><a href="#读《文法俱乐部》分析长句—从句简化成分词结构" class="headerlink" title="读《文法俱乐部》分析长句—从句简化成分词结构"></a>读《文法俱乐部》分析长句—从句简化成分词结构</h1><p>今天早上刚学习完《文法俱乐部》<strong>分词</strong>部分</p>
+<p>其中有提到<strong>形容词从句简化成分词结构</strong>和<strong>副词从句简化成分词结构</strong>。</p>
+<p>在Yahoo Digest今天报道的“<a href="https://www.yahoo.com/digest/20160704-P0500/nearly-120-killed-overnight-baghdad-bombings-claimed-isis-00140021" target="_blank" rel="external">Nearly 120 killed in overnight Baghdad bombings claimed by ISIS 在巴干达将近120人被ISIS自杀式炸弹炸死</a>”里看到这两种简化. </p>
+<p>学新东西，一碰到用的机会，就要马上用起来，先来分析一下这个句子的结构。</p>
+<h2 id="新闻原句"><a href="#新闻原句" class="headerlink" title="新闻原句"></a>新闻原句</h2><p>A refrigerator truck packed with explosives blew up<br>in the central district of Karrada,<br>killing 115 people and injuring at least 200.</p>
+<h2 id="还原"><a href="#还原" class="headerlink" title="还原"></a>还原</h2><p>A refrigerator which was packed with explosives blew up in the central district of Karrada, when it was killing 115 people and injuring at least 200.</p>
+<h2 id="简化过程"><a href="#简化过程" class="headerlink" title="简化过程"></a>简化过程</h2><h3 id="形容词从句简化："><a href="#形容词从句简化：" class="headerlink" title="形容词从句简化："></a>形容词从句简化：</h3><p>A refrigerator <strong>which was</strong> packed with explosives blew up in the central district of Karrada，</p>
+<p>which和A regrigerator重复，去掉；</p>
+<p>be动词was无实际意思，去掉。</p>
+<p>剩下过去分词结构packed with explosives作为形容词类。</p>
+<p>过去分词可看做形容词，所以在句子中无词类冲突</p>
+<h3 id="副词从句简化："><a href="#副词从句简化：" class="headerlink" title="副词从句简化："></a>副词从句简化：</h3><p>A refrigerator packed with explosives blew up<br>in the central district of Karrada,<br><strong>when it was</strong> killing 115 people and injuring at least 200.</p>
+<p>it和A refrigerator重复，去掉；</p>
+<p>be动词was，无实际意思，去掉；</p>
+<p>when连接词，表示和blew up同时发生，killing已经有暗示这个意思，重复，去掉。</p>
+<p>剩下现在分词killing 115 people和injuring at least 200作为形容词类。</p>
+<p>现在分词可看做形容词，所以在句子中无词类冲突。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/04/english/读《文法俱乐部》分析长句—从句简化成分词结构/" data-id="cisppf5ao000sarteenyuuv04" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English/">English</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-fitness/有氧运动与心率" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/04/fitness/有氧运动与心率/" class="article-date">
+  <time datetime="2016-07-04T11:46:48.000Z" itemprop="datePublished">2016-07-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/04/fitness/有氧运动与心率/">怎么让运动更有效？—— 有效心率</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="怎么让运动更有效？"><a href="#怎么让运动更有效？" class="headerlink" title="怎么让运动更有效？"></a>怎么让运动更有效？</h1><p>人人都希望有健康的身体，但是我们在锻炼常常会因为运动量和运动强度问题而产生烦恼：</p>
+<ol>
+<li>运动量、运动强度的不够，长期没有效果。</li>
+<li>运动过度，导致过度疲劳，影响正常的工作生活。</li>
+</ol>
+<p>那么怎么把运动量控制在一个合理的范围内，又能最有效达到我们强身健体的目的？</p>
+<p>首先了解一个概念。</p>
+<h2 id="运动心率"><a href="#运动心率" class="headerlink" title="运动心率"></a>运动心率</h2><p>心率是指心跳的频率。</p>
+<p>运动心率是指在运动时保持的心率</p>
+<h2 id="运动与心率的关系"><a href="#运动与心率的关系" class="headerlink" title="运动与心率的关系"></a>运动与心率的关系</h2><p>人体所需要的氧气是通过血液中的红细胞带到身体各个部位，而血液的循环是通过心跳实现的。</p>
+<p>当我们在做运动时，身体就会消耗比平时更多的氧气，这时你的心跳就会随着运动强度的提高而加速。</p>
+<p><strong>运动越激烈，心跳也就越快。</strong></p>
+<p>所以我们可以监控运动心率来监控运动强度。</p>
+<p>进一步，<strong>我们就可以通过调整运动心率在一个有效合理的范围，来使运动强度在一个有效合理范围——既不会运动不够，也不会运动过度。</strong></p>
+<p>那么什么样的运动心率范围才是一个有效合理的心率范围呢？</p>
+<p>我们需要知道什么样的运动强度是最有效的，才能知道什么样运动心率是最有效。</p>
+<p>在运动过程中，随着运动强度的增加，身体需要的氧气越来越多，最后心脏供氧和运动耗氧失去平衡，运动从有氧运动过渡到无氧运动。</p>
+<p><strong>当运动强度在有氧和无氧之间时，运动效果是最好的。</strong></p>
+<p>既是最激烈的有氧运动，充分运动，又没有达到无氧运动程度，不会产生乳酸，感到疲劳。</p>
+<p>确定了有效的运动强度，我们就可以可以确定有效合理的心率了。</p>
+<h2 id="有效心率"><a href="#有效心率" class="headerlink" title="有效心率"></a>有效心率</h2><p>看下图，左边心率区域，表示运动过少，没有运动效果；</p>
+<p>右边心率区域，表示运动过度，导致疲劳；</p>
+<p>只有中间区域就是从有氧运动过渡到无氧运动的心率，叫做有效心率。</p>
+<p><strong>只要在运动时，把心率保持在中间的有效心率区域，就能在最短时间达到最有效的运动，还不会产生疲劳感。</strong></p>
+<h2 id="如何确定有效心率范围？"><a href="#如何确定有效心率范围？" class="headerlink" title="如何确定有效心率范围？"></a>如何确定有效心率范围？</h2><p>每个人的身体素质都不一样，那么怎么确定个人的有效心率呢？</p>
+<h2 id="如何监控运动心率是否在有效心率范围？"><a href="#如何监控运动心率是否在有效心率范围？" class="headerlink" title="如何监控运动心率是否在有效心率范围？"></a>如何监控运动心率是否在有效心率范围？</h2><h3 id="方法一、手动"><a href="#方法一、手动" class="headerlink" title="方法一、手动"></a>方法一、手动</h3><h3 id="方法二、智能穿戴设备"><a href="#方法二、智能穿戴设备" class="headerlink" title="方法二、智能穿戴设备"></a>方法二、智能穿戴设备</h3><h2 id="什么运动能让我们保持这种高效运动效果？"><a href="#什么运动能让我们保持这种高效运动效果？" class="headerlink" title="什么运动能让我们保持这种高效运动效果？"></a>什么运动能让我们保持这种高效运动效果？</h2><p>T25 30分钟</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/04/fitness/有氧运动与心率/" data-id="cisppf5as000xartekz1ga0kb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/健身/">健身</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-thinking/2016-07-03-伪医学" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/03/thinking/2016-07-03-伪医学/" class="article-date">
+  <time datetime="2016-07-03T15:09:00.000Z" itemprop="datePublished">2016-07-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/03/thinking/2016-07-03-伪医学/">伪医学</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="伪医学"><a href="#伪医学" class="headerlink" title="伪医学"></a>伪医学</h1><h2 id="随机双盲对照测试"><a href="#随机双盲对照测试" class="headerlink" title="随机双盲对照测试"></a>随机双盲对照测试</h2><p>不能通过“双盲测试”的疗法，都是伪医学。</p>
+<p>下面都是一些被证实的伪医学：</p>
+<h2 id="1-Orthomolecular-维生素C-E，"><a href="#1-Orthomolecular-维生素C-E，" class="headerlink" title="1.  Orthomolecular: 维生素C/E，"></a>1.  Orthomolecular: 维生素C/E，</h2><p>不能预防和治疗感冒，也无法提高免疫力。<br>会促使体内形成肾结石的概率加倍，因为部分维生素C在体内会形成草酸，草酸是肾结石的重要成分。</p>
+<h2 id="2-Chiropracitic-推拿、按摩、整脊"><a href="#2-Chiropracitic-推拿、按摩、整脊" class="headerlink" title="2.  Chiropracitic: 推拿、按摩、整脊"></a>2.  Chiropracitic: 推拿、按摩、整脊</h2><p>针灸不是中国传统医学，而二是从高加索传过来</p>
+<h2 id="3-Reflexology-足底按摩、虹膜学、帖耳穴"><a href="#3-Reflexology-足底按摩、虹膜学、帖耳穴" class="headerlink" title="3.  Reflexology: 足底按摩、虹膜学、帖耳穴"></a>3.  Reflexology: 足底按摩、虹膜学、帖耳穴</h2><h2 id="4-Organic-Food：-有机食品"><a href="#4-Organic-Food：-有机食品" class="headerlink" title="4.  Organic Food： 有机食品"></a>4.  Organic Food： 有机食品</h2><p>有机的营养成分和普通食品并无太大差别。</p>
+<h2 id="5-Alternative-Medicine：-替代医学"><a href="#5-Alternative-Medicine：-替代医学" class="headerlink" title="5.  Alternative Medicine： 替代医学"></a>5.  Alternative Medicine： 替代医学</h2><p>瑜伽，吃素，精神疗法。</p>
+<h2 id="6-Traditional-Medicine-印度和中国"><a href="#6-Traditional-Medicine-印度和中国" class="headerlink" title="6.  Traditional Medicine: 印度和中国"></a>6.  Traditional Medicine: 印度和中国</h2><p> 中医指的是中国传统医学，<br> 西医并不是指西方医学，而是现代医学，是建立在现代科学之上的一整套系统科学。</p>
+<p> 所以医学可以分传统医学和现代医学，没有中西医之分。</p>
+<p> 中药都没经过双盲测试，无法再美国买，中医也无法在美国行医。<br> 中药有100多种药含有马兜铃酸，会导致肾衰竭。</p>
+<p><strong>很多人不是死于医生的愚昧，就是死于害命之心</strong><br>医</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/03/thinking/2016-07-03-伪医学/" data-id="cisppf5br001oarte93bjva10" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-finance/2016-06-30-如何低风险实现资产的指数级增长—复利" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/02/finance/2016-06-30-如何低风险实现资产的指数级增长—复利/" class="article-date">
+  <time datetime="2016-07-02T12:00:00.000Z" itemprop="datePublished">2016-07-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/02/finance/2016-06-30-如何低风险实现资产的指数级增长—复利/">如何低风险实现资产的指数级增长—复利</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>大多数人认为：“低风险低收益，高风险高收益”，</p>
+<p><strong>实际上，低风险和高收益并不矛盾，因为大家忽略了复利的威力。</strong></p>
+<p>假设你在30岁时有10万，每年本息保持10%的年收益，到你60岁退休时这10万连本带息是多少？</p>
+<p>这里先说明一下为什么是10%年收益：</p>
+<p>下面各种基金历年年化收益率：</p>
+<ul>
+<li>货币型基金 2.56%</li>
+<li>债券型基金 6.4%</li>
+<li>混合型基金 13.16%</li>
+<li>股票型基金 14.11%</li>
+</ul>
+<p>也就是说，不用任何技巧，长期持有，就能获得上面的收益率。<br>当然入场时间还是很重要的。。。。不要一进去发现在山顶了。</p>
+<p>所以10%的年化收益率通过学习一些简单的投资理财技巧，是比较容易实现的。</p>
+<p>对比股票，甚至股票型基金，在这个收益率左右的投资理财产品绝对是低风险的！</p>
+<p>另外不要看不起这10%的年收益，对现在比余额宝2.4%的七日年化收益率，即使是最开始阿里贴利息，最高也就7%左右。</p>
+<p>所以在10%年收益是绝对可以长期实现的低风险投资。</p>
+<p>回到之前的问题，我们需要先了解<strong>世界第八大奇迹——复利</strong>，这是爱因斯坦说的，绝对不是我说的,下面是原话。</p>
+<blockquote>
+<p>“Compound interest is the eighth wonder of the world. He wo understand it, earns it … he who doesn’t .. pays it.” 复利是世界第八大奇迹。知之者赚，不知者被坑。</p>
+</blockquote>
+<p>我相信大多数人和我一样，在初中学习过复利，做过几道复利的计算题，但是都没有在实际生活中用过。</p>
+<p><strong>起始本金*（1+利率）^n = 复利终值</strong></p>
+<p>n是复利的结算次数，如果一年结算一次，就是年复利，如果一个月结算一次，就是月复利。</p>
+<p>按这个公式计算年复利,本金为10万，年收益为10%，那么n年后连本带利是多少钱?<br>为了方便大家理解这个公式，我一年一年算：</p>
+<p>第一年：<br>10万 * (1+10%) = 11万</p>
+<p>即 10万 * (1+15%)^1 = 11万</p>
+<p>第二年：<br>10万 * (1+10%) * （1+10%） = 12.1万</p>
+<p>即 10万 * (1+10%)^2 = 12.1万</p>
+<p>第n年:<br>10万 * (1+10%) * (1+10%)…(1+10%)</p>
+<p>即 10万 * (1+15%)^n</p>
+<p>现在我们可以回答之前的问题了<br>60岁退休，n=30年，那么10万本金最后就是：<br>10万 * (1+10%)^30 = 174.5万</p>
+<p>30年大约17倍。</p>
+<p>假设你60岁退休后能活到100岁，那么每月你就有约3600元/月的额外养老金，加上社保养老金，可以过上不错的养老生活了。</p>
+<p>年轻时，小小的10万，通过复利的积累，成为30年后的生活的保障，这是多么神奇的事。这个小小例子，并不能完全展现复利的威力，下面从数学分析上看一下复利的威力和要点。</p>
+<p>回到复利公式：</p>
+<p>起始本金*（1+利率）^n = 复利终值</p>
+<p>这个公式有3个变量，</p>
+<ul>
+<li>起始本金</li>
+<li>利率</li>
+<li>年限</li>
+</ul>
+<p>我们分析一下，改变这个三个变量中其中一个，而其他两个变量不变的情况。</p>
+<ol>
+<li>只改变起始本金——可以看成线性函数f(x)=x(1+10%)^30，x是本金，f(x)是线性增长</li>
+<li>只改变利率——可以看成幂函数f(x)=10(1+x)^30，x是利率，f(x)是幂增长</li>
+<li>只改变年限——可以看成指数函数f(x)=10(1+10%)^x，x是时间，f(x)是指数增长</li>
+</ol>
+<p>从维基百科上，找了一张描述指数增长（绿色）如何超过线性增长（红色）和幂增长（蓝色）的图。</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Exponential.svg" alt="指数增长（绿色）如何超过线性增长（红色）和幂增长（蓝色）"><br>从上图，我们看到越到最后，指数增长越陡峭，远远超过另外两个增长函数，所以：</p>
+<p><strong>复利公式中，第一重要的是时间，第二重要的是利率，最后才是起始本金。</strong></p>
+<p>我们把时间拉长来看，从1到100年，下面的图告诉我们，越到后面越陡峭。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1829597-fd606bffc19ed73c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="n=1~100"></p>
+<p><strong>从复利的角度，把时间拉的足够长，低风险所带来的稳定收益，通过复利的指数级增长，最终的回报是非常可观的。</strong></p>
+<p>可能有人会觉，足够长的时间，那等我死了，也享用不了这份积累。<br><strong>所以越早开始利用复利越好。</strong> 再说，你不还有下一代吗？你不学会运用复利去积累财富，你的子孙也学的不会，因为复利的威力是建立在时间之上的。为什么有人说“三代人的努力才能出一个贵族”，都是一个道理。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/02/finance/2016-06-30-如何低风险实现资产的指数级增长—复利/" data-id="cisppf5ax0013arteuco6umtr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/02/hello-world/" class="article-date">
+  <time datetime="2016-07-02T10:26:18.000Z" itemprop="datePublished">2016-07-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/02/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/02/hello-world/" data-id="cisppf53v0005artei6av1pv6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Concept/">Concept</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Method/">Method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/method/">method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/健身/">健身</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/写作/">写作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通往财富自由/">通往财富自由</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Grammar/" style="font-size: 10px;">Grammar</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/programming/" style="font-size: 10px;">programming</a> <a href="/tags/健身/" style="font-size: 10px;">健身</a> <a href="/tags/写作/" style="font-size: 10px;">写作</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/成长/" style="font-size: 10px;">成长</a> <a href="/tags/通往财富自由/" style="font-size: 10px;">通往财富自由</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/06/programming/Provisioning/">Provisioning</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/03/Deployment-Capistrano/">Deployment Capistrano</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/28/如何读一本书/">如何读一本书</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/27/对半途而废的思考/">对半途而废的思考</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/23/growth/李笑来写作课第一课笔记/">李笑来写作课第一课笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

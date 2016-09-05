@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript高阶函数 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Javascript高阶函数
+什么是高阶函数？
+一个简单的高阶函数
+javacritp中的高阶函数
+map
+reduce
+filter
+sort
+
+
+
+
+
+
+Javascript高阶函数什么是高阶函数？接受另一个函数作为参数的函数，就叫做高阶函数
+一个简单的高阶函数1234567891011121314151617181920function compare(a,b,fn)&amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript高阶函数">
+<meta property="og:url" content="http://yoursite.com/2016/07/15/programming/javascript高阶函数/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Javascript高阶函数
+什么是高阶函数？
+一个简单的高阶函数
+javacritp中的高阶函数
+map
+reduce
+filter
+sort
+
+
+
+
+
+
+Javascript高阶函数什么是高阶函数？接受另一个函数作为参数的函数，就叫做高阶函数
+一个简单的高阶函数1234567891011121314151617181920function compare(a,b,fn)&amp;#123;">
+<meta property="og:updated_time" content="2016-07-19T10:25:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript高阶函数">
+<meta name="twitter:description" content="Javascript高阶函数
+什么是高阶函数？
+一个简单的高阶函数
+javacritp中的高阶函数
+map
+reduce
+filter
+sort
+
+
+
+
+
+
+Javascript高阶函数什么是高阶函数？接受另一个函数作为参数的函数，就叫做高阶函数
+一个简单的高阶函数1234567891011121314151617181920function compare(a,b,fn)&amp;#123;">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-programming/javascript高阶函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/15/programming/javascript高阶函数/" class="article-date">
+  <time datetime="2016-07-14T16:08:05.000Z" itemprop="datePublished">2016-07-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript高阶函数
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<ul>
+<li><a href="#javascript高阶函数">Javascript高阶函数</a><ul>
+<li><a href="#什么是高阶函数">什么是高阶函数？</a></li>
+<li><a href="#一个简单的高阶函数">一个简单的高阶函数</a></li>
+<li><a href="#javacritp中的高阶函数">javacritp中的高阶函数</a><ul>
+<li><a href="#map">map</a></li>
+<li><a href="#reduce">reduce</a></li>
+<li><a href="#filter">filter</a></li>
+<li><a href="#sort">sort</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="Javascript高阶函数"><a href="#Javascript高阶函数" class="headerlink" title="Javascript高阶函数"></a>Javascript高阶函数</h1><h2 id="什么是高阶函数？"><a href="#什么是高阶函数？" class="headerlink" title="什么是高阶函数？"></a>什么是高阶函数？</h2><p>接受另一个函数作为参数的函数，就叫做高阶函数</p>
+<h2 id="一个简单的高阶函数"><a href="#一个简单的高阶函数" class="headerlink" title="一个简单的高阶函数"></a>一个简单的高阶函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">a,b,fn</span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> fn(a,b);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</div><div class="line">   <span class="keyword">if</span>(a&gt;b)&#123;</div><div class="line">     <span class="built_in">console</span>.log(<span class="string">'a&gt;b'</span>);</div><div class="line">   &#125; <span class="keyword">else</span> <span class="keyword">if</span> (a==b)&#123;</div><div class="line">     <span class="built_in">console</span>.log(<span class="string">'a=b'</span>);</div><div class="line">   &#125; <span class="keyword">else</span> &#123;</div><div class="line">     <span class="built_in">console</span>.log(<span class="string">'a&lt;b'</span>);</div><div class="line">   &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">a =<span class="number">3</span> ;</div><div class="line">b = <span class="number">2</span>;</div><div class="line"></div><div class="line">compare(a,b,fn);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="javacritp中的高阶函数"><a href="#javacritp中的高阶函数" class="headerlink" title="javacritp中的高阶函数"></a>javacritp中的高阶函数</h2><h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><p>给数组每个一个字符串元素加一个前缀</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'prefix_'</span>+s;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr =[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>];</div><div class="line"><span class="keyword">var</span> result = arr.map(fn);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(result);</div></pre></td></tr></table></figure>
+<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><p>求数组中所有数值元素的乘积</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line"></div><div class="line"><span class="keyword">var</span> result = arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> x*y;</div><div class="line">&#125;</div><div class="line">);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(result);</div></pre></td></tr></table></figure>
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><p>过滤数组中的空字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeEmpty</span>(<span class="params">arr</span>)</span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">return</span> arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> x != <span class="string">''</span>;</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr = [<span class="string">''</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">''</span>];</div><div class="line"></div><div class="line"><span class="keyword">var</span> result = removeEmpty(arr);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(result);</div></pre></td></tr></table></figure>
+<h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h3><p>sort默认是按ASCII码排序，对数值也先转成字符串，再按ASCII排序。<br>所以直接使用sort排序，可能得到的意外的结果，但是可以传入一个函数作为参数自定义排序算法。</p>
+<ol>
+<li>使数组中的数值按降序排序</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">arr.sort(<span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>)</span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(x&lt;y) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span>(x&gt;y) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">&#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<ol>
+<li>对数组中的字符串忽略大小写排序</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var arr = [&apos;Google&apos;,&apos;apple&apos;,&apos;Microsoft&apos;]</div><div class="line"></div><div class="line">arr.sort(function (x,y)</div><div class="line">&#123;</div><div class="line">  x1 = x.toUpperCase();</div><div class="line">  y1 = y.toUpperCase();</div><div class="line"></div><div class="line">  if(x1&lt;y1) &#123;</div><div class="line">    return -1;</div><div class="line">  &#125;</div><div class="line">  if(x1&gt;y1)&#123;</div><div class="line">    return 1;</div><div class="line">  &#125;</div><div class="line">  return 0;</div><div class="line">&#125;</div><div class="line">);</div><div class="line"></div><div class="line">console.log(arr);</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/15/programming/javascript高阶函数/" data-id="cisppf5d3002rartedrpvo0k9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/19/programming/Javascript箭头函数/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Javascript箭头函数
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/14/纳尼亚传奇读书天数统计/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">纳尼亚传奇读书天数统计</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Concept/">Concept</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Method/">Method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/method/">method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/健身/">健身</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/写作/">写作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通往财富自由/">通往财富自由</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Grammar/" style="font-size: 10px;">Grammar</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/programming/" style="font-size: 10px;">programming</a> <a href="/tags/健身/" style="font-size: 10px;">健身</a> <a href="/tags/写作/" style="font-size: 10px;">写作</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/成长/" style="font-size: 10px;">成长</a> <a href="/tags/通往财富自由/" style="font-size: 10px;">通往财富自由</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/06/programming/Provisioning/">Provisioning</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/03/Deployment-Capistrano/">Deployment Capistrano</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/28/如何读一本书/">如何读一本书</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/27/对半途而废的思考/">对半途而废的思考</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/23/growth/李笑来写作课第一课笔记/">李笑来写作课第一课笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

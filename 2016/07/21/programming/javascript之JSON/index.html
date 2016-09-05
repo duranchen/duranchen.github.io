@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Javascript之JSON | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Javascript之JSON什么是JSONJSON的全称是Javascript Object Notation， 是一种轻量级数据交换格式。
+JSON的数据类型实际上JSON就是Javascript的一个子集，所以它的数据类型和Javascript基本一样，类型也比较少.
+
+number = javascript的number
+boolean = javascript的boolean
+strin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript之JSON">
+<meta property="og:url" content="http://yoursite.com/2016/07/21/programming/javascript之JSON/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Javascript之JSON什么是JSONJSON的全称是Javascript Object Notation， 是一种轻量级数据交换格式。
+JSON的数据类型实际上JSON就是Javascript的一个子集，所以它的数据类型和Javascript基本一样，类型也比较少.
+
+number = javascript的number
+boolean = javascript的boolean
+strin">
+<meta property="og:updated_time" content="2016-07-23T04:22:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript之JSON">
+<meta name="twitter:description" content="Javascript之JSON什么是JSONJSON的全称是Javascript Object Notation， 是一种轻量级数据交换格式。
+JSON的数据类型实际上JSON就是Javascript的一个子集，所以它的数据类型和Javascript基本一样，类型也比较少.
+
+number = javascript的number
+boolean = javascript的boolean
+strin">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-programming/javascript之JSON" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/21/programming/javascript之JSON/" class="article-date">
+  <time datetime="2016-07-21T14:01:08.000Z" itemprop="datePublished">2016-07-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Javascript之JSON
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Javascript之JSON"><a href="#Javascript之JSON" class="headerlink" title="Javascript之JSON"></a>Javascript之JSON</h1><h2 id="什么是JSON"><a href="#什么是JSON" class="headerlink" title="什么是JSON"></a>什么是JSON</h2><p>JSON的全称是Javascript Object Notation， 是一种轻量级数据交换格式。</p>
+<h2 id="JSON的数据类型"><a href="#JSON的数据类型" class="headerlink" title="JSON的数据类型"></a>JSON的数据类型</h2><p>实际上JSON就是Javascript的一个子集，所以它的数据类型和Javascript基本一样，类型也比较少.</p>
+<ul>
+<li>number = javascript的number</li>
+<li>boolean = javascript的boolean</li>
+<li>string = javascript的string</li>
+<li>null = javascript的null</li>
+<li>array = javascript的array</li>
+<li>object = javascript的object</li>
+</ul>
+<p>作为一种数据交换格式，<strong>为了能统一解析，规定了字符串和对象的键值必须用双引号“”</strong>。</p>
+<h2 id="如何在Javascript中使用JSON？"><a href="#如何在Javascript中使用JSON？" class="headerlink" title="如何在Javascript中使用JSON？"></a>如何在Javascript中使用JSON？</h2><h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><p>把数据放入一个Javascript对象，再把该对象序列化成一个JSON格式的字符串——序列化，然后通过网络传递到其他系统。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> jim = &#123;</div><div class="line">  name: <span class="string">'Jim'</span>,</div><div class="line">  <span class="string">'age'</span>:<span class="number">21</span>,</div><div class="line">  skills:[<span class="string">'html'</span>,<span class="string">'css'</span>,<span class="string">'php'</span>,<span class="string">'javascript'</span>],</div><div class="line">&#125;</div><div class="line"></div><div class="line">j = <span class="built_in">JSON</span>.stringify(jim,<span class="literal">null</span>,<span class="string">'  '</span>);</div><div class="line"><span class="built_in">console</span>.log(j);</div><div class="line"><span class="comment">// &#123;</span></div><div class="line"><span class="comment">//   "name": "Jim",</span></div><div class="line"><span class="comment">//   "age": 21,</span></div><div class="line"><span class="comment">//   "skills": [</span></div><div class="line"><span class="comment">//     "html",</span></div><div class="line"><span class="comment">//     "css",</span></div><div class="line"><span class="comment">//     "php",</span></div><div class="line"><span class="comment">//     "javascript"</span></div><div class="line"><span class="comment">//   ]</span></div><div class="line"><span class="comment">// &#125;</span></div></pre></td></tr></table></figure>
+<h3 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h3><p>当收到的JSON格式的字符串时，把字符串反序列化成一个JSON对象，就可以在Javascript中直接使用了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">rj = <span class="string">'&#123;"name": "Jim","age": 21,"skills": ["html","css","php","javascript"]&#125;'</span>;</div><div class="line"></div><div class="line">obj = <span class="built_in">JSON</span>.parse(rj);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(obj);</div><div class="line"></div><div class="line"><span class="comment">// &#123; name: 'Jim',</span></div><div class="line"><span class="comment">//   age: 21,</span></div><div class="line"><span class="comment">//   skills: [ 'html', 'css', 'php', 'javascript' ] &#125;</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/21/programming/javascript之JSON/" data-id="cisppf5cw002larte2bh6c594" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/23/programming/库、工具包、框架、设计模式、架构、编程范式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          库、工具包、框架、设计模式、架构、编程范式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/21/programming/javascript闭包/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">javascript闭包</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Concept/">Concept</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Method/">Method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/method/">method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/健身/">健身</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/写作/">写作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通往财富自由/">通往财富自由</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Grammar/" style="font-size: 10px;">Grammar</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/programming/" style="font-size: 10px;">programming</a> <a href="/tags/健身/" style="font-size: 10px;">健身</a> <a href="/tags/写作/" style="font-size: 10px;">写作</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/成长/" style="font-size: 10px;">成长</a> <a href="/tags/通往财富自由/" style="font-size: 10px;">通往财富自由</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/06/programming/Provisioning/">Provisioning</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/03/Deployment-Capistrano/">Deployment Capistrano</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/28/如何读一本书/">如何读一本书</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/27/对半途而废的思考/">对半途而废的思考</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/23/growth/李笑来写作课第一课笔记/">李笑来写作课第一课笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

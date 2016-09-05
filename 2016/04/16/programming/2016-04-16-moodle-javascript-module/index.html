@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Moodle javascript Module | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1 Javascript ModulesReference： https://docs.moodle.org/dev/Javascript_Modules
+1.1 What is a Javascript module?A collection of Javascript code
+1.2 Why should I package my code as a module?To break your">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Moodle javascript Module">
+<meta property="og:url" content="http://yoursite.com/2016/04/16/programming/2016-04-16-moodle-javascript-module/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1 Javascript ModulesReference： https://docs.moodle.org/dev/Javascript_Modules
+1.1 What is a Javascript module?A collection of Javascript code
+1.2 Why should I package my code as a module?To break your">
+<meta property="og:updated_time" content="2016-07-02T10:29:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Moodle javascript Module">
+<meta name="twitter:description" content="1 Javascript ModulesReference： https://docs.moodle.org/dev/Javascript_Modules
+1.1 What is a Javascript module?A collection of Javascript code
+1.2 Why should I package my code as a module?To break your">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-programming/2016-04-16-moodle-javascript-module" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/16/programming/2016-04-16-moodle-javascript-module/" class="article-date">
+  <time datetime="2016-04-16T06:28:00.000Z" itemprop="datePublished">2016-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Moodle javascript Module
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Javascript-Modules"><a href="#1-Javascript-Modules" class="headerlink" title="1 Javascript Modules"></a>1 Javascript Modules</h2><p>Reference： <a href="https://docs.moodle.org/dev/Javascript_Modules" target="_blank" rel="external">https://docs.moodle.org/dev/Javascript_Modules</a></p>
+<h3 id="1-1-What-is-a-Javascript-module"><a href="#1-1-What-is-a-Javascript-module" class="headerlink" title="1.1 What is a Javascript module?"></a>1.1 What is a Javascript module?</h3><p>A collection of Javascript code</p>
+<h3 id="1-2-Why-should-I-package-my-code-as-a-module"><a href="#1-2-Why-should-I-package-my-code-as-a-module" class="headerlink" title="1.2 Why should I package my code as a module?"></a>1.2 Why should I package my code as a module?</h3><p>To break your code up to smaller reusable pieces</p>
+<ul>
+<li>easy to understand</li>
+<li>easy to test</li>
+<li>easy to reuse</li>
+</ul>
+<h2 id="2-How-do-I-write-a-Javascript-module-in-Moodle"><a href="#2-How-do-I-write-a-Javascript-module-in-Moodle" class="headerlink" title="2 How do I write a Javascript module in Moodle?"></a>2 How do I write a Javascript module in Moodle?</h2><p>Javascript Mouldes is written by using the Asynchronnous Module Definition API.</p>
+<p>To edit or create an AMD module in Moodle you need to do a couple of things below.</p>
+<h3 id="2-1-Install-grunt"><a href="#2-1-Install-grunt" class="headerlink" title="2.1 Install grunt"></a>2.1 Install grunt</h3><ol>
+<li>install <a href="https://nodejs.org/en/" target="_blank" rel="external">nodejs</a></li>
+<li>install npm and grunt in terminal</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install</div><div class="line">npm install -g grunt-cli</div></pre></td></tr></table></figure>
+<h3 id="2-2-Running-grunt"><a href="#2-2-Running-grunt" class="headerlink" title="2.2 Running grunt"></a>2.2 Running grunt</h3><p>Enter into the root of moodle document and run grunt command</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd moodle/</div><div class="line">grunt jshint uglify</div></pre></td></tr></table></figure>
+<h3 id="2-3-“Hello-World”-I-am-a-Javascript-Module"><a href="#2-3-“Hello-World”-I-am-a-Javascript-Module" class="headerlink" title="2.3 “Hello World” I am a Javascript Module"></a>2.3 “Hello World” I am a Javascript Module</h3><ol>
+<li>creat block_nae_board.</li>
+<li>put the js file under ‘blocks/block_nae_board/amd/src/helloworld.js’.</li>
+<li>put the following code in helloworld.js</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">define([<span class="string">'jquery'</span>, <span class="string">'core/log'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">$, log</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        init: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123;</div><div class="line">                alert(<span class="string">'hello,World!'</span>);</div><div class="line">            &#125;);</div><div class="line">            log.debug(<span class="string">'helloword AMD init'</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">define([&apos;jquery&apos;, &apos;core/log&apos;], function($, log) &#123;</div></pre></td></tr></table></figure>
+<p>The first argument to “define” is the list of dependencies for the module. This argument can be an array.</p>
+<p>The second argument to “define” is the function that defines the module. The arguments are from the first argument with the same order.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">return &#123;</div><div class="line">      init: function() &#123;</div><div class="line">          $(document).ready(function($) &#123;</div><div class="line">              alert(&apos;hello,World!&apos;);</div><div class="line">          &#125;);</div><div class="line">          log.debug(&apos;Essential jBreadCrumb AMD init&apos;);</div><div class="line">      &#125;</div><div class="line">  &#125;;</div></pre></td></tr></table></figure>
+<p>The code returns a Object which includes a method called ‘init’. the rest of the code are jQurey code, which will pop a warning ‘hello,World!’.</p>
+<h3 id="2-4-Embedding-AMD-code-in-a-page"><a href="#2-4-Embedding-AMD-code-in-a-page" class="headerlink" title="2.4 Embedding AMD code in a page"></a>2.4 Embedding AMD code in a page</h3><p>Using “js_call_amd” to call a single function from an AMD module with parameter<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$PAGE-&gt;requires-&gt;js_call_amd($modulename, $functionname, $params);</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$this-&gt;page-&gt;requires-&gt;js_call_amd(&apos;block_nae_board/helloworld&apos;,&apos;init&apos;);</div></pre></td></tr></table></figure>
+<p>it means calling the function ‘init’ in the module’block_nae_board/helloworld’</p>
+<h3 id="2-5-But-I-have-a-mega-JS-file-I-don’t-want-loaded-on-every-page"><a href="#2-5-But-I-have-a-mega-JS-file-I-don’t-want-loaded-on-every-page" class="headerlink" title="2.5 But I have a mega JS file I don’t want loaded on every page?"></a>2.5 But I have a mega JS file I don’t want loaded on every page?</h3><p>You can rename the javascript file to end with the suffix “-lazy.js” which indicates that the module will not be loaded by default, it will be requested the first time it is used.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/16/programming/2016-04-16-moodle-javascript-module/" data-id="cisppf5bx001vartefv7nczz7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/16/finance/2016-06-11-指数基金定投/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          指数基金定投
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/16/programming/2016-04-16-从网页查询数据库/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">从网页查询数据库</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Concept/">Concept</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Method/">Method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/method/">method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/健身/">健身</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/写作/">写作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通往财富自由/">通往财富自由</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Grammar/" style="font-size: 10px;">Grammar</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/programming/" style="font-size: 10px;">programming</a> <a href="/tags/健身/" style="font-size: 10px;">健身</a> <a href="/tags/写作/" style="font-size: 10px;">写作</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/成长/" style="font-size: 10px;">成长</a> <a href="/tags/通往财富自由/" style="font-size: 10px;">通往财富自由</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/06/programming/Provisioning/">Provisioning</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/03/Deployment-Capistrano/">Deployment Capistrano</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/28/如何读一本书/">如何读一本书</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/27/对半途而废的思考/">对半途而废的思考</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/23/growth/李笑来写作课第一课笔记/">李笑来写作课第一课笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
