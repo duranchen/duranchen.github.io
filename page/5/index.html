@@ -257,6 +257,270 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/16/programming/2016-06-16-如何判断javasc变量的类型？/" itemprop="url">
+                  如何判断javascritp变量的类型？
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-16T22:13:00+08:00" content="2016-06-16">
+              2016-06-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/16/programming/2016-06-16-如何判断javasc变量的类型？/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/16/programming/2016-06-16-如何判断javasc变量的类型？/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在javascript变量的类型可以是以下这些：</p>
+<ul>
+<li>函数</li>
+<li>对象</li>
+<li>数组</li>
+<li>字符串</li>
+<li>数字</li>
+<li>null</li>
+</ul>
+<p>那么如何判断一个变量是什么类型呢？<br>我们可以用typeof来得到变量的类型,例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//函数</span></div><div class="line"><span class="keyword">var</span> myFunction = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'hello'</span>);</div><div class="line">&#125;;</div><div class="line"><span class="comment">//对象</span></div><div class="line"><span class="keyword">var</span> myObject = &#123;</div><div class="line">  foo:<span class="string">'bar'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 数组</span></div><div class="line"><span class="keyword">var</span> myArray = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>];</div><div class="line"></div><div class="line"><span class="comment">// 字符串</span></div><div class="line"><span class="keyword">var</span> myString = <span class="string">'hello'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 数字</span></div><div class="line"><span class="keyword">var</span> myNumber = <span class="number">3</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> myFunction); <span class="comment">// 输出function</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> myObject); <span class="comment">// 输出object</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> myArray); <span class="comment">// 输出object --careful!</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> myString); <span class="comment">// 输出string</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> myNumber); <span class="comment">// 输出number</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">null</span>); <span class="comment">// 输出object--carefull!</span></div></pre></td></tr></table></figure>
+<p>注意到数组和null被判断成对象类型。</p>
+<p>那么怎么判断一个被typeof判断对象的变量的类型,到底是对象，数组，还是null?</p>
+<p>1.判断数组，可以用Array.isArray(arr)<br>2.判断null，可以用Var === null</p>
+<p>可以判断变量的类型的方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">whatType</span>(<span class="params">v</span>)</span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span>(v) == <span class="string">'object'</span>)</div><div class="line">  &#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(arr))&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">'array'</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(v === <span class="literal">null</span>)</div><div class="line">    &#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">'null'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="string">'object'</span>；</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">arr = [];</div><div class="line">obj = &#123;&#125;;</div><div class="line">n= <span class="literal">null</span>;</div><div class="line"><span class="built_in">console</span>.log(whatType(arr)); <span class="comment">// array</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/12/programming/2016-06-12-Javascript函数/" itemprop="url">
+                  Javascript函数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-12T17:29:00+08:00" content="2016-06-12">
+              2016-06-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/12/programming/2016-06-12-Javascript函数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/12/programming/2016-06-12-Javascript函数/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<ul>
+<li><a href="#javascript函数">Javascript函数</a><ul>
+<li><a href="#什么是javascript函数">什么是JavaScript函数？</a></li>
+<li><a href="#如何创建函数">如何创建函数？</a></li>
+<li><a href="#如何使用函数">如何使用函数？</a></li>
+<li><a href="#自执行匿名函数">自执行匿名函数</a></li>
+<li><a href="#函数作为函数的参数">函数作为函数的参数</a><ul>
+<li><a href="#传递匿名函数作为参数">传递匿名函数作为参数</a></li>
+<li><a href="#传递非匿名函数作为参数">传递非匿名函数作为参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="Javascript函数"><a href="#Javascript函数" class="headerlink" title="Javascript函数"></a>Javascript函数</h1><h2 id="什么是JavaScript函数？"><a href="#什么是JavaScript函数？" class="headerlink" title="什么是JavaScript函数？"></a>什么是JavaScript函数？</h2><p>在所有编程语言里，函数是用来包含需要重复执行的代码块，Javascript也不例外。</p>
+<p>Javascript函数可以有0到n个参数。</p>
+<p>Javascript函数可以返回一个值或0个值。</p>
+<h2 id="如何创建函数？"><a href="#如何创建函数？" class="headerlink" title="如何创建函数？"></a>如何创建函数？</h2><p>在JavaScript里，有两种创建函数的方法法。</p>
+<ol>
+<li>函数声明法</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">/* do something */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>函数表达式法</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">/* do something */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="如何使用函数？"><a href="#如何使用函数？" class="headerlink" title="如何使用函数？"></a>如何使用函数？</h2><p>下面是使用不同类型函数的例子</p>
+<ol>
+<li>简单函数</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> greet = <span class="function"><span class="keyword">function</span>(<span class="params">person,greeting</span>)</span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">var</span> text = greeting+<span class="string">','</span>+person;</div><div class="line">  <span class="built_in">console</span>.log(text);</div><div class="line">&#125;;</div><div class="line">greet(<span class="string">'Duran'</span>,<span class="string">'Hello'</span>);</div></pre></td></tr></table></figure>
+<ol>
+<li>有返回值得函数</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> greet = <span class="function"><span class="keyword">function</span>(<span class="params">person, greeting</span>)</span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">var</span> text = greeting+<span class="string">','</span>+person;</div><div class="line">  <span class="keyword">return</span> text;</div><div class="line">&#125;;</div><div class="line"><span class="built_in">console</span>.log(greet(<span class="string">'Duran'</span>,<span class="string">'Hello'</span>));</div></pre></td></tr></table></figure>
+<ol>
+<li>返回函数的函数</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> greet = <span class="function"><span class="keyword">function</span>(<span class="params">person,greeting</span>)</span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">var</span> text = greeting+<span class="string">''</span>+person;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(text)&#125;;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> greeting = greet(<span class="string">'Duran'</span>,<span class="string">'hello'</span>);</div><div class="line">greeting();</div></pre></td></tr></table></figure>
+<h2 id="自执行匿名函数"><a href="#自执行匿名函数" class="headerlink" title="自执行匿名函数"></a>自执行匿名函数</h2><p>在javascript中，自执行匿名函数一种随处可见的函数，所以理解它是非常重要的。</p>
+<p>它首先建立一个函数表达式，然后立刻执行它。</p>
+<p>注意：所有在自执行匿名函数中声明的变量在函数外部都是不可访问的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> foo = <span class="string">'Hello world'</span>;</div><div class="line">&#125;)()</div><div class="line"><span class="built_in">console</span>.log(foo); <span class="comment">//undefined!</span></div></pre></td></tr></table></figure>
+<h2 id="函数作为函数的参数"><a href="#函数作为函数的参数" class="headerlink" title="函数作为函数的参数"></a>函数作为函数的参数</h2><p>函数在JavaScript中非常重要，它们被当做一等公民，什么是一等公民？就是它们能被赋值给变量，能作为参数传递给另一个函数。</p>
+<h3 id="传递匿名函数作为参数"><a href="#传递匿名函数作为参数" class="headerlink" title="传递匿名函数作为参数"></a>传递匿名函数作为参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myFn = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> result =fn();</div><div class="line">  <span class="built_in">console</span>.log(result);</div><div class="line">&#125;</div><div class="line">myFn(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> <span class="string">'hello world'</span>;&#125;);</div></pre></td></tr></table></figure>
+<h3 id="传递非匿名函数作为参数"><a href="#传递非匿名函数作为参数" class="headerlink" title="传递非匿名函数作为参数"></a>传递非匿名函数作为参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myFn = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> result = fn();</div><div class="line">  <span class="built_in">console</span>.log(result);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> myOtherFn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'hello world'</span>;</div><div class="line">&#125;</div><div class="line">myFn(myOtherFn);</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/11/programming/2016-06-11-javascrip入门大纲/" itemprop="url">
                   javascrip入门大纲
                 </a>
@@ -1168,264 +1432,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/05/12/english/2016-05-12-基本句型及补语/" itemprop="url">
-                  基本句型及补语
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-12T07:11:00+08:00" content="2016-05-12">
-              2016-05-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/12/english/2016-05-12-基本句型及补语/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/05/12/english/2016-05-12-基本句型及补语/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="基本句型及补语"><a href="#基本句型及补语" class="headerlink" title="基本句型及补语"></a>基本句型及补语</h1><h2 id="五种单句的基本句型"><a href="#五种单句的基本句型" class="headerlink" title="五种单句的基本句型"></a>五种单句的基本句型</h2><ol>
-<li>S+V</li>
-<li>S+V+O</li>
-<li>S+V+C</li>
-<li>S+V+O+O</li>
-<li>S+V+O+C</li>
-</ol>
-<p>S:主语，V:动词，O:宾语，C:补语</p>
-<h2 id="为什么有五种基本句型"><a href="#为什么有五种基本句型" class="headerlink" title="为什么有五种基本句型?"></a>为什么有五种基本句型?</h2><p>基本句型分五种，是因为有五种不同特性的动词造成的</p>
-<h2 id="补语的意义"><a href="#补语的意义" class="headerlink" title="补语的意义?"></a>补语的意义?</h2><p>所有英文动词中，解释为“是”的动词是没意思的，需要补语来补足句子的意思。</p>
-<h2 id="句子是如何表达完整的意思"><a href="#句子是如何表达完整的意思" class="headerlink" title="句子是如何表达完整的意思?"></a>句子是如何表达完整的意思?</h2><p>一个句子要表达完整的意思，需要两部分来完成：主语和动词。<br>主语，句子所叙述的对象。<br>动词，构成叙述的主要内容。</p>
-<ol>
-<li>John Smith died in World War Two</li>
-<li>John Smith killed three enemy soldier</li>
-</ol>
-<h2 id="不及物动词"><a href="#不及物动词" class="headerlink" title="不及物动词"></a>不及物动词</h2><p>可以独立发生，不牵扯到别的人或物，也就是不需要‘宾语’。<br>die，自己就能死。</p>
-<h2 id="及物动词"><a href="#及物动词" class="headerlink" title="及物动词"></a>及物动词</h2><p>必须发生在另一个对象的身上，后面需要跟一个宾语来“接受”这个动作。<br>kill，要做出kill的动作，必须要有个东西被kill才行。</p>
-<p>及物动词缺少宾语，虽然不能表达完整意思，但是并非完全没有意义<br>John Smith kill，至少知道John杀了什么。</p>
-<h2 id="S-V-C-句型"><a href="#S-V-C-句型" class="headerlink" title="S+V+C 句型"></a>S+V+C 句型</h2><p>在所有的英语动词中，只有解释为“是”的动词是空的，完全没有意义。<br>如果这样的句子中少了补语，就完全没有意义了。</p>
-<h3 id="名词做补语"><a href="#名词做补语" class="headerlink" title="名词做补语"></a>名词做补语</h3><p>John Smith was a soldier.<br>john是个士兵</p>
-<h3 id="形容词作补语"><a href="#形容词作补语" class="headerlink" title="形容词作补语"></a>形容词作补语</h3><p>John Smith was courageous.<br>John很勇敢<br>当<strong>不必翻译的动词：be</strong>， 没有“是”。</p>
-<p> Be缺乏叙述能力，John was 是没有意义的</p>
-<h3 id="需要补语的动词有哪些？"><a href="#需要补语的动词有哪些？" class="headerlink" title="需要补语的动词有哪些？"></a>需要补语的动词有哪些？</h3><p> be 是<br> look 看起来是<br> seem 似乎是<br> apear 显得是<br> sound 听起来是<br> feel 摸起来是<br> taste 尝起来是<br> turn 转变为<br> prove 证实为<br> become 成为<br> make 做为<br> ‘为’是文言的‘是’。<br> 这些动词都是空字眼，需要补语来补充。</p>
-<p> A nurse makes a good wife.<br> 对比<br> A nurse is a good wife.</p>
-<p> He became a teacher.<br> 对比<br> He is a teacher.</p>
-<p> 把动词换成“be”，句子的意思和句型没有太大变化。</p>
-<p> 凡是动词解释为各种各样的“是”的句子，都属于S+V+C句型。</p>
-<h2 id="宾语补语的句型-S-V-O-C"><a href="#宾语补语的句型-S-V-O-C" class="headerlink" title="宾语补语的句型 S+V+O+C"></a>宾语补语的句型 S+V+O+C</h2><p>S+V+C,是用补语告诉你主语是什么，中间用动词“是”串联。<br>S+V+O+C用补语告诉你宾语是什么，中间暗藏一个“是”的关系存在。</p>
-<p> I find the dress pretty.<br>加个be来检验是不是S+V+O+C句型.<br>The dress is pretty.</p>
-<p>Most people consider a nurse a good wife.<br>a nurse is a good wife.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/12/english/nce/我的新概念学习方法/" itemprop="url">
-                  我的新概念学习方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-12T07:11:00+08:00" content="2016-05-12">
-              2016-05-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/12/english/nce/我的新概念学习方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/05/12/english/nce/我的新概念学习方法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="我的新概念学习方法"><a href="#我的新概念学习方法" class="headerlink" title="我的新概念学习方法"></a>我的新概念学习方法</h1><h2 id="读懂课文"><a href="#读懂课文" class="headerlink" title="读懂课文"></a>读懂课文</h2><p>画出不懂单词和句子，查字典和语法书或者请教别人。</p>
-<h2 id="熟读成诵"><a href="#熟读成诵" class="headerlink" title="熟读成诵"></a>熟读成诵</h2><p>尽可能地多朗读。大量朗读会潜移默化的将英文的“模式”印在脑里。</p>
-<ol>
-<li>自问自答</li>
-<li>尝试背诵</li>
-</ol>
-<h2 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h2><ol>
-<li>Summary writing &amp; Composition 手写回答</li>
-<li>其他练习口头回答</li>
-</ol>
-<h2 id="复述仿写课文"><a href="#复述仿写课文" class="headerlink" title="复述仿写课文"></a>复述仿写课文</h2><p>至少两个角度</p>
-<ol>
-<li><p>复述课文。</p>
-</li>
-<li><p>然后仿写。<br>只是口头复述也可以，但是写下来，以后可以通过修改来提高自己的表达–看复习部分。</p>
-</li>
-</ol>
-<h2 id="摘抄一个单词和一个句型"><a href="#摘抄一个单词和一个句型" class="headerlink" title="摘抄一个单词和一个句型"></a>摘抄一个单词和一个句型</h2><p>一个单词，一个句型</p>
-<h2 id="复习"><a href="#复习" class="headerlink" title="复习"></a>复习</h2><ol>
-<li>第二天，尝试回忆第一天课文。</li>
-<li>零碎时间，听录音</li>
-<li>每天5分钟，复习摘抄的单词和句型。</li>
-<li>一个月后，拿出仿写内容修改。</li>
-</ol>
-<h2 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h2><ol>
-<li>早上6点开始</li>
-<li>晚上11点睡觉</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/05/12/english/nce/我的新概念英语写作/" itemprop="url">
                   我的新概念英语写作
                 </a>
@@ -1579,7 +1585,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">63</span>
+              <span class="site-state-item-count">65</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
