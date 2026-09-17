@@ -6,9 +6,9 @@
 技术栈是 Hexo **8.1.2** + NexT 5.0.1（Pisces 方案），构建成静态站点后发布到 GitHub Pages。
 （2026-09-17 从 Hexo 3.2.2 升级，NexT 5 主题原封未动，产物经逐字节 + 像素级比对与升级前等价，见「Hexo 8 升级记录」。）
 
-- 本仓库：https://github.com/duranchen/my-blog.git（分支 `main`）——**2026-09-17 起也是发布仓库**，push 即由 GitHub Actions 构建发布
-- 旧部署仓库：https://github.com/duranchen/duranchen.github.io.git（`hexo deploy` 时代的目标，域名迁走后退役）
-- 本地目录：`OneDrive\Project\my-blog`（2026-09-17 由 `my-hexo` 改名而来；**同日远端仓库也从 `duranchen/my-hexo` 改名为 `duranchen/my-blog`**，旧仓库 URL 由 GitHub 自动重定向）
+- 本仓库：https://github.com/duranchen/duranchen.github.io.git（分支 `main`）——**2026-09-17 起也是发布仓库**，push 即由 GitHub Actions 构建发布。用户站命名（`<user>.github.io`）：Pages 直接以**根路径** `https://duranchen.github.io/` 服务，无子路径问题
+- 旧部署仓库：https://github.com/duranchen/duranchen.github.io-archive.git（2026-09-17 晚改名，为本仓库让出用户站名；`hexo deploy` 时代的目标，已归档）
+- 本地目录：`OneDrive\Project\my-blog`（2026-09-17 由 `my-hexo` 改名而来，**目录名到此为止，不再跟仓库名走**）。远端仓库当晚两连跳：`duranchen/my-hexo` → `duranchen/my-blog` → **`duranchen/duranchen.github.io`**（最终落回用户站命名；旧 URL 由 GitHub 自动重定向）
 - 线上域名：https://blog.duranc.cc —— Cloudflare 上的 CNAME 指向 `duranchen.github.io`，GitHub 按主机名路由到配置了该自定义域名的仓库
 
 > ⚠️ **本仓库历史上落后于线上，2026-09-17 已追平。**
@@ -250,13 +250,13 @@ git push origin main          # 推上去 CI 自动构建发布，约 1~2 分钟
 
 ### 首次启用步骤（只需做一次，顺序重要）
 
-1. **先**到 my-blog 仓库 **Settings → Pages → Build and deployment → Source**，选 **GitHub Actions** 并保存。
+1. **先**到 duranchen.github.io 仓库 **Settings → Pages → Build and deployment → Source**，选 **GitHub Actions** 并保存。
    （不做这步，第一次工作流的 deploy 阶段会报 `Pages not enabled`。）
-2. push 本仓库（本文件所在的提交即可）→ Actions 自动跑第一次构建，发布到 `https://duranchen.github.io/my-blog/`。
-   该子路径下**样式是散的**——站点资源是根绝对路径 `/css/...`，这是预期现象，不是故障。
+2. push 本仓库（本文件所在的提交即可）→ Actions 自动跑第一次构建，发布到 `https://duranchen.github.io/`。
+   用户站命名直接在**根路径**服务，根绝对路径资源（`/css/...`）天然可用，没有子路径样式问题。
 3. **域名切换**（存在几分钟 404 窗口，挑个空闲时间做）：
-   - duranchen.github.io 仓库 → Settings → Pages → 删除自定义域名 `blog.duranc.cc`
-   - my-blog 仓库 → Settings → Pages → Custom domain 填 `blog.duranc.cc` → Save
+   - duranchen.github.io-archive（旧部署仓库）→ Settings → Pages → 删除自定义域名 `blog.duranc.cc`
+   - duranchen.github.io（本仓库）→ Settings → Pages → Custom domain 填 `blog.duranc.cc` → Save
    - 等页面提示 DNS 检查通过后，勾选 **Enforce HTTPS**
    - 同一个自定义域名只能被一个仓库占用，所以必须先删后加；`source/CNAME`（内容 `blog.duranc.cc`）会随构建进入产物，保持绑定不丢
 4. 打开 https://blog.duranc.cc 验证。**DNS 不用动**：Cloudflare 的 `blog` CNAME 仍指向 `duranchen.github.io`，GitHub 按主机名把流量路由到配置了该域名的仓库。
@@ -266,7 +266,7 @@ git push origin main          # 推上去 CI 自动构建发布，约 1~2 分钟
 - `public/` 不再进任何 git 仓库——发布的是构建 artifact，**不存在 `--force` 强推、没有镜像分支**，误推源码的事故路径从机制上消失
 - Actions 发布**不跑 Jekyll**，`.nojekyll` 不再需要；`scripts/deploy-guard.js` 保留作防御（其写 `.nojekyll` 的逻辑失效但无害）
 - 发布身份是仓库自带的 `GITHUB_TOKEN`（工作流内 `permissions` 已最小化），**无需 PAT、无需本机凭据**
-- duranchen.github.io 仓库退役：域名迁走后它仍会在 `duranchen.github.io` 这个 URL 提供旧内容，想清空或归档随时可做（完整历史备份在 `.workbuddy/backup/`，见下文）
+- 旧部署仓库已改名 **duranchen.github.io-archive**（2026-09-17 晚为本仓库让出用户站名，`main` = `92e1c5a`）：域名绑定随仓库设置走，切换前 `blog.duranc.cc` 若仍出旧内容即由它服务；根 URL `duranchen.github.io` 改由本仓库的新站服务（完整历史备份在 `.workbuddy/backup/`，见下文）
 
 ### 如需临时恢复本地 `hexo deploy`
 
@@ -357,10 +357,10 @@ if (host === 'github.com') {
 
 ### 旧路径的部署前置检查（已随路径退役）
 
-当年的检查清单——构建干净（无 `No layout`、无 0 字节文件）、`public/CNAME` 在产物里、`deploy` 段显式写 `branch: main`、首次部署前备份线上仓库——已由 CI 流程自然覆盖：构建在 Actions 里标准化执行，CNAME 由 `source/CNAME` 随产物携带，线上不再被强推。下面这行备份命令仍可用于查看退役中的仓库：
+当年的检查清单——构建干净（无 `No layout`、无 0 字节文件）、`public/CNAME` 在产物里、`deploy` 段显式写 `branch: main`、首次部署前备份线上仓库——已由 CI 流程自然覆盖：构建在 Actions 里标准化执行，CNAME 由 `source/CNAME` 随产物携带，线上不再被强推。下面这行备份命令仍可用于查看已归档的旧仓库：
 
 ```bash
-git clone https://github.com/duranchen/duranchen.github.io.git /tmp/pages-backup
+git clone https://github.com/duranchen/duranchen.github.io-archive.git /tmp/pages-backup
 ```
 
 ### 备份与「一键撤销」（2026-09-17 事故后新增）
@@ -372,15 +372,17 @@ git clone https://github.com/duranchen/duranchen.github.io.git /tmp/pages-backup
 | `duranchen-pages-20260917.tar.gz` | 线上仓库的完整 clone，含 `.git` 全部 14 次提交（4.16 MB） | 兜底备份，最坏情况下解包即得完整历史 |
 | `duranchen-pages-mirror.git` | 裸镜像，`main` = 事故前的 `80b4eed` | 直接用来执行下面的撤销命令 |
 
-**撤销事故**（把线上 `main` 恢复成事故前的成品 `80b4eed786b53b51c6a4c8ed97b5edcf19bd30bd`）：
+**撤销事故**（把旧仓库的 `main` 恢复成事故前的成品 `80b4eed786b53b51c6a4c8ed97b5edcf19bd30bd`）：
 
 ```powershell
 git --git-dir="C:\Users\duran\OneDrive\Project\my-blog\.workbuddy\backup\duranchen-pages-mirror.git" `
-    push --force https://github.com/duranchen/duranchen.github.io.git `
+    push --force https://github.com/duranchen/duranchen.github.io-archive.git `
     "80b4eed786b53b51c6a4c8ed97b5edcf19bd30bd:refs/heads/main"
 ```
 
 用完整 SHA 而不是分支名，是故意的：**推哪个版本一目了然，不依赖任何本地分支恰好停在哪里。** 该 commit 已校验完整（220 个文件、`CNAME` 内容为 `blog.duranc.cc`、`fsck --connectivity-only` 无报错），命令语法也已用一个临时裸仓库实测通过。
+
+> ⚠️ **目标 URL 已改写为 `duranchen.github.io-archive`**（2026-09-17 晚仓库改名后同步修正）。这个名字现在是**本源码仓库**——若把上面命令对着 `duranchen.github.io` 执行，等于把旧站产物强推到源码仓库的 `main` 上，把当年「推错仓库」的事故倒着重演一遍。此命令只对旧仓库有意义。
 
 推送后到 GitHub 的 Actions 页确认 `pages build and deployment` 变为 `success`（这份 commit 在 2026-09-16 曾成功构建过）。
 
@@ -389,7 +391,7 @@ git --git-dir="C:\Users\duran\OneDrive\Project\my-blog\.workbuddy\backup\duranch
 ## 从零恢复（换机器 / 清空 node_modules 后）
 
 ```bash
-git clone https://github.com/duranchen/my-blog.git && cd my-blog
+git clone https://github.com/duranchen/duranchen.github.io.git && cd duranchen.github.io
 
 # 1. 依赖（node_modules 不进版本库；Hexo 8 要求 Node ≥ 20.19.0）
 npm install
@@ -436,8 +438,8 @@ npm run build        # = hexo clean && hexo generate
 
 ## 待办
 
-- [ ] **完成 CI 发布的首次启用 + 域名切换**（步骤见上文「部署（GitHub Actions）→ 首次启用步骤」——Settings 里把 Pages Source 切到 GitHub Actions、push、再把 `blog.duranc.cc` 从 duranchen.github.io 挪到本仓库）
-- [ ] duranchen.github.io 仓库退役善后：可选把其 `main` 撤销回 `80b4eed`（命令见「历史档案 → 备份与一键撤销」）或整体归档；它不再承载 blog.duranc.cc
+- [ ] **完成 CI 发布的首次启用 + 域名切换**（步骤见上文「部署（GitHub Actions）→ 首次启用步骤」——Settings 里把 Pages Source 切到 GitHub Actions、push、再把 `blog.duranc.cc` 从 duranchen.github.io-archive 挪到本仓库）
+- [x] 旧部署仓库善后：已改名 **duranchen.github.io-archive** 为本仓库让出用户站名（`main` = `92e1c5a` "Delete CNAME"，其上另有两次 "Site updated" 部署收尾提交）；完整历史备份在 `.workbuddy/backup/`
 - [ ] 35 篇没写 `categories`、51 篇没写 `tags`，分类页与标签页偏少（补齐不影响 URL，只是分类页归属问题）
 - [ ] 是否把线上的模板文 `hello-world` 也收进来——收了 URL 100% 对齐，不收则少一篇 Hexo 样板文
 - [ ] 若日后重建这些文章，`.markdown` 里没有 `<!--more-->` 标记了——它不体现在渲染产物里，无法从线上还原；首页摘要会变成整篇或按主题默认截断
