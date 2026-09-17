@@ -5,9 +5,12 @@
 一个 2016 年的个人学习笔记博客，内容跨编程、英语、理财、思考、新概念五个方向。
 技术栈是 Hexo 3.2.2 + NexT 5.0.1（Pisces 方案），构建成静态站点后发布到 GitHub Pages。
 
-- 线上地址：https://duranchen.github.io
-- 部署仓库：https://github.com/duranchen/duranchen.github.io.git
 - 本仓库：https://github.com/duranchen/my-hexo.git（分支 `main`）
+- 部署仓库：https://github.com/duranchen/duranchen.github.io.git
+- 线上域名：https://blog.duranc.cc —— `duranchen.github.io` 会跳转到这个自定义域名
+
+> ⚠️ **线上站点跑的不是本仓库的版本。** 详见下文「线上站点与本仓库的差异」。那个站叫「十八般武艺」、65 篇、内容到 2016-09；
+> 本仓库是更早的快照「德智体美劳」、36 篇、只到 2016-07。
 
 ---
 
@@ -33,9 +36,13 @@ node node_modules/hexo/bin/hexo generate
 # 本地预览 → http://localhost:4000
 node node_modules/hexo/bin/hexo server
 
-# 部署到 GitHub Pages（会新建 .deploy_git 并 push）
+# 部署到 GitHub Pages —— ⚠️ 跑之前先读「线上站点与本仓库的差异」一节
 node node_modules/hexo/bin/hexo deploy
 ```
+
+> **不要随手 `deploy`。** 部署目标是 `duranchen.github.io` 仓库，而线上那套内容比本仓库**更新**（65 篇 vs 36 篇）。
+> `hexo deploy` 是强推 `public/`，会把线上的新文章连带自定义域名的配置一起冲掉，可能导致 `blog.duranc.cc` 失效。
+> 想上线前先确认：你到底是想「把本站发布为新站」，还是「别碰线上」。
 
 构建日志里有 14 条 `WARN`，全部是 Node 22 对老代码的提示（`util.isDate` 弃用、swig 引擎访问不存在的 `lineno`/`column` 等），**与输出无关**。判断构建是否正常，看这两个指标就够：
 
@@ -120,6 +127,27 @@ git clone --depth 1 --branch v5.0.1 https://github.com/iissnan/hexo-theme-next.g
 
 另有 6 篇正文不足 150 字的"空壳文"（动词时态、从网页查询数据库、获取数据库信息、从文本导入数据到数据库、抽象能力、策略与坚持）——是原作者留下的标题，内容未写完，属正常状态而非损坏。
 
+## 线上站点与本仓库的差异
+
+这一点容易误判，单看仓库是看不出来的，所以单独说明。
+
+| | 本仓库（源文件） | 线上站点 |
+|---|---|---|
+| 站点名 | 德智体美劳 | **十八般武艺** |
+| 篇数 | 36 | **65** |
+| 时间跨度 | 2016-04 ~ 2016-07 | 至 **2016-09**（起点未逐一核实） |
+| 分类 | `Method` / `Concept` | `growth` / `programming` / `thinking`（含 `growth/thinking` 嵌套） |
+| 域名 | — | `blog.duranc.cc`（`duranchen.github.io` 301 至此） |
+
+也就是说：**线上是这条博客线更晚的状态，本仓库停在 2016-07。** 线上多出来的文章（如《Provisioning》《Deployment Capistrano》《如何读一本书》《对半途而废的思考》《李笑来写作课第一课笔记》等）在这个仓库里没有源文件。
+
+由此带来两个后果：
+
+1. **`hexo deploy` 有破坏性**：它强推 `public/` 到 `duranchen.github.io` 仓库，会覆盖线上那 65 篇的内容与自定义域名配置。要动线上，先在 GitHub 上确认那个仓库当前状态并做好分支备份。
+2. **`_config.yml` 的 `url` 需要你定夺**：目前填 `https://duranchen.github.io`（原部署目标）。若本意是与线上保持一致，应改为 `https://blog.duranc.cc`，否则生成的 canonical / RSS 链接都指向旧域名。
+
+本仓库的价值在于它是**可构建的源文件快照**；线上站点是**成品**。两者不要混为一谈，也不要让一次 `deploy` 把它们的关系搞乱。
+
 ## 从零恢复（换机器 / 清空 node_modules 后）
 
 ```bash
@@ -165,6 +193,8 @@ node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generat
 ## 待办
 
 - [ ] **本地提交尚未 push 到 origin/main**：用 `git log origin/main..HEAD` 查看待推送提交，确认无误后执行 `git push`
+- [ ] **`url` 到底用哪个域名**：`https://duranchen.github.io` 还是 `https://blog.duranc.cc`（见「线上站点与本仓库的差异」）
+- [ ] 线上 65 篇 vs 本仓库 36 篇 —— 是否把线上的后续文章抓回来补进本仓库
 - [ ] GA 换成 GA4
 - [ ] 32 篇文章缺分类，分类页偏空
 - [ ] 6 篇空壳文待补写
