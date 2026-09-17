@@ -3,12 +3,13 @@
 > 学习思考成长
 
 一个 2016 年的个人学习笔记博客，内容跨编程、英语、理财、成长、健身、新概念等方向。
-技术栈是 Hexo 3.2.2 + NexT 5.0.1（Pisces 方案），构建成静态站点后发布到 GitHub Pages。
+技术栈是 Hexo **8.1.2** + NexT 5.0.1（Pisces 方案），构建成静态站点后发布到 GitHub Pages。
+（2026-09-17 从 Hexo 3.2.2 升级，NexT 5 主题原封未动，产物经逐字节 + 像素级比对与升级前等价，见「Hexo 8 升级记录」。）
 
-- 本仓库：https://github.com/duranchen/my-hexo.git（分支 `main`）
-- 部署仓库：https://github.com/duranchen/duranchen.github.io.git
+- 本仓库：https://github.com/duranchen/my-hexo.git（分支 `main`）——**2026-09-17 起也是发布仓库**，push 即由 GitHub Actions 构建发布
+- 旧部署仓库：https://github.com/duranchen/duranchen.github.io.git（`hexo deploy` 时代的目标，域名迁走后退役）
 - 本地目录：`OneDrive\Project\my-blog`（2026-09-17 由 `my-hexo` 改名而来，**只改了本地文件夹名，远端仓库名仍是 `my-hexo`**）
-- 线上域名：https://blog.duranc.cc —— `duranchen.github.io` 会跳转到这个自定义域名
+- 线上域名：https://blog.duranc.cc —— Cloudflare 上的 CNAME 指向 `duranchen.github.io`，GitHub 按主机名路由到配置了该自定义域名的仓库
 
 > ⚠️ **本仓库历史上落后于线上，2026-09-17 已追平。**
 > 详见下文「线上站点与本仓库的差异」——2026-09-17 把线上多出的 29 篇文章抓了回来（两边内容量一致，各 65 篇）、
@@ -30,26 +31,27 @@
 
 ## 常用命令
 
-Windows 下**没有** `hexo.cmd`（`node_modules/.bin/` 只有 Unix shim），所以一律用 node 直接调：
+Hexo 8 的 npm 安装已生成标准 shim（Windows 有 `node_modules/.bin/hexo.cmd`，Linux 有无扩展名 shim），
+所以 `npm run build`、`npx hexo <cmd>` 都可用；下面保留 `node node_modules/hexo/bin/hexo` 写法，两边通用：
 
 ```bash
-# 清空 public/
+# 清空 public/（会重置构建缓存 db.json）
 node node_modules/hexo/bin/hexo clean
 
-# 构建（当前产物：193 个文件 / 约 6 s）
+# 构建（当前产物：196 个文件 / 约 6 s）
 node node_modules/hexo/bin/hexo generate
 
 # 本地预览 → http://localhost:4000
 node node_modules/hexo/bin/hexo server
 
-# 部署到 GitHub Pages —— ⚠️ 跑之前务必读下面「部署（`hexo deploy`）」一节
-node node_modules/hexo/bin/hexo deploy
+# 发布 = git push 到 main，GitHub Actions 自动构建并发布（见「部署」一节）
+# ⚠️ `hexo deploy` 已退役：deploy 配置与 hexo-deployer-git 均已移除，执行会直接报错——这是有意的
 ```
 
-构建日志里有 14 条 `WARN`，全部是 Node 22 对老代码的提示（`util.isDate` 弃用、swig 引擎访问不存在的 `lineno`/`column` 等），**与输出无关**。判断构建是否正常，看这两个指标就够：
+Hexo 8 的构建日志干净（只有 `INFO  Validating config` 和 `INFO  196 files generated`，Hexo 3 时代的 14 条 WARN 已随升级消失）。判断构建是否正常，看这两个指标就够：
 
 - 出现 `INFO  xxx files generated`，且**没有** `WARN  No layout`（出现即主题没装好）
-- `public/` 里**没有 0 字节文件**（出现即需要应用下面的补丁）
+- `public/` 里**没有 0 字节文件**（0 字节静默空壳是 Hexo 3.2.2 + 新版 Node 才有的坑，Hexo 8 不存在；回滚 Hexo 3 时需重新打补丁，见下）
 
 ---
 
@@ -119,8 +121,9 @@ rm -rf themes/next/.git   # 必须删，否则主题被当成子模块、内容�
 ## 目录结构
 
 ```
-├── _config.yml            站点配置（站点信息、URL、permalink、deploy）
-├── package.json           依赖声明
+├── _config.yml            站点配置（站点信息、URL、permalink；deploy 段已移除——发布走 CI）
+├── .github/workflows/     GitHub Actions 发布工作流（pages.yml，见「部署」一节）
+├── package.json           依赖声明（scripts.build = hexo clean && hexo generate）
 ├── .gitignore             Hexo 规则：忽略 node_modules / public / db.json / .deploy_git
 ├── patches/               Hexo 3 的 0 字节补丁（仅在回滚 Hexo 3 时使用）
 ├── scaffolds/             hexo new 的模板：post / page / draft
@@ -212,20 +215,68 @@ rm -rf themes/next/.git   # 必须删，否则主题被当成子模块、内容�
 
 其余差异：
 
-1. **`hexo deploy` 有破坏性**：它强推 `public/` 到 `duranchen.github.io` 仓库。**详见下面「部署（`hexo deploy`）」一节**——那里有完整的风险清单与前置检查。
-2. **站点名与副标题已统一**（2026-09-17）：现为「十八般武艺 / 学习思考成长」，与线上正在用的一致；仓库旧名「德智体美劳 / 小时候经常听，从来没弄懂过。」是 2016 年 7 月前的历史状态。
+1. **部署方式已切换**（2026-09-17）：`hexo deploy` 路径退役，push 到 `main` 即由 GitHub Actions 构建发布，**详见下面「部署」一节**；旧路径的事故分析保留在「历史档案」。
+2. **站点名与副标题**（2026-09-17）：白天曾统一为「十八般武艺 / 学习思考成长」，当晚由作者本人改为「角落 / 记录一下生活和思考」（提交 `91771ea`），并发布新文章《终于拥有自己的域名》（提交 `b28eced`）。
 3. **`url` 目前填 `https://duranchen.github.io`**：与线上构建时用的值一致（线上页面 canonical 也指向该域名，`blog.duranc.cc` 只是它的自定义域名），所以这个值无需改动。仅 scheme 由 http 变 https，不影响站内链接。
 
-本仓库的价值在于它是**可构建的源文件快照**；线上站点是**成品**。两者不要混为一谈，也不要让一次 `deploy` 把它们的关系搞乱。
+本仓库的价值在于它是**可构建的源文件快照**；线上站点是**成品**。现在两者通过 CI 直接打通——push 即发布，不需要、也不应该再跑本地 deploy。
 
-## 部署（`hexo deploy`）
+## 部署（GitHub Actions，2026-09-17 起生效）
+
+> **发布方式已按 [Hexo 官方文档](https://hexo.io/zh-cn/docs/github-pages) 从 `hexo deploy` 切换为 GitHub Actions。**
+> 源码 push 到 `main` → Actions 自动 `npm ci` + `npm run build` → 把 `public/` 作为 artifact 发布到**本仓库**的 GitHub Pages。
+> 旧的 `hexo deploy` 路径已退役：`_config.yml` 的 `deploy:` 段已删除、`hexo-deployer-git` 已移出依赖，**`hexo deploy` 现在会报错，这是有意的**——它曾造成源码误推事故（完整分析保留在下方历史档案）。
+
+### 日常工作流
+
+写完文章后只需：
 
 ```bash
-node node_modules/hexo/bin/hexo deploy
+git add ... && git commit -m "new post"
+git push origin main          # 推上去 CI 自动构建发布，约 1~2 分钟生效
 ```
 
-> **Windows 上没有 `hexo` 裸命令**：`node_modules/.bin/` 里只有给 Unix 用的 `hexo`（无扩展名），没有 `hexo.cmd`。
-> 直接敲 `hexo deploy` 会报 `CommandNotFoundException`。必须走上面的 `node node_modules/hexo/bin/hexo`。
+到仓库 **Actions** 页确认 `Pages` 工作流绿了即发布成功。本地不需要构建、不需要任何凭据。
+
+### 工作流与官方示例的差异（3 处，均有意为之）
+
+| 官方示例 | 本仓库 | 原因 |
+|---|---|---|
+| `node-version: "20"` | `"22"` | 本机验证过的版本；Hexo 8 要求 ≥ 20.19.0 |
+| `npm install` | `npm ci` | `package-lock.json` 已入库，锁定依赖版本（swig 渲染器对版本敏感，见坑 2） |
+| checkout 带 `submodules: recursive` | 不带 | `themes/next` 是普通文件提交，不是 submodule |
+
+构建命令走 `package.json` 的 `"build": "hexo clean && hexo generate"`，与官方文档一致。
+
+### 首次启用步骤（只需做一次，顺序重要）
+
+1. **先**到 my-hexo 仓库 **Settings → Pages → Build and deployment → Source**，选 **GitHub Actions** 并保存。
+   （不做这步，第一次工作流的 deploy 阶段会报 `Pages not enabled`。）
+2. push 本仓库（本文件所在的提交即可）→ Actions 自动跑第一次构建，发布到 `https://duranchen.github.io/my-hexo/`。
+   该子路径下**样式是散的**——站点资源是根绝对路径 `/css/...`，这是预期现象，不是故障。
+3. **域名切换**（存在几分钟 404 窗口，挑个空闲时间做）：
+   - duranchen.github.io 仓库 → Settings → Pages → 删除自定义域名 `blog.duranc.cc`
+   - my-hexo 仓库 → Settings → Pages → Custom domain 填 `blog.duranc.cc` → Save
+   - 等页面提示 DNS 检查通过后，勾选 **Enforce HTTPS**
+   - 同一个自定义域名只能被一个仓库占用，所以必须先删后加；`source/CNAME`（内容 `blog.duranc.cc`）会随构建进入产物，保持绑定不丢
+4. 打开 https://blog.duranc.cc 验证。**DNS 不用动**：Cloudflare 的 `blog` CNAME 仍指向 `duranchen.github.io`，GitHub 按主机名把流量路由到配置了该域名的仓库。
+
+### 与旧部署路径的关键差异
+
+- `public/` 不再进任何 git 仓库——发布的是构建 artifact，**不存在 `--force` 强推、没有镜像分支**，误推源码的事故路径从机制上消失
+- Actions 发布**不跑 Jekyll**，`.nojekyll` 不再需要；`scripts/deploy-guard.js` 保留作防御（其写 `.nojekyll` 的逻辑失效但无害）
+- 发布身份是仓库自带的 `GITHUB_TOKEN`（工作流内 `permissions` 已最小化），**无需 PAT、无需本机凭据**
+- duranchen.github.io 仓库退役：域名迁走后它仍会在 `duranchen.github.io` 这个 URL 提供旧内容，想清空或归档随时可做（完整历史备份在 `.workbuddy/backup/`，见下文）
+
+### 如需临时恢复本地 `hexo deploy`
+
+从提交 `91771ea`（本次切换前最后一个提交）取回 `_config.yml` 的 `deploy:` 段与 `package.json` 的 `hexo-deployer-git` 依赖即可；`scripts/deploy-guard.js` 一直在，恢复后防护立即生效。
+
+---
+
+## 历史档案：`hexo deploy` 与 2026-09-17 事故
+
+> 以下内容描述的是**已退役**的部署路径，留作档案。理解它为什么危险，才能理解为什么换成 CI。
 
 `hexo deploy` 的行为（读 `node_modules/hexo-deployer-git/lib/` 源码确认）：
 
@@ -304,20 +355,11 @@ if (host === 'github.com') {
 
 同一批 `public/` 文件里还有 **139 个页面内容与线上不同**，属正常：GA4 替换、`url` 由 http 改 https、版权年份、prev/next 顺序等。
 
-### 部署前置检查
+### 旧路径的部署前置检查（已随路径退役）
+
+当年的检查清单——构建干净（无 `No layout`、无 0 字节文件）、`public/CNAME` 在产物里、`deploy` 段显式写 `branch: main`、首次部署前备份线上仓库——已由 CI 流程自然覆盖：构建在 Actions 里标准化执行，CNAME 由 `source/CNAME` 随产物携带，线上不再被强推。下面这行备份命令仍可用于查看退役中的仓库：
 
 ```bash
-# 1. 构建干净
-node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generate
-#    期望：INFO 193 files generated、无 No layout、无 0 字节文件
-
-# 2. 确认 CNAME 在产物里
-cat public/CNAME                     # 应输出 blog.duranc.cc
-
-# 3. 确认 deploy 段有 branch: main
-grep -A3 '^deploy:' _config.yml
-
-# 4. 备份线上仓库（首次务必做）
 git clone https://github.com/duranchen/duranchen.github.io.git /tmp/pages-backup
 ```
 
@@ -342,26 +384,23 @@ git --git-dir="C:\Users\duran\OneDrive\Project\my-blog\.workbuddy\backup\duranch
 
 推送后到 GitHub 的 Actions 页确认 `pages build and deployment` 变为 `success`（这份 commit 在 2026-09-16 曾成功构建过）。
 
-最后提醒：`hexo deploy` 要推 GitHub，**本机智能体没有凭据、跑不了**，得在你自己的终端里执行（会弹 GCM 授权）。
+（2026-09-17 起 `hexo deploy` 已退役——本机有没有凭据都不再重要，发布走 CI。）
 
 ## 从零恢复（换机器 / 清空 node_modules 后）
 
 ```bash
 git clone https://github.com/duranchen/my-hexo.git && cd my-hexo
 
-# 1. 依赖（node_modules 不进版本库）
+# 1. 依赖（node_modules 不进版本库；Hexo 8 要求 Node ≥ 20.19.0）
 npm install
 
-# 2. 关键补丁（漏了这步，构建会静默产出 0 字节文件）
-git apply patches/hexo-3.2.2-node-autodestroy.patch
-
-# 3. 验证
-node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generate
+# 2. 验证（与 CI 同款构建命令）
+npm run build        # = hexo clean && hexo generate
 ```
 
-主题**不用单独获取**——`themes/next` 已随仓库提供（见上文坑 2）。
+主题**不用单独获取**——`themes/next` 已随仓库提供（见上文坑 2）。发布也不用配置任何东西——push 到 `main` 即由 GitHub Actions 构建（见「部署」一节）。
 
-验收标准：日志出现 `INFO  193 files generated`、无 `No layout` 警告、`public/` 无 0 字节文件，归档页显示「共计 65 篇」。
+验收标准：日志出现 `INFO  196 files generated`（文章数增长会变）、无 `No layout` 警告、`public/` 无 0 字节文件、产物含 `CNAME`。
 
 ## 主题配置在哪改
 
@@ -397,8 +436,8 @@ node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generat
 
 ## 待办
 
-- [ ] **线上 `main` 需要撤销回 `80b4eed`**（事故善后，命令见上文「备份与一键撤销」）——线上站点目前仍在正常服务，但没有凭据，这一步只能由你执行
-- [ ] 决定是否真正发布本次构建产物（`hexo deploy`）——发布即接受「部署会删掉什么」那一节列出的 45 个线上文件消失
+- [ ] **完成 CI 发布的首次启用 + 域名切换**（步骤见上文「部署（GitHub Actions）→ 首次启用步骤」——Settings 里把 Pages Source 切到 GitHub Actions、push、再把 `blog.duranc.cc` 从 duranchen.github.io 挪到本仓库）
+- [ ] duranchen.github.io 仓库退役善后：可选把其 `main` 撤销回 `80b4eed`（命令见「历史档案 → 备份与一键撤销」）或整体归档；它不再承载 blog.duranc.cc
 - [ ] 35 篇没写 `categories`、51 篇没写 `tags`，分类页与标签页偏少（补齐不影响 URL，只是分类页归属问题）
 - [ ] 是否把线上的模板文 `hello-world` 也收进来——收了 URL 100% 对齐，不收则少一篇 Hexo 样板文
 - [ ] 若日后重建这些文章，`.markdown` 里没有 `<!--more-->` 标记了——它不体现在渲染产物里，无法从线上还原；首页摘要会变成整篇或按主题默认截断
@@ -407,6 +446,8 @@ node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generat
 
 ### 已办（2026-09-17）
 
+- [x] **升级 Hexo 3.2.2 → 8.1.2**（NexT 5 主题原封未动，产物双重比对等价；详见「Hexo 8 升级记录」）
+- [x] **部署方式按官方文档切换为 GitHub Actions**：新增 `.github/workflows/pages.yml`，移除 `_config.yml` 的 `deploy:` 段与 `hexo-deployer-git` 依赖（详见「部署」一节）
 - [x] **修掉 `hexo deploy` 会把本仓库源码推上线上站点的致命缺陷**：新增 `scripts/deploy-guard.js`（挂在 `deployBefore`，删除无 `.git` 的 `.deploy_git`、自行 `git init` 并确保提交身份、写入 `.nojekyll`）。已用本地裸仓库做因果实验验证：停用防护时源码被推上去（411 个文件、含 `source/_posts`），启用后推的是站点（194 个文件、含 `.nojekyll`、零源码泄漏）
 - [x] **把 `main` 分支的上游从「页面仓库地址」改回 `origin`**（那次失败部署的副作用，`git push` 会因此推到页面仓库）
 - [x] 备份线上仓库：`duranchen-pages-20260917.tar.gz`（含全部 14 次提交）+ `duranchen-pages-mirror.git`（裸镜像，供撤销用）

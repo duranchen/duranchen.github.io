@@ -1,0 +1,46 @@
+# 在 GitHub Pages 上部署 Hexo —— 按 https://hexo.io/zh-cn/docs/github-pages 的官方流程
+# 与官方示例的差异（均有意为之，详见 README「部署（GitHub Actions）」一节）：
+#   1. node-version 用 "22"（本机验证的版本；Hexo 8 要求 >= 20.19.0）
+#   2. 依赖安装用 `npm ci` 而非 `npm install`（package-lock.json 已入库，构建确定性优先）
+#   3. checkout 不带 submodules 参数（themes/next 是普通文件，不是 submodule）
+name: Pages
+
+on:
+  push:
+    branches:
+      - main # default branch
+  workflow_dispatch: # 允许在 Actions 页手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm # 缓存 npm 下载缓存，加速 npm ci
+      - name: Install Dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
