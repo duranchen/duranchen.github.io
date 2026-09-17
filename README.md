@@ -35,19 +35,15 @@ Windows 下**没有** `hexo.cmd`（`node_modules/.bin/` 只有 Unix shim），�
 # 清空 public/
 node node_modules/hexo/bin/hexo clean
 
-# 构建（当前产物：192 个文件 / 约 7 s）
+# 构建（当前产物：193 个文件 / 约 7 s）
 node node_modules/hexo/bin/hexo generate
 
 # 本地预览 → http://localhost:4000
 node node_modules/hexo/bin/hexo server
 
-# 部署到 GitHub Pages —— ⚠️ 跑之前先读「线上站点与本仓库的差异」一节
+# 部署到 GitHub Pages —— ⚠️ 跑之前务必读下面「部署（`hexo deploy`）」一节
 node node_modules/hexo/bin/hexo deploy
 ```
-
-> **不要随手 `deploy`。** 部署目标是 `duranchen.github.io` 仓库，而线上那套内容比本仓库**更新**（65 篇 vs 36 篇）。
-> `hexo deploy` 是强推 `public/`，会把线上的新文章连带自定义域名的配置一起冲掉，可能导致 `blog.duranc.cc` 失效。
-> 想上线前先确认：你到底是想「把本站发布为新站」，还是「别碰线上」。
 
 构建日志里有 14 条 `WARN`，全部是 Node 22 对老代码的提示（`util.isDate` 弃用、swig 引擎访问不存在的 `lineno`/`column` 等），**与输出无关**。判断构建是否正常，看这两个指标就够：
 
@@ -203,11 +199,85 @@ rm -rf themes/next/.git   # 必须删，否则主题被当成子模块、内容�
 
 其余差异：
 
-1. **`hexo deploy` 有破坏性**：它强推 `public/` 到 `duranchen.github.io` 仓库，会覆盖线上那 65 篇的内容与自定义域名配置。要动线上，先在 GitHub 上确认那个仓库当前状态并做好分支备份。
+1. **`hexo deploy` 有破坏性**：它强推 `public/` 到 `duranchen.github.io` 仓库。**详见下面「部署（`hexo deploy`）」一节**——那里有完整的风险清单与前置检查。
 2. **站点名与副标题已统一**（2026-09-17）：现为「十八般武艺 / 学习思考成长」，与线上正在用的一致；仓库旧名「德智体美劳 / 小时候经常听，从来没弄懂过。」是 2016 年 7 月前的历史状态。
 3. **`url` 目前填 `https://duranchen.github.io`**：与线上构建时用的值一致（线上页面 canonical 也指向该域名，`blog.duranc.cc` 只是它的自定义域名），所以这个值无需改动。仅 scheme 由 http 变 https，不影响站内链接。
 
 本仓库的价值在于它是**可构建的源文件快照**；线上站点是**成品**。两者不要混为一谈，也不要让一次 `deploy` 把它们的关系搞乱。
+
+## 部署（`hexo deploy`）
+
+```bash
+node node_modules/hexo/bin/hexo deploy
+```
+
+> **Windows 上没有 `hexo` 裸命令**：`node_modules/.bin/` 里只有给 Unix 用的 `hexo`（无扩展名），没有 `hexo.cmd`。
+> 直接敲 `hexo deploy` 会报 `CommandNotFoundException`。必须走上面的 `node node_modules/hexo/bin/hexo`。
+
+`hexo deploy` 的行为（读 `node_modules/hexo-deployer-git/lib/` 源码确认）：
+
+1. 把 `public/` 原样复制进 `.deploy_git/`（先清空该目录）
+2. 在 `.deploy_git/` 里 `git commit`，然后 **`git push -u <repo> HEAD:<branch> --force`**
+
+`--force` 意味着**目标分支会变成 `public/` 的镜像**：`public/` 里没有的文件，在线上全部消失。别把它当成「增量发布」。
+
+### ⚠️ 两个曾让部署无声失败的坑（2026-09-17 已修，改动务必保留）
+
+**1. `branch` 必须显式写成 `main`。**
+
+`_config.yml` 的 `deploy` 段里**只写 `repo` 不写 `branch` 是危险的**。`hexo-deployer-git` 0.2.0 的 `lib/parse_config.js` 有这么一段：
+
+```js
+var rGithubPage = /\.github\.(io|com)$/;
+if (host === 'github.com') {
+  branch = rGithubPage.test(path) ? 'master' : 'gh-pages';
+}
+```
+
+仓库名 `duranchen.github.io` 命中 `\.github\.io$`，于是**默认推到 `master`**。而这个仓库的 Pages 是从 **`main`** 发布的（`git ls-remote` 可确认）。结果就是：命令报成功、远端多出一个没人用的 `master` 分支，**线上站点一个字都不变**。现已显式写上 `branch: main`。
+
+**2. `source/CNAME` 必须存在。**
+
+线上靠仓库根目录的 `CNAME`（内容 `blog.duranc.cc`）撑起自定义域名。而这个文件**不在 Hexo 的构建产物里**——不补的话，`--force` 会把它删掉，`blog.duranc.cc` 直接失效（线上仓库 2026-09-16 还更新过一次 CNAME，说明它是活的配置）。
+
+已在 `source/CNAME` 存放 `blog.duranc.cc`，构建后会输出到 `public/CNAME`。**改动部署方式时别把这个文件弄丢。**
+
+### 部署会删掉什么（执行前请确认能接受）
+
+线上仓库现有 **220 个文件**，本仓库构建产物是 **193 个**——两边不是简单的包含关系，`--force` 下会有 **45 个线上文件被删除**，主要是：
+
+- **16 个旧版 URL 页面**：作者当年把文章挪进分类目录前留下的，如 `/2016/07/19/Javascript箭头函数/`（不带 `programming/` 段）与 `/2016/07/21/javascript之JSON/` 等。它们的「新地址」都在，但**旧链接会 404**
+- `hello-world`（Hexo 模板文）、`2016/测试时间线`
+- `css/style.css`、`css/fonts/*`、`css/images/banner.jpg`、`fancybox/*`、`js/script.js`——**Landscape 主题时代的遗留资源**，新页面不再引用
+- `_config.yml`（GitHub Pages 的 Jekyll 配置，内容还是没改过的模板占位文字）与 `categories/index.md`
+
+同一批 `public/` 文件里还有 **139 个页面内容与线上不同**，属正常：GA4 替换、`url` 由 http 改 https、版权年份、prev/next 顺序等。
+
+### 部署前置检查
+
+```bash
+# 1. 构建干净
+node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generate
+#    期望：INFO 193 files generated、无 No layout、无 0 字节文件
+
+# 2. 确认 CNAME 在产物里
+cat public/CNAME                     # 应输出 blog.duranc.cc
+
+# 3. 确认 deploy 段有 branch: main
+grep -A3 '^deploy:' _config.yml
+
+# 4. 备份线上仓库（首次务必做）
+git clone https://github.com/duranchen/duranchen.github.io.git /tmp/pages-backup
+```
+
+2026-09-17 的线上仓库备份（含全部 14 次提交）在本仓库的 `.workbuddy/backup/duranchen-pages-20260917.tar.gz`（4.16 MB）。**出问题时可以据此回滚**：
+
+```bash
+mkdir -p /tmp/restore && tar -xzf .workbuddy/backup/duranchen-pages-20260917.tar.gz -C /tmp/restore
+cd /tmp/restore/wb-duran-pages && git push -u https://github.com/duranchen/duranchen.github.io.git HEAD:main --force
+```
+
+最后提醒：`hexo deploy` 要推 GitHub，**本机智能体没有凭据、跑不了**，得在你自己的终端里执行（会弹 GCM 授权）。
 
 ## 从零恢复（换机器 / 清空 node_modules 后）
 
@@ -226,7 +296,7 @@ node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generat
 
 主题**不用单独获取**——`themes/next` 已随仓库提供（见上文坑 2）。
 
-验收标准：日志出现 `INFO  192 files generated`、无 `No layout` 警告、`public/` 无 0 字节文件，归档页显示「共计 65 篇」。
+验收标准：日志出现 `INFO  193 files generated`、无 `No layout` 警告、`public/` 无 0 字节文件，归档页显示「共计 65 篇」。
 
 ## 主题配置在哪改
 
@@ -258,7 +328,7 @@ node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generat
 
 ## 仓库状态
 
-`node_modules/`、`public/`、`db.json`、`.deploy_git/` 都已移出版本控制，仓库从 7951 个追踪文件瘦到 **410 个**（主题 322 + 文章与配图 79 + 配置与补丁 9）。
+`node_modules/`、`public/`、`db.json`、`.deploy_git/` 都已移出版本控制，仓库从 7951 个追踪文件瘦到 **411 个**（主题 322 + 文章与配图 80 + 配置与补丁 9）。
 
 ## 待办
 
@@ -270,6 +340,7 @@ node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generat
 
 ### 已办（2026-09-17）
 
+- [x] **修好部署链路**：`deploy` 段显式加 `branch: main`（不写会默认推 `master`，线上从 `main` 发布 → 命令成功但站点不变）；补 `source/CNAME`（否则 `--force` 会删掉线上 CNAME，`blog.duranc.cc` 失效）；主题菜单补回「分类」（线上侧栏有，此前漏了）
 - [x] **GA 换成 GA4**（`G-Q2YWF1LSSV`）：把退役的 `analytics.js` 片段整体重写为 gtag.js，113 个页面全部改到、旧的 UA 代码归零
 - [x] **7 个本地提交已 push 到 `origin/main`**（HEAD = `1523fc1`；远端 410 个文件，与本地工作树 `git diff HEAD origin/main` 为空）
 - [x] **站点名/副标题统一为线上的「十八般武艺 / 学习思考成长」**（改 `_config.yml`；构建后与线上首页逐字比对通过）

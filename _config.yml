@@ -70,6 +70,10 @@ theme: next
 deploy:
   type: git
   repo: https://github.com/duranchen/duranchen.github.io.git
+  ## branch MUST be set explicitly. Without it, hexo-deployer-git 0.2.0 sees a
+  ## "<user>.github.io" repo and defaults to `master` — but that repo serves Pages
+  ## from `main`, so the push would "succeed" while the live site stayed unchanged.
+  branch: main
 
 ## Theme-level settings (disqus_shortname, google_analytics, avatar, scheme, since...)
 ## live in themes/next/_config.yml and are read from there — keys set in this
