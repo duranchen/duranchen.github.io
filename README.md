@@ -24,7 +24,7 @@
 
 | 依赖 | 版本 | 说明 |
 |---|---|---|
-| Node.js | 22.22.2（已验证） | Hexo 3.2.2 是 2016 年的包，在新版 Node 上能跑，但需要一处补丁，见下 |
+| Node.js | ≥ 20.19.0（Hexo 8 的硬性要求；本机 22.22.2 已验证） | |
 | 依赖包 | 见 `package.json` | `node_modules/` 未提交到 git，换机器或清空后需 `npm install` 重装 |
 | 主题 | NexT **5.0.1** | 位于 `themes/next/`，已提交；注意其自带 `package.json` 里 version 仍写 5.0.0，上游 tag 未同步，属正常 |
 
@@ -36,7 +36,7 @@ Windows 下**没有** `hexo.cmd`（`node_modules/.bin/` 只有 Unix shim），�
 # 清空 public/
 node node_modules/hexo/bin/hexo clean
 
-# 构建（当前产物：193 个文件 / 约 7 s）
+# 构建（当前产物：193 个文件 / 约 6 s）
 node node_modules/hexo/bin/hexo generate
 
 # 本地预览 → http://localhost:4000
@@ -55,26 +55,19 @@ node node_modules/hexo/bin/hexo deploy
 
 ## ⚠️ 三个必须知道的坑
 
-### 1. `node_modules/hexo` 被打了补丁，重装依赖后必须重新应用
+### 1. （仅回滚 Hexo 3 时）0 字节补丁必须重新应用
 
-`node_modules/hexo/lib/plugins/console/generate.js` 里加了 `{ autoDestroy: false }`：
+Hexo 8 **没有这个问题**，本节只在把 Hexo 回滚到 3.2.2 时才相关。
 
-```js
-function CacheStream() {
-  Transform.call(this, { autoDestroy: false });
-  this._cache = [];
-}
-```
+Hexo 3.2.2 把 `CacheStream.destroy` 重写成"清空缓存"（本想手动回收内存），而 Node 14 起 stream 的 `autoDestroy` 默认为 `true` —— 流一结束 Node 就自动调 `destroy()`，把刚写好的内容清空。结果是**每个文件都生成 0 字节，Hexo 却退出码 0、不报任何错**（连 CSS、JS、图片都是空文件）。2016 年的 Node 没这个行为，所以当年能跑。
 
-**为什么**：Hexo 3.2.2 把 `CacheStream.destroy` 重写成"清空缓存"（本想手动回收内存），而 Node 14 起 stream 的 `autoDestroy` 默认为 `true` —— 流一结束 Node 就自动调 `destroy()`，把刚写好的内容清空。结果是**每个文件都生成 0 字节，Hexo 却退出码 0、不报任何错**（连 CSS、JS、图片都是空文件）。2016 年的 Node 没这个行为，所以当年能跑。
-
-补丁已固化为 `patches/hexo-3.2.2-node-autodestroy.patch`：
+补丁已固化为 `patches/hexo-3.2.2-node-autodestroy.patch`（给 `node_modules/hexo/lib/plugins/console/generate.js` 加 `{ autoDestroy: false }`）：
 
 ```bash
 git apply patches/hexo-3.2.2-node-autodestroy.patch
 ```
 
-**只要动过 `node_modules`，第一件事就是重新应用它，否则整站静默变空壳。**
+**回滚 Hexo 3 后只要动过 `node_modules`，第一件事就是重新应用它，否则整站静默变空壳。**
 
 ### 2. 主题不在 npm 上，但已随仓库提供
 
@@ -104,13 +97,32 @@ rm -rf themes/next/.git   # 必须删，否则主题被当成子模块、内容�
 
 ---
 
+## Hexo 8 升级记录（2026-09-17）
+
+**Hexo 3.2.2 → 8.1.2，NexT 5.0.1 主题原封不动。** 升级在独立副本里先做完整验证（产物 193/193 逐字节比对 + 无头 Chrome 截图像素级比对），确认无损后才落到本仓库。
+
+**升级内容**：
+- `package.json` 全量升到 Hexo 8.1.2 生态（hexo-server 3 / deployer-git 4 / generator-* 2.x / renderer-marked 7 / renderer-stylus 3），新增 `package-lock.json`
+- **保留** `hexo-renderer-swig 1.1.0` + `swig-extras 0.0.1`——NexT 5 的 `.swig` 模板全靠它渲染
+- `themes/next/_config.yml` 补写 `author: 陈群` / `description: ever-growing`——Hexo 3 会把站点配置继承给主题，Hexo 8 不再这样做，不补则侧栏这两行渲染为空
+- `themes/next/layout/_partials/pagination.swig` 给 `paginator()` 加 `escape: false`——Hexo 8 默认转义 HTML，不加会把上一页/下一页的 `<i class="fa fa-angle-…">` 图标渲染成字面文本
+
+**升级后与 Hexo 3 产物的差异清单**（全部已核实、均可接受）：
+1. 作者链接前的小圆点颜色变了——这是 NexT 故意的彩蛋，`random-color()` 每次编译随机，本来每次构建都会变
+2. 代码块：highlight.js 9 → 11，个别 token 的归类变了（同一天空色板：部分字符从橙色变成 aqua/红色，字符串/注释颜色不变），行距因 `<span>+<br>` 行结构略紧几像素
+3. 同日发布的文章在列表/归档里的先后顺序可能与其它目录的构建不同——Hexo 对同 date 文章的排序依赖文件枚举顺序；本仓库目录内 Hexo 8 与 Hexo 3 的排序已验证一致，URL 不受任何影响（URL 由目录名 + front-matter date 决定）
+
+**回滚到 Hexo 3**：`package.json` 旧版在提交 `e55f533`（升级前最后一个提交），checkout 后 `npm install` 并按坑 1 打补丁即可；Hexo 3 的 node_modules 另有 tar 备份在 `.workbuddy/backup/node_modules-hexo3-20260917.tar.gz`。
+
+---
+
 ## 目录结构
 
 ```
 ├── _config.yml            站点配置（站点信息、URL、permalink、deploy）
 ├── package.json           依赖声明
 ├── .gitignore             Hexo 规则：忽略 node_modules / public / db.json / .deploy_git
-├── patches/               兼容性补丁（见上文坑 1）
+├── patches/               Hexo 3 的 0 字节补丁（仅在回滚 Hexo 3 时使用）
 ├── scaffolds/             hexo new 的模板：post / page / draft
 ├── source/
 │   ├── _posts/            文章正文，按分类分子目录（目录名会成为 URL 里的一段）

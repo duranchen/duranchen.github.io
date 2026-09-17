@@ -5,6 +5,12 @@
 # Put your favicon.ico into `hexo-site/source/` directory.
 favicon: /favicon.ico
 
+# Author name and site description shown in the sidebar (theme.author / theme.description).
+# NOTE: Hexo 3 fell back to the site config's `author` / `description` here, but Hexo 4+ does not,
+# so these two must be set explicitly in the theme config (otherwise the sidebar shows empty lines).
+author: 陈群
+description: ever-growing
+
 # Set default keywords (Use a comma to separate)
 keywords: "Hexo, NexT"
 
