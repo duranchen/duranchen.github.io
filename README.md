@@ -51,25 +51,19 @@ node node_modules/hexo/bin/hexo server
 Hexo 8 的构建日志干净（只有 `INFO  Validating config` 和 `INFO  196 files generated`，Hexo 3 时代的 14 条 WARN 已随升级消失）。判断构建是否正常，看这两个指标就够：
 
 - 出现 `INFO  xxx files generated`，且**没有** `WARN  No layout`（出现即主题没装好）
-- `public/` 里**没有 0 字节文件**（0 字节静默空壳是 Hexo 3.2.2 + 新版 Node 才有的坑，Hexo 8 不存在；回滚 Hexo 3 时需重新打补丁，见下）
+- `public/` 里**没有 0 字节文件**（0 字节静默空壳是 Hexo 3.2.2 + 新版 Node 才有的坑，Hexo 8 不存在；回滚 Hexo 3 时需手动改一行，见下）
 
 ---
 
 ## ⚠️ 三个必须知道的坑
 
-### 1. （仅回滚 Hexo 3 时）0 字节补丁必须重新应用
+### 1. （仅回滚 Hexo 3 时）0 字节产物陷阱
 
 Hexo 8 **没有这个问题**，本节只在把 Hexo 回滚到 3.2.2 时才相关。
 
 Hexo 3.2.2 把 `CacheStream.destroy` 重写成"清空缓存"（本想手动回收内存），而 Node 14 起 stream 的 `autoDestroy` 默认为 `true` —— 流一结束 Node 就自动调 `destroy()`，把刚写好的内容清空。结果是**每个文件都生成 0 字节，Hexo 却退出码 0、不报任何错**（连 CSS、JS、图片都是空文件）。2016 年的 Node 没这个行为，所以当年能跑。
 
-补丁已固化为 `patches/hexo-3.2.2-node-autodestroy.patch`（给 `node_modules/hexo/lib/plugins/console/generate.js` 加 `{ autoDestroy: false }`）：
-
-```bash
-git apply patches/hexo-3.2.2-node-autodestroy.patch
-```
-
-**回滚 Hexo 3 后只要动过 `node_modules`，第一件事就是重新应用它，否则整站静默变空壳。**
+补丁文件 `patches/hexo-3.2.2-node-autodestroy.patch` 已于 2026-09-17 删除（项目已永久迁到 Hexo 8，本节仅存档）。若真要把 Hexo 回滚到 3.2.2，需手动在 `node_modules/hexo/lib/plugins/console/generate.js` 的 `CacheStream` 构造函数里把 `Transform.call(this)` 改成 `Transform.call(this, { autoDestroy: false })`，否则整站静默变空壳。
 
 ### 2. 主题不在 npm 上，但已随仓库提供
 
@@ -114,7 +108,7 @@ rm -rf themes/next/.git   # 必须删，否则主题被当成子模块、内容�
 2. 代码块：highlight.js 9 → 11，个别 token 的归类变了（同一天空色板：部分字符从橙色变成 aqua/红色，字符串/注释颜色不变），行距因 `<span>+<br>` 行结构略紧几像素
 3. 同日发布的文章在列表/归档里的先后顺序可能与其它目录的构建不同——Hexo 对同 date 文章的排序依赖文件枚举顺序；本仓库目录内 Hexo 8 与 Hexo 3 的排序已验证一致，URL 不受任何影响（URL 由目录名 + front-matter date 决定）
 
-**回滚到 Hexo 3**：`package.json` 旧版在提交 `e55f533`（升级前最后一个提交），checkout 后 `npm install` 并按坑 1 打补丁即可；Hexo 3 的 node_modules 另有 tar 备份在 `.workbuddy/backup/node_modules-hexo3-20260917.tar.gz`。
+**回滚到 Hexo 3**：`package.json` 旧版在提交 `e55f533`（升级前最后一个提交），checkout 后 `npm install` 并按坑 1 手动改那行即可；Hexo 3 的 node_modules 另有 tar 备份在 `.workbuddy/backup/node_modules-hexo3-20260917.tar.gz`。
 
 ---
 
@@ -125,7 +119,6 @@ rm -rf themes/next/.git   # 必须删，否则主题被当成子模块、内容�
 ├── .github/workflows/     GitHub Actions 发布工作流（pages.yml，见「部署」一节）
 ├── package.json           依赖声明（scripts.build = hexo clean && hexo generate）
 ├── .gitignore             Hexo 规则：忽略 node_modules / public / db.json / .deploy_git
-├── patches/               Hexo 3 的 0 字节补丁（仅在回滚 Hexo 3 时使用）
 ├── scaffolds/             hexo new 的模板：post / page / draft
 ├── source/
 │   ├── _posts/            文章正文，按分类分子目录（目录名会成为 URL 里的一段）
@@ -170,16 +163,16 @@ rm -rf themes/next/.git   # 必须删，否则主题被当成子模块、内容�
 
 |  | 本仓库（源文件） | 线上站点 |
 |---|---|---|
-| 站点名 | 十八般武艺（`_config.yml`） | 十八般武艺 |
-| 副标题 | 学习思考成长 | 学习思考成长 |
+| 站点名 | 角落（`_config.yml`） | 角落 |
+| 副标题 | 记录一下生活和思考 | 记录一下生活和思考 |
 | `description` | ever-growing | ever-growing |
 | 篇数 | 65 | 65 |
 | 域名 | — | `blog.duranc.cc`（`duranchen.github.io` 301 至此） |
-| 构建时的 `url` | `https://duranchen.github.io` | `http://duranchen.github.io`（页面 canonical 可见） |
+| 构建时的 `url` | `https://blog.duranc.cc` | `http://duranchen.github.io`（旧值；下次 CI 构建后随 og:url/canonical 同步为 `https://blog.duranc.cc`） |
 
-站点名/副标题已于 2026-09-17 统一到线上正在用的值（原本仓库里是旧名「德智体美劳 / 小时候经常听，从来没弄懂过。」）。
+站点名/副标题已于 2026-09-17 统一到线上正在用的值（原本仓库里是旧名「德智体美劳 / 小时候经常听，从来没弄懂过。」），当晚又由作者本人改为「角落 / 记录一下生活和思考」（提交 `91771ea`）。
 校验方式：构建后从 `public/index.html` 抽 `<title>`、`.site-title`、`.site-subtitle`、`meta[name=description]`，
-与线上首页逐字比对（线上首页的 `<title>` 就是裸的「十八般武艺」，文章页是「标题 | 十八般武艺」），并全站扫描确认旧名零残留。
+与线上首页逐字比对（线上首页的 `<title>` 就是裸的站点名，文章页是「标题 | 站点名」），并全站扫描确认旧名（「十八般武艺」「学习思考成长」）零残留。
 
 篇数虽然一致，但集合不完全相同：**线上有 Hexo 默认模板文 `hello-world`，本仓库没有**（2026-09-17 清理模板残留时删除）；反过来，**本仓库有 `2016-04-16-创建数据库和用户`，线上没有**——因为它当年缺 `.markdown` 扩展名，从未被渲染上线。
 
@@ -217,7 +210,7 @@ rm -rf themes/next/.git   # 必须删，否则主题被当成子模块、内容�
 
 1. **部署方式已切换**（2026-09-17）：`hexo deploy` 路径退役，push 到 `main` 即由 GitHub Actions 构建发布，**详见下面「部署」一节**；旧路径的事故分析保留在「历史档案」。
 2. **站点名与副标题**（2026-09-17）：白天曾统一为「十八般武艺 / 学习思考成长」，当晚由作者本人改为「角落 / 记录一下生活和思考」（提交 `91771ea`），并发布新文章《终于拥有自己的域名》（提交 `b28eced`）。
-3. **`url` 目前填 `https://duranchen.github.io`**：与线上构建时用的值一致（线上页面 canonical 也指向该域名，`blog.duranc.cc` 只是它的自定义域名），所以这个值无需改动。仅 scheme 由 http 变 https，不影响站内链接。
+3. **`url` 已改为 `https://blog.duranc.cc`**（2026-09-17）：站点真实入口是自定义域名，GitHub 会把 `duranchen.github.io` 301 到它，构建产物的 og:url/canonical 现在对齐真实入口而非重定向域名。旧的 `https://duranchen.github.io` 会残留在尚未重建的线上页面上，下次 push 由 CI 自动同步。
 
 本仓库的价值在于它是**可构建的源文件快照**；线上站点是**成品**。现在两者通过 CI 直接打通——push 即发布，不需要、也不应该再跑本地 deploy。
 
@@ -434,7 +427,7 @@ npm run build        # = hexo clean && hexo generate
 
 ## 仓库状态
 
-`node_modules/`、`public/`、`db.json`、`.deploy_git/` 都已移出版本控制，仓库从 7951 个追踪文件瘦到 **411 个**（主题 322 + 文章与配图 80 + 配置与补丁 9）。
+`node_modules/`、`public/`、`db.json`、`.deploy_git/` 都已移出版本控制，仓库从 7951 个追踪文件瘦到 **413 个**（主题 322 + 文章与配图 81 + 配置 10）。
 
 ## 待办
 
