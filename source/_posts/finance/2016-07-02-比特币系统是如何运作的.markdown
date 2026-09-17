@@ -18,7 +18,7 @@ date: "2016-07-02 17:08 +0800"
 >2. 比特币主要用了ECDSA，也就是椭圆曲线签名算法，这个算法有两个特性，注意这两点对下面至关重要a.只要知道私钥，可以算出相应的公钥；b.你用私钥签名过的东西，可以用公钥算一下是不是你签的；
 
 下面这张图是我见过的把比特币解释的通俗生动且不失准确的一张图。
-![how-bitcoin-works.jpg](http://upload-images.jianshu.io/upload_images/1829597-4441073a41d2d2b2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![how-bitcoin-works.jpg](/images/2016/bitcoin-how-it-works.webp)
 
 ## 背景
 Bob是一个微商，他决定开始接受比特币支付。
@@ -78,4 +78,4 @@ Alice的钱包保存着她的所有地址的私钥。比特币客户端用她准
 一段时间过去后，Alice的给Bob的交易记录在被其他最近的交易所埋蔽。任何人修改交易细节，他将不得不做Gary所做的事，因为任何改变都要求一个完全不同的且符合要求的随机数，然后所有的在这之后的矿工所做的工作都要重做，这样伪造交易基本不可能。
 
 找了张翻译过的，哈哈哈。
-![bitcoin_cn.jpg](http://upload-images.jianshu.io/upload_images/1829597-11d6535dc6797a38.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![bitcoin_cn.jpg](/images/2016/bitcoin-transaction-flow-cn.webp)

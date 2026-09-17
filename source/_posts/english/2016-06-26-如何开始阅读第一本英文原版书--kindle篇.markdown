@@ -198,18 +198,18 @@ date: "2016-06-27 10:02 +0800"
 
 
 **1. 点击屏幕上方，调出任务栏**
-![screenshot_2016_06_27T18_07_50+0800.png](http://upload-images.jianshu.io/upload_images/1829597-aac800fafe75982d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![screenshot_2016_06_27T18_07_50+0800.png](/images/2016/kindle-01-launch-toolbar.webp)
 
 **2. 点击右上角，在下拉菜单中，点击“Vocabulary Builder”（生词本）**
 
-![screenshot_2016_06_27T18_07_53+0800.png](http://upload-images.jianshu.io/upload_images/1829597-77aa2382b8f139b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![screenshot_2016_06_27T18_07_53+0800.png](/images/2016/kindle-02-vocabulary-builder.webp)
 
 **3. 在“Vocabulary Builder”中，看单词回忆单词意思。**
-![screenshot_2016_06_27T18_07_59+0800.png](http://upload-images.jianshu.io/upload_images/1829597-3108690c6da1bcd7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![screenshot_2016_06_27T18_07_59+0800.png](/images/2016/kindle-03-recall-words.webp)
 
 
 **4. 将记住的单词删除，没记住的单词，看一下解释，保留**
-![screenshot_2016_06_27T18_08_08+0800.png](http://upload-images.jianshu.io/upload_images/1829597-2271dea53644c516.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![screenshot_2016_06_27T18_08_08+0800.png](/images/2016/kindle-04-remove-known.webp)
 
 
 
@@ -224,14 +224,14 @@ date: "2016-06-27 10:02 +0800"
 
 在kindle中操作：
 ** 1. 阅读一页书中，遇到第一个生词，用手指选中生词（errand）；下一个单词就要放过，但句子的意思一定要脑补全。**
-![screenshot_2016_06_27T18_08_58+0800.png](http://upload-images.jianshu.io/upload_images/1829597-f5fa75e4e2fe8905.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![screenshot_2016_06_27T18_08_58+0800.png](/images/2016/kindle-05-select-word.webp)
 
 
 ** 2. 在弹出的解释中，找到最贴切的解释，并放该释意到原文中理解，忽略其他解释，千万不要向背单词一样去把所有意思都背下。**
-![screenshot_2016_06_27T18_26_23+0800.png](http://upload-images.jianshu.io/upload_images/1829597-238259ce89ee4bd7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![screenshot_2016_06_27T18_26_23+0800.png](/images/2016/kindle-06-word-definition.webp)
 
 **3. 查过的单词，自动会出现在“Vocabulary Builder”中（errand），将来可以复习。**
-![screenshot_2016_06_27T18_09_22+0800.png](http://upload-images.jianshu.io/upload_images/1829597-6c82dd328b2aebfb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![screenshot_2016_06_27T18_09_22+0800.png](/images/2016/kindle-07-saved-to-builder.webp)
 
 
 

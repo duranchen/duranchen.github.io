@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://duranchen.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -70,12 +70,7 @@ theme: next
 deploy:
   type: git
   repo: https://github.com/duranchen/duranchen.github.io.git
-  
-# Disqus
-disqus_shortname: duranchen
 
-# Avatar
-avatar: /images/avatar.jpg
-
-# Google Analytics
-google_analytics: UA-80234027-1
+## Theme-level settings (disqus_shortname, google_analytics, avatar, scheme, since...)
+## live in themes/next/_config.yml and are read from there — keys set in this
+## file are NOT picked up by the theme, so do not duplicate them here.

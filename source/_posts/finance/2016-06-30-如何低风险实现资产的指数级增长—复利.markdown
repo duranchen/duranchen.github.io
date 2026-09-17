@@ -84,7 +84,7 @@ n是复利的结算次数，如果一年结算一次，就是年复利，如果�
 
 从维基百科上，找了一张描述指数增长（绿色）如何超过线性增长（红色）和幂增长（蓝色）的图。
 
-![指数增长（绿色）如何超过线性增长（红色）和幂增长（蓝色）](https://upload.wikimedia.org/wikipedia/commons/6/64/Exponential.svg)
+![指数增长（绿色）如何超过线性增长（红色）和幂增长（蓝色）](/images/2016/exponential-vs-linear-vs-power.svg)
 从上图，我们看到越到最后，指数增长越陡峭，远远超过另外两个增长函数，所以：
 
 
@@ -92,7 +92,7 @@ n是复利的结算次数，如果一年结算一次，就是年复利，如果�
 
 我们把时间拉长来看，从1到100年，下面的图告诉我们，越到后面越陡峭。
 
-![n=1~100](http://upload-images.jianshu.io/upload_images/1829597-fd606bffc19ed73c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![n=1~100](/images/2016/compound-interest-1-to-100-years.webp)
 
 
 **从复利的角度，把时间拉的足够长，低风险所带来的稳定收益，通过复利的指数级增长，最终的回报是非常可观的。**

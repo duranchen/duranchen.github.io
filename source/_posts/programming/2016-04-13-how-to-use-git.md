@@ -2,7 +2,7 @@
 layout: post
 title:  "How to Use Git"
 date:   2016-04-02 20:37:55 +0800
-categories: method
+categories: Method
 ---
 
 本文参考[阮一峰 - Git 使用规范流程](http://www.ruanyifeng.com/blog/2015/08/git-use-process.html)

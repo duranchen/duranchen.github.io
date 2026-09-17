@@ -5,7 +5,7 @@ date: "2016-07-02 17:05 +0800"
 ---
 
 参考《新生大学》原则：分享。
-![shareLogo.png](http://upload-images.jianshu.io/upload_images/1829597-b109f42d443aede6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![shareLogo.png](/images/2016/share-logo.webp)
 
 ## 什么是分享？
  拿出自己的好东西传播出去。

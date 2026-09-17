@@ -2,7 +2,7 @@
 layout: post
 title:  "怎么样在github pages上搭建Jekyll博客？"
 date:   2016-04-02 20:37:55 +0800
-categories: method
+categories: Method
 ---
 
 ### 0. 最终效果
