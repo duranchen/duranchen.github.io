@@ -262,7 +262,9 @@ disqus_shortname: duranchen
 
 
 # Google Analytics
-google_analytics: UA-80234027-1
+# GA4 measurement id (G-…). The old UA-80234027-1 property is retired and no longer
+# receives data; see layout/_scripts/third-party/analytics/google-analytics.swig
+google_analytics: G-Q2YWF1LSSV
 
 # CNZZ count
 #cnzz_siteid:

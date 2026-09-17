@@ -79,17 +79,26 @@ git apply patches/hexo-3.2.2-node-autodestroy.patch
 
 **只要动过 `node_modules`，第一件事就是重新应用它，否则整站静默变空壳。**
 
-### 2. 主题不在 npm 上，要手动 clone
+### 2. 主题不在 npm 上，但已随仓库提供
 
 NexT 5.x 用 `.swig` 模板，需要 `hexo-renderer-swig`（运行时还依赖 `swig-extras`）。这两个包已写进 `package.json`，正常 `npm install` 能拉回。
 
-但**主题是从 GitHub clone 的，不在 npm 上**，重装时要手动补：
+主题本身在 npm 上不存在，但它**已经作为普通文件提交在本仓库里**（`themes/next` 243 个文件，含定制过的 `_config.yml` 与 GA4 片段）。所以：
+
+- **正常恢复不需要做任何事**，`git clone` 下来就有
+- **千万不要再 `git clone` 一次主题**——`themes/next` 已存在且非空，clone 会报错；真要覆盖就等于把仓库里对齐过的主题配置（Pisces / 头像 / 评论 / GA4）一并冲掉
+
+只有确实想把主题还原成上游原始版本时才这么做，并清楚后果：
 
 ```bash
+rm -rf themes/next
 git clone --depth 1 --branch v5.0.1 https://github.com/iissnan/hexo-theme-next.git themes/next
+rm -rf themes/next/.git   # 必须删，否则主题被当成子模块、内容不进主仓库
+# 之后得手动改回：scheme= Pisces / avatar / disqus / since / google_analytics，
+# 以及重做 layout/_scripts/third-party/analytics/google-analytics.swig 的 GA4 改动
 ```
 
-> 如果 clone 后误留了 `themes/next/.git`，记得删掉，否则主题会被当成子模块、内容根本不进主仓库。
+> 仓库里还有一个 `themes/landscape`（79 个文件）——Hexo 自带的默认主题，本项目没用（`theme: next`），是 2016 年原样留下的。
 
 ### 3. 项目在 OneDrive 目录下，且仓库约定 CRLF
 
@@ -205,19 +214,17 @@ git clone --depth 1 --branch v5.0.1 https://github.com/iissnan/hexo-theme-next.g
 ```bash
 git clone https://github.com/duranchen/my-hexo.git && cd my-hexo
 
-# 1. 依赖
+# 1. 依赖（node_modules 不进版本库）
 npm install
 
-# 2. 主题（不在 npm 上）
-git clone --depth 1 --branch v5.0.1 https://github.com/iissnan/hexo-theme-next.git themes/next
-rm -rf themes/next/.git          # 关键：别留嵌套仓库
-
-# 3. 关键补丁（漏了这步，构建会静默产出 0 字节文件）
+# 2. 关键补丁（漏了这步，构建会静默产出 0 字节文件）
 git apply patches/hexo-3.2.2-node-autodestroy.patch
 
-# 4. 验证
+# 3. 验证
 node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generate
 ```
+
+主题**不用单独获取**——`themes/next` 已随仓库提供（见上文坑 2）。
 
 验收标准：日志出现 `INFO  192 files generated`、无 `No layout` 警告、`public/` 无 0 字节文件，归档页显示「共计 65 篇」。
 
@@ -234,9 +241,20 @@ node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generat
 | `avatar` | `/images/avatar.jpg` |
 | `sidebar.position` | right |
 | `disqus_shortname` | duranchen |
-| `google_analytics` | UA-80234027-1 |
+| `google_analytics` | `G-Q2YWF1LSSV`（GA4） |
 
-> `google_analytics` 用的还是 Universal Analytics 的 `UA-` 属性，那套服务早已停止收数。如需继续统计，要换成 GA4 的 `G-` 衡量 ID。
+> **Google Analytics 已从 Universal Analytics 换成 GA4。** 原先的 `UA-80234027-1` 属性早已停收数据，
+> 而 NexT 5.0.1 自带的统计片段用的是退役的 `analytics.js` + `ga('create', ...)`，**根本不认 GA4 的 `G-` ID**——
+> 所以不是把 ID 换个值就行，得把整段换成 gtag.js。
+> 改动在 `themes/next/layout/_scripts/third-party/analytics/google-analytics.swig`
+> （gtag.js 同时兼容 `G-` 与 `UA-` ID，故无需分支判断）。
+>
+> 两个容易踩的点：
+> 1. **不要加 `cookie_domain`**。上游 NexT 7 的写法会写死 `config.url` 的域名，而这里 `url` 是
+>    `duranchen.github.io`、实际入口却是 `blog.duranc.cc`——写死会让 `_ga` cookie 落到错误域上，访问量静默归零。
+>    留空由 GA 自取当前主机名才是对的。
+> 2. **大陆访客基本加载不到 `googletagmanager.com`**，GA 数据会明显低于真实访问量。这是 GA 的先天限制，
+>    UA 时代同样如此。若在意国内数据，可另挂一个不蒜子计数（主题自带 `busuanzi-counter.swig`）。
 
 ## 仓库状态
 
@@ -244,7 +262,6 @@ node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generat
 
 ## 待办
 
-- [ ] GA 换成 GA4（现为早已停服的 `UA-80234027-1`）
 - [ ] 35 篇没写 `categories`、51 篇没写 `tags`，分类页与标签页偏少（补齐不影响 URL，只是分类页归属问题）
 - [ ] 是否把线上的模板文 `hello-world` 也收进来——收了 URL 100% 对齐，不收则少一篇 Hexo 样板文
 - [ ] 若日后重建这些文章，`.markdown` 里没有 `<!--more-->` 标记了——它不体现在渲染产物里，无法从线上还原；首页摘要会变成整篇或按主题默认截断
@@ -253,6 +270,7 @@ node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generat
 
 ### 已办（2026-09-17）
 
+- [x] **GA 换成 GA4**（`G-Q2YWF1LSSV`）：把退役的 `analytics.js` 片段整体重写为 gtag.js，113 个页面全部改到、旧的 UA 代码归零
 - [x] **7 个本地提交已 push 到 `origin/main`**（HEAD = `1523fc1`；远端 410 个文件，与本地工作树 `git diff HEAD origin/main` 为空）
 - [x] **站点名/副标题统一为线上的「十八般武艺 / 学习思考成长」**（改 `_config.yml`；构建后与线上首页逐字比对通过）
 - [x] 8 篇旧文章的目录搬到与线上一致（`thinking/` → `growth/thinking/`、`nce/` → `english/nce/`）→ 两边共有的 **64 篇 URL 已逐字一致**
