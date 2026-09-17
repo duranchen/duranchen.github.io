@@ -244,7 +244,6 @@ node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generat
 
 ## 待办
 
-- [ ] **本地提交尚未 push 到 origin/main**：用 `git log origin/main..HEAD` 查看待推送提交，确认无误后执行 `git push`
 - [ ] GA 换成 GA4（现为早已停服的 `UA-80234027-1`）
 - [ ] 35 篇没写 `categories`、51 篇没写 `tags`，分类页与标签页偏少（补齐不影响 URL，只是分类页归属问题）
 - [ ] 是否把线上的模板文 `hello-world` 也收进来——收了 URL 100% 对齐，不收则少一篇 Hexo 样板文
@@ -254,6 +253,7 @@ node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generat
 
 ### 已办（2026-09-17）
 
+- [x] **7 个本地提交已 push 到 `origin/main`**（HEAD = `1523fc1`；远端 410 个文件，与本地工作树 `git diff HEAD origin/main` 为空）
 - [x] **站点名/副标题统一为线上的「十八般武艺 / 学习思考成长」**（改 `_config.yml`；构建后与线上首页逐字比对通过）
 - [x] 8 篇旧文章的目录搬到与线上一致（`thinking/` → `growth/thinking/`、`nce/` → `english/nce/`）→ 两边共有的 **64 篇 URL 已逐字一致**
 - [x] 核实「6 处日期与线上不符」是**误判**：实际是 **7 篇文件名日期与 front-matter `date` 打架**，URL 本身与线上完全一致，**因此不动文件名**（改名反而会断链）
