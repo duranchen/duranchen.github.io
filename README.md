@@ -2,15 +2,16 @@
 
 > 小时候经常听，从来没弄懂过。
 
-一个 2016 年的个人学习笔记博客，内容跨编程、英语、理财、思考、新概念五个方向。
+一个 2016 年的个人学习笔记博客，内容跨编程、英语、理财、成长、健身、新概念等方向。
 技术栈是 Hexo 3.2.2 + NexT 5.0.1（Pisces 方案），构建成静态站点后发布到 GitHub Pages。
 
 - 本仓库：https://github.com/duranchen/my-hexo.git（分支 `main`）
 - 部署仓库：https://github.com/duranchen/duranchen.github.io.git
 - 线上域名：https://blog.duranc.cc —— `duranchen.github.io` 会跳转到这个自定义域名
 
-> ⚠️ **线上站点跑的不是本仓库的版本。** 详见下文「线上站点与本仓库的差异」。那个站叫「十八般武艺」、65 篇、内容到 2016-09；
-> 本仓库是更早的快照「德智体美劳」、36 篇、只到 2016-07。
+> ⚠️ **线上站点的名称与本仓库配置不同，且历史上本仓库落后于线上。**
+> 详见下文「线上站点与本仓库的差异」——线上站叫「十八般武艺」，本仓库 `_config.yml` 里是「德智体美劳」。
+> 2026-09-17 已把线上多出的 29 篇文章抓回本仓库，两边内容量现在一致（各 65 篇）。
 
 ---
 
@@ -30,7 +31,7 @@ Windows 下**没有** `hexo.cmd`（`node_modules/.bin/` 只有 Unix shim），�
 # 清空 public/
 node node_modules/hexo/bin/hexo clean
 
-# 构建（当前产物：135 个文件 / 约 4.6 s）
+# 构建（当前产物：192 个文件 / 约 7 s）
 node node_modules/hexo/bin/hexo generate
 
 # 本地预览 → http://localhost:4000
@@ -102,12 +103,16 @@ git clone --depth 1 --branch v5.0.1 https://github.com/iissnan/hexo-theme-next.g
 ├── patches/               兼容性补丁（见上文坑 1）
 ├── scaffolds/             hexo new 的模板：post / page / draft
 ├── source/
-│   ├── _posts/            文章正文，按分类分子目录
-│   │   ├── programming/   16 篇
-│   │   ├── english/        7 篇
-│   │   ├── finance/        5 篇
-│   │   ├── thinking/       5 篇
-│   │   └── nce/            3 篇
+│   ├── _posts/            文章正文，按分类分子目录（目录名会成为 URL 里的一段）
+│   │   ├── programming/     29 篇
+│   │   ├── english/         11 篇
+│   │   ├── growth/           6 篇
+│   │   ├── finance/          5 篇
+│   │   ├── thinking/         5 篇
+│   │   ├── nce/              3 篇
+│   │   ├── fitness/          1 篇
+│   │   ├── growth/thinking/  2 篇
+│   │   └── (根目录)           3 篇
 │   ├── images/            配图（2016/ 存正文图，根目录是头像 avatar.jpg）
 │   └── categories/        分类页入口
 ├── themes/next/           NexT 5.0.1 主题
@@ -116,35 +121,53 @@ git clone --depth 1 --branch v5.0.1 https://github.com/iissnan/hexo-theme-next.g
 
 ## 内容说明
 
-36 篇文章，写作时间集中在 2016 年 4–7 月。front-matter 里 `permalink` 用的是**日期**，所以**改文章的 date 会改变线上 URL**，动手前先想清楚。
+65 篇文章，写作时间集中在 2016 年 4–9 月。其中 29 篇是 2026-09-17 从线上站点抓回来的（见「线上站点与本仓库的差异」），其余 36 篇是仓库原有的源文件。
 
-分类只有 4 篇文章显式声明（`Method` 3 篇 / `Concept` 1 篇），其余 32 篇未分类，因此分类页比较空。标签全部为空。
+**注意 URL 是由「源文件目录 + 日期 + 文件名」共同决定的**，三者任一改动都会改变线上链接：
+
+- 目录：Hexo 会把 `_posts/` 下的子目录当作分类，并把目录名带进 URL。所以 `_posts/programming/x.md` 的链接是 `/年/月/日/programming/x/`
+- 日期：`date` 决定 URL 里的 `年/月/日`
+- 文件名：`permalink` 用的是文件名（去掉扩展名），**不是 front-matter 的 title**
+
+改这三者之前先想清楚会不会断链。
+
+分类来自 front-matter 的 `categories`（现 9 篇有）与目录名两套并存：目录决定 URL 里的分类段，`categories` 决定分类页归属。标签现为 9 篇有。
 
 正文配图原本外链简书图床，现已全部下载到 `source/images/2016/` 并改为相对路径，站点离线自洽。两点注意：
 
 - 图床返回的实际是 **WebP** 格式（不是 PNG/JPEG），文件头是 `RIFF....WEBP`，按 PNG/JPEG 校验会误报
 - 其中一张增长曲线图是本地重绘的 SVG（原 Wikimedia 源在当前网络不可达），见 `source/images/2016/exponential-vs-linear-vs-power.svg`
 
-另有 6 篇正文不足 150 字的"空壳文"（动词时态、从网页查询数据库、获取数据库信息、从文本导入数据到数据库、抽象能力、策略与坚持）——是原作者留下的标题，内容未写完，属正常状态而非损坏。
+另有 7 篇正文不足 150 字的短文（`Deployment-Capistrano` 在线上就是**空文章**，`my-vocabulary-size` 只有一张表，还有动词时态、从网页查询数据库、获取数据库信息、从文本导入数据到数据库、抽象能力、策略与坚持等）——是原作者留下的标题或提纲，本就如此，不是抓取损坏。
 
 ## 线上站点与本仓库的差异
 
 这一点容易误判，单看仓库是看不出来的，所以单独说明。
 
-| | 本仓库（源文件） | 线上站点 |
+|  | 本仓库（源文件） | 线上站点 |
 |---|---|---|
-| 站点名 | 德智体美劳 | **十八般武艺** |
-| 篇数 | 36 | **65** |
-| 时间跨度 | 2016-04 ~ 2016-07 | 至 **2016-09**（起点未逐一核实） |
-| 分类 | `Method` / `Concept` | `growth` / `programming` / `thinking`（含 `growth/thinking` 嵌套） |
+| 站点名 | 德智体美劳（`_config.yml`） | **十八般武艺** |
+| 副标题 | 小时候经常听，从来没弄懂过。 | **学习思考成长** |
+| 篇数 | 65 | 65 |
 | 域名 | — | `blog.duranc.cc`（`duranchen.github.io` 301 至此） |
+| 构建时的 `url` | `https://duranchen.github.io` | `http://duranchen.github.io`（页面 canonical 可见） |
 
-也就是说：**线上是这条博客线更晚的状态，本仓库停在 2016-07。** 线上多出来的文章（如《Provisioning》《Deployment Capistrano》《如何读一本书》《对半途而废的思考》《李笑来写作课第一课笔记》等）在这个仓库里没有源文件。
+篇数虽然一致，但集合不完全相同：**线上有 Hexo 默认模板文 `hello-world`，本仓库没有**（2026-09-17 清理模板残留时删除）；反过来，**本仓库有 `2016-04-16-创建数据库和用户`，线上没有**——因为它当年缺 `.markdown` 扩展名，从未被渲染上线。
 
-由此带来两个后果：
+### 与线上 URL 仍不一致的地方
+
+新抓回的 29 篇，URL 与线上逐字一致（已核对，如 `/2016/09/06/programming/Provisioning/`）。但以下旧文章仍与线上不一致：
+
+1. **8 篇的目录不同**：本仓库放在 `thinking/`、`nce/`，线上是 `growth/thinking/`、`english/nce/`。它决定 URL，所以这 8 篇的链接现在与线上不同。
+2. **6 篇的 `date` 与线上不符**（文件名日期与 front-matter 日期不一致导致，见「待办」）。
+
+要让这些也对齐线上，就是把目录移到 `growth/thinking/`、`english/nce/`，并统一日期——但**改日期会改变链接**，需要你确认。
+
+其余差异：
 
 1. **`hexo deploy` 有破坏性**：它强推 `public/` 到 `duranchen.github.io` 仓库，会覆盖线上那 65 篇的内容与自定义域名配置。要动线上，先在 GitHub 上确认那个仓库当前状态并做好分支备份。
-2. **`_config.yml` 的 `url` 需要你定夺**：目前填 `https://duranchen.github.io`（原部署目标）。若本意是与线上保持一致，应改为 `https://blog.duranc.cc`，否则生成的 canonical / RSS 链接都指向旧域名。
+2. **站点名与副标题不同**：本仓库配置里是「德智体美劳 / 小时候经常听，从来没弄懂过。」，线上是「十八般武艺 / 学习思考成长」。这是两条线各自的历史状态，要不要统一由你定。
+3. **`url` 目前填 `https://duranchen.github.io`**：与线上构建时用的值一致（线上页面 canonical 也指向该域名，`blog.duranc.cc` 只是它的自定义域名），所以这个值无需改动。仅 scheme 由 http 变 https，不影响站内链接。
 
 本仓库的价值在于它是**可构建的源文件快照**；线上站点是**成品**。两者不要混为一谈，也不要让一次 `deploy` 把它们的关系搞乱。
 
@@ -167,7 +190,7 @@ git apply patches/hexo-3.2.2-node-autodestroy.patch
 node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generate
 ```
 
-验收标准：日志出现 `INFO  135 files generated`、无 `No layout` 警告、`public/` 无 0 字节文件。
+验收标准：日志出现 `INFO  192 files generated`、无 `No layout` 警告、`public/` 无 0 字节文件，归档页显示「共计 65 篇」。
 
 ## 主题配置在哪改
 
@@ -188,15 +211,16 @@ node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generat
 
 ## 仓库状态
 
-`node_modules/`、`public/`、`db.json`、`.deploy_git/` 都已移出版本控制，仓库从 7951 个追踪文件瘦到 **381 个**（主题 322 + 文章与配图 50 + 配置与补丁 9）。
+`node_modules/`、`public/`、`db.json`、`.deploy_git/` 都已移出版本控制，仓库从 7951 个追踪文件瘦到 **410 个**（主题 322 + 文章与配图 79 + 配置与补丁 9）。
 
 ## 待办
 
 - [ ] **本地提交尚未 push 到 origin/main**：用 `git log origin/main..HEAD` 查看待推送提交，确认无误后执行 `git push`
-- [ ] **`url` 到底用哪个域名**：`https://duranchen.github.io` 还是 `https://blog.duranc.cc`（见「线上站点与本仓库的差异」）
-- [ ] 线上 65 篇 vs 本仓库 36 篇 —— 是否把线上的后续文章抓回来补进本仓库
+- [ ] **8 篇旧文章的目录与线上不同**（`thinking/`、`nce/` → 线上是 `growth/thinking/`、`english/nce/`），要不要搬过去对齐 URL
+- [ ] 6 处 front-matter 日期与文件名不一致（改动会变线上 URL，需谨慎）——涉及 kindle 篇、复利篇、听力和短读、how-to-use-git、指数基金定投、形容词篇
+- [ ] 站点名/副标题是否统一为线上的「十八般武艺 / 学习思考成长」
 - [ ] GA 换成 GA4
-- [ ] 32 篇文章缺分类，分类页偏空
-- [ ] 6 篇空壳文待补写
+- [ ] 文章分类页偏空（`categories` 只有 9 篇给了，多数靠目录名）
+- [ ] 若日后重建这些文章，`.markdown` 里没有 `<!--more-->` 标记了——它不体现在渲染产物里，无法从线上还原；首页摘要会变成整篇或按主题默认截断
 - [ ] `2016-04-17-存储过程.markdown` 与 `2016-04-17-事务.markdown` 内容重复 —— 经核查**2016 年发布时状态即如此**，原始正文从未存在，需重新撰写
-- [ ] 6 处 front-matter 日期与文件名不一致（涉及线上 URL，改动需谨慎）
+- [ ] 若干短文/空文待补写（`Deployment-Capistrano` 全空、`my-vocabulary-size` 只有一张表，另有 6 篇不足 150 字）

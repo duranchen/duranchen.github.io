@@ -1,0 +1,58 @@
+---
+layout: "post"
+title: "读《文法俱乐部》分析长句——从句简化成分词结构"
+date: "2016-07-04 19:46:48 +0800"
+categories: english
+tags:
+- English
+---
+
+# 读《文法俱乐部》分析长句—从句简化成分词结构
+
+今天早上刚学习完《文法俱乐部》**分词**部分
+
+其中有提到**形容词从句简化成分词结构**和**副词从句简化成分词结构**。
+
+在Yahoo Digest今天报道的“[Nearly 120 killed in overnight Baghdad bombings claimed by ISIS 在巴干达将近120人被ISIS自杀式炸弹炸死](https://www.yahoo.com/digest/20160704-P0500/nearly-120-killed-overnight-baghdad-bombings-claimed-isis-00140021)”里看到这两种简化.
+
+学新东西，一碰到用的机会，就要马上用起来，先来分析一下这个句子的结构。
+
+## 新闻原句
+
+A refrigerator truck packed with explosives blew up  
+in the central district of Karrada,  
+killing 115 people and injuring at least 200.
+
+## 还原
+
+A refrigerator which was packed with explosives blew up in the central district of Karrada, when it was killing 115 people and injuring at least 200.
+
+## 简化过程
+
+### 形容词从句简化：
+
+A refrigerator **which was** packed with explosives blew up in the central district of Karrada，
+
+which和A regrigerator重复，去掉；
+
+be动词was无实际意思，去掉。
+
+剩下过去分词结构packed with explosives作为形容词类。
+
+过去分词可看做形容词，所以在句子中无词类冲突
+
+### 副词从句简化：
+
+A refrigerator packed with explosives blew up  
+in the central district of Karrada,  
+**when it was** killing 115 people and injuring at least 200.
+
+it和A refrigerator重复，去掉；
+
+be动词was，无实际意思，去掉；
+
+when连接词，表示和blew up同时发生，killing已经有暗示这个意思，重复，去掉。
+
+剩下现在分词killing 115 people和injuring at least 200作为形容词类。
+
+现在分词可看做形容词，所以在句子中无词类冲突。

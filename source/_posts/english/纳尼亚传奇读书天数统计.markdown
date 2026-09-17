@@ -1,0 +1,20 @@
+---
+layout: "post"
+title: "纳尼亚传奇读书天数统计"
+date: "2016-07-14 20:52:21 +0800"
+categories: english
+tags:
+- English
+---
+
+我是从四月份开始读纳尼亚传奇，具体开始时间没有记录，还用每次读完一本，在微信朋友圈有发记录，下面是读一本书所用天数统计。 每天大概2个多小时。
+
+| 书名 | 开始时间 | 结束时间 | 天数 |
+| --- | --- | --- | --- |
+| The Lion,The Witch and The Wardrobe | 未知 | 4月20日 | 未知 |
+| Prince Caspian | 4月21日 | 5月18日 | 28天 |
+| The Voyage of The Dawn Treader | 5月19日 | 6月2日 | 15天 |
+| The Silver Chair | 6月3日 | 7月3日 | 30天 |
+| The Horse and His Boy | 7月4日 | 7月11日 | 8天 |
+| The Magician’s Nephew | 7月20日 | 7月27日 | 8天 |
+| Last Battle | 7月31日 | 8月6日 | 7天 |

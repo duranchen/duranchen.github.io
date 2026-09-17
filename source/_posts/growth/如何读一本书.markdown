@@ -1,0 +1,52 @@
+---
+layout: "post"
+title: "如何读一本书"
+date: "2016-08-28 21:06:07 +0800"
+categories: growth
+tags:
+- 学习
+---
+
+# 如何读一本书
+
+## 书籍大体何以分两类：
+
+1. 虚构类书籍
+2. 非虚构类书籍
+
+### 虚构类书籍
+
+比如，小说，科幻，漫画等等
+
+读法：从头读到尾。
+
+小说最主要就是制造悬念，所以需要按照作者安排的顺序读下去，一步一步解开谜底，将会获得很好的阅读体验。
+
+### 非虚构类书籍
+
+比如，手册，技术文献，学术论文等等
+
+你的目的是为尽快找到你想要的信息，并记住， 所以不要从头到尾地阅读，而是来回跳读，略读，用所有能用的技巧去发现，理解和记住作者所要说的， 在最小的时间里从书中获取最多的信息。
+
+下面的方法，将让你在6~8个小时内读完一本300页的书籍或文献。
+
+1. read the whole thing！
+2. decide how much time you will spend
+3. have a purpose and a strategy
+4. read actively
+5. read it three times
+6. focus on parts with high information content
+7. Use PTML (personal text markup language)
+8. Know the author(s) and organizations
+9. Know the intellectual context
+10. Use your unconsicious mind
+11. Rehearse, and use multiple modes.
+
+1. 确定能花多少时间
+2. 确定阅读目的，并制定策略
+3. 读三遍的策略，
+   1. 通读全文，搞清概况
+   2. 关注细节，理解内容
+   3. 用自己话做笔记。
+4. 了解知识背景，包括作者和机构
+5. 演练，用各种方法演练
