@@ -221,9 +221,43 @@ node node_modules/hexo/bin/hexo deploy
 
 `--force` 意味着**目标分支会变成 `public/` 的镜像**：`public/` 里没有的文件，在线上全部消失。别把它当成「增量发布」。
 
-### ⚠️ 两个曾让部署无声失败的坑（2026-09-17 已修，改动务必保留）
+### ⚠️ 三个曾让部署无声失败的坑（2026-09-17 已修，改动务必保留）
 
-**1. `branch` 必须显式写成 `main`。**
+**1. `.deploy_git` 必须自带 `.git` —— `hexo deploy` 曾因此把本仓库源码推上了线上。**
+
+三个坑里唯一真造成过事故的就是这个，也最隐蔽。`node_modules/hexo-deployer-git/lib/deployer.js`：
+
+```js
+return fs.exists(deployDir).then(function (exist) {
+  if (exist) return;          // setup() 是唯一执行 `git init` 的地方
+  return setup();
+})...
+  return git('push', '-u', repo.url, 'HEAD:' + repo.branch, '--force');
+```
+
+所有 git 命令都以 `cwd: .deploy_git` 执行。于是当 `.deploy_git` **目录存在、但没有自己的 `.git`** 时：部署器跳过 `git init`，git 一路向上找到**本仓库**的 `.git`——`git add`/`git commit` 动的是本仓库，最后那句 `--force` 推的是**本仓库的 HEAD**。
+
+而这个状态极容易达成：git 无法保存嵌套的 `.git`，所以一个从版本库里 checkout 出来的 `.deploy_git`（2016 年它曾被提交进本仓库）天然就是「有内容、没 `.git`」——正好是致命的形状。**全程没有任何报错，部署还会「成功」。**
+
+2026-09-17 的实际后果：线上仓库 `duranchen.github.io` 的 `main` 从 `80b4eed`（线上成品）被强推成本仓库的 HEAD，GitHub Pages 的 Jekyll 构建随即失败：
+
+```
+github-pages 232 | Error: The next theme could not be found.
+```
+
+因为 Jekyll 读到的是本仓库的 Hexo `_config.yml`，里面写着 `theme: next`。（线上站点当时仍提供着最后一次成功部署的版本，所以没有内容损失。）
+
+**修复：`scripts/deploy-guard.js`。** Hexo 会自动加载站点根目录 `scripts/` 下的文件，并把每个文件包成 `(function (exports, require, module, __filename, __dirname, hexo) { ... })` 执行。该脚本挂在 `deployBefore` 上（事件同步触发，早于部署器检查 `.deploy_git`），做三件事：
+
+1. 删掉没有 `.git` 的 `.deploy_git`，让部署器重新走 `setup()` / `git init`
+2. 自己 `git init` 并确保有可用的提交身份——否则 `git commit` 会失败，而部署器**把提交失败吞掉**，接着在 unborn HEAD 上推送报错
+3. 写入 `.nojekyll`（理由见下面第 3 条）
+
+所以：**别删 `scripts/deploy-guard.js`；也别再把 `.deploy_git` 提交进版本库**（`.gitignore` 已忽略 `.deploy*/`）。
+
+> 那次事故还在本仓库的 `.git/config` 里把 `main` 的上游 `branch.main.remote` 改成了**页面仓库的地址**——于是裸敲 `git push` 会推到页面仓库，等于不跑 deploy 也可能重演事故。现已改回 `origin`（`git push --dry-run` + `GIT_TRACE` 已确认指向 `my-hexo`）。
+
+**2. `branch` 必须显式写成 `main`。**
 
 `_config.yml` 的 `deploy` 段里**只写 `repo` 不写 `branch` 是危险的**。`hexo-deployer-git` 0.2.0 的 `lib/parse_config.js` 有这么一段：
 
@@ -236,11 +270,15 @@ if (host === 'github.com') {
 
 仓库名 `duranchen.github.io` 命中 `\.github\.io$`，于是**默认推到 `master`**。而这个仓库的 Pages 是从 **`main`** 发布的（`git ls-remote` 可确认）。结果就是：命令报成功、远端多出一个没人用的 `master` 分支，**线上站点一个字都不变**。现已显式写上 `branch: main`。
 
-**2. `source/CNAME` 必须存在。**
+**3. `source/CNAME` 必须存在；`.nojekyll` 由防护脚本写进 `.deploy_git`。**
 
 线上靠仓库根目录的 `CNAME`（内容 `blog.duranc.cc`）撑起自定义域名。而这个文件**不在 Hexo 的构建产物里**——不补的话，`--force` 会把它删掉，`blog.duranc.cc` 直接失效（线上仓库 2026-09-16 还更新过一次 CNAME，说明它是活的配置）。
 
 已在 `source/CNAME` 存放 `blog.duranc.cc`，构建后会输出到 `public/CNAME`。**改动部署方式时别把这个文件弄丢。**
+
+`.nojekyll` 则必须写进 `.deploy_git`，**不能**放 `source/` 或 `public/`：hexo-fs 的 `emptyDir()` 与 `copyDir()` **默认忽略隐藏文件**（`lib/fs.js`：`ignoreHidden == null ? true : options.ignoreHidden`），放前两处的 `.nojekyll` 永远到不了部署仓库；而写进 `.deploy_git` 的，在「Clearing .deploy_git folder」时会被原样保留，并随站点一起提交。有它，GitHub Pages 才跳过 Jekyll、直接原样提供文件。
+
+（当前产物恰好是 Jekyll 安全的——已核查 `public/` 里没有 `_` 开头的路径、没有任何 `{{ }}` / `{% %}`、也没有 markdown 文件。但这属于运气：哪天写一篇讲 Swig 或 Go 模板的文章，页面上就会出现 `{{ }}`，Jekyll 会去解析它，构建静默失败、站点停在旧版本。）
 
 ### 部署会删掉什么（执行前请确认能接受）
 
@@ -270,12 +308,26 @@ grep -A3 '^deploy:' _config.yml
 git clone https://github.com/duranchen/duranchen.github.io.git /tmp/pages-backup
 ```
 
-2026-09-17 的线上仓库备份（含全部 14 次提交）在本仓库的 `.workbuddy/backup/duranchen-pages-20260917.tar.gz`（4.16 MB）。**出问题时可以据此回滚**：
+### 备份与「一键撤销」（2026-09-17 事故后新增）
 
-```bash
-mkdir -p /tmp/restore && tar -xzf .workbuddy/backup/duranchen-pages-20260917.tar.gz -C /tmp/restore
-cd /tmp/restore/wb-duran-pages && git push -u https://github.com/duranchen/duranchen.github.io.git HEAD:main --force
+`.workbuddy/backup/` 下有两份东西（该目录被 gitignore，只在本地）：
+
+| 文件 | 内容 | 用途 |
+|---|---|---|
+| `duranchen-pages-20260917.tar.gz` | 线上仓库的完整 clone，含 `.git` 全部 14 次提交（4.16 MB） | 兜底备份，最坏情况下解包即得完整历史 |
+| `duranchen-pages-mirror.git` | 裸镜像，`main` = 事故前的 `80b4eed` | 直接用来执行下面的撤销命令 |
+
+**撤销事故**（把线上 `main` 恢复成事故前的成品 `80b4eed786b53b51c6a4c8ed97b5edcf19bd30bd`）：
+
+```powershell
+git --git-dir="C:\Users\duran\OneDrive\Project\my-hexo\.workbuddy\backup\duranchen-pages-mirror.git" `
+    push --force https://github.com/duranchen/duranchen.github.io.git `
+    "80b4eed786b53b51c6a4c8ed97b5edcf19bd30bd:refs/heads/main"
 ```
+
+用完整 SHA 而不是分支名，是故意的：**推哪个版本一目了然，不依赖任何本地分支恰好停在哪里。** 该 commit 已校验完整（220 个文件、`CNAME` 内容为 `blog.duranc.cc`、`fsck --connectivity-only` 无报错），命令语法也已用一个临时裸仓库实测通过。
+
+推送后到 GitHub 的 Actions 页确认 `pages build and deployment` 变为 `success`（这份 commit 在 2026-09-16 曾成功构建过）。
 
 最后提醒：`hexo deploy` 要推 GitHub，**本机智能体没有凭据、跑不了**，得在你自己的终端里执行（会弹 GCM 授权）。
 
@@ -332,6 +384,8 @@ node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generat
 
 ## 待办
 
+- [ ] **线上 `main` 需要撤销回 `80b4eed`**（事故善后，命令见上文「备份与一键撤销」）——线上站点目前仍在正常服务，但没有凭据，这一步只能由你执行
+- [ ] 决定是否真正发布本次构建产物（`hexo deploy`）——发布即接受「部署会删掉什么」那一节列出的 45 个线上文件消失
 - [ ] 35 篇没写 `categories`、51 篇没写 `tags`，分类页与标签页偏少（补齐不影响 URL，只是分类页归属问题）
 - [ ] 是否把线上的模板文 `hello-world` 也收进来——收了 URL 100% 对齐，不收则少一篇 Hexo 样板文
 - [ ] 若日后重建这些文章，`.markdown` 里没有 `<!--more-->` 标记了——它不体现在渲染产物里，无法从线上还原；首页摘要会变成整篇或按主题默认截断
@@ -340,7 +394,15 @@ node node_modules/hexo/bin/hexo clean && node node_modules/hexo/bin/hexo generat
 
 ### 已办（2026-09-17）
 
+- [x] **修掉 `hexo deploy` 会把本仓库源码推上线上站点的致命缺陷**：新增 `scripts/deploy-guard.js`（挂在 `deployBefore`，删除无 `.git` 的 `.deploy_git`、自行 `git init` 并确保提交身份、写入 `.nojekyll`）。已用本地裸仓库做因果实验验证：停用防护时源码被推上去（411 个文件、含 `source/_posts`），启用后推的是站点（194 个文件、含 `.nojekyll`、零源码泄漏）
+- [x] **把 `main` 分支的上游从「页面仓库地址」改回 `origin`**（那次失败部署的副作用，`git push` 会因此推到页面仓库）
+- [x] 备份线上仓库：`duranchen-pages-20260917.tar.gz`（含全部 14 次提交）+ `duranchen-pages-mirror.git`（裸镜像，供撤销用）
 - [x] **修好部署链路**：`deploy` 段显式加 `branch: main`（不写会默认推 `master`，线上从 `main` 发布 → 命令成功但站点不变）；补 `source/CNAME`（否则 `--force` 会删掉线上 CNAME，`blog.duranc.cc` 失效）；主题菜单补回「分类」（线上侧栏有，此前漏了）
+- [x] **GA 换成 GA4**（`G-Q2YWF1LSSV`）：把退役的 `analytics.js` 片段整体重写为 gtag.js，113 个页面全部改到、旧的 UA 代码归零
+- [x] **7 个本地提交已 push 到 `origin/main`**（HEAD = `1523fc1`；远端 410 个文件，与本地工作树 `git diff HEAD origin/main` 为空）
+- [x] **站点名/副标题统一为线上的「十八般武艺 / 学习思考成长」**（改 `_config.yml`；构建后与线上首页逐字比对通过）
+- [x] 8 篇旧文章的目录搬到与线上一致（`thinking/` → `growth/thinking/`、`nce/` → `english/nce/`）→ 两边共有的 **64 篇 URL 已逐字一致**
+- [x] 核实「6 处日期与线上不符」是**误判**：实际是 **7 篇文件名日期与 front-matter `date` 打架**，URL 本身与线上完全一致，**因此不动文件名**（改名反而会断链）
 - [x] **GA 换成 GA4**（`G-Q2YWF1LSSV`）：把退役的 `analytics.js` 片段整体重写为 gtag.js，113 个页面全部改到、旧的 UA 代码归零
 - [x] **7 个本地提交已 push 到 `origin/main`**（HEAD = `1523fc1`；远端 410 个文件，与本地工作树 `git diff HEAD origin/main` 为空）
 - [x] **站点名/副标题统一为线上的「十八般武艺 / 学习思考成长」**（改 `_config.yml`；构建后与线上首页逐字比对通过）
