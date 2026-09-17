@@ -6,9 +6,9 @@
 技术栈是 Hexo **8.1.2** + NexT 5.0.1（Pisces 方案），构建成静态站点后发布到 GitHub Pages。
 （2026-09-17 从 Hexo 3.2.2 升级，NexT 5 主题原封未动，产物经逐字节 + 像素级比对与升级前等价，见「Hexo 8 升级记录」。）
 
-- 本仓库：https://github.com/duranchen/my-hexo.git（分支 `main`）——**2026-09-17 起也是发布仓库**，push 即由 GitHub Actions 构建发布
+- 本仓库：https://github.com/duranchen/my-blog.git（分支 `main`）——**2026-09-17 起也是发布仓库**，push 即由 GitHub Actions 构建发布
 - 旧部署仓库：https://github.com/duranchen/duranchen.github.io.git（`hexo deploy` 时代的目标，域名迁走后退役）
-- 本地目录：`OneDrive\Project\my-blog`（2026-09-17 由 `my-hexo` 改名而来，**只改了本地文件夹名，远端仓库名仍是 `my-hexo`**）
+- 本地目录：`OneDrive\Project\my-blog`（2026-09-17 由 `my-hexo` 改名而来；**同日远端仓库也从 `duranchen/my-hexo` 改名为 `duranchen/my-blog`**，旧仓库 URL 由 GitHub 自动重定向）
 - 线上域名：https://blog.duranc.cc —— Cloudflare 上的 CNAME 指向 `duranchen.github.io`，GitHub 按主机名路由到配置了该自定义域名的仓库
 
 > ⚠️ **本仓库历史上落后于线上，2026-09-17 已追平。**
@@ -250,13 +250,13 @@ git push origin main          # 推上去 CI 自动构建发布，约 1~2 分钟
 
 ### 首次启用步骤（只需做一次，顺序重要）
 
-1. **先**到 my-hexo 仓库 **Settings → Pages → Build and deployment → Source**，选 **GitHub Actions** 并保存。
+1. **先**到 my-blog 仓库 **Settings → Pages → Build and deployment → Source**，选 **GitHub Actions** 并保存。
    （不做这步，第一次工作流的 deploy 阶段会报 `Pages not enabled`。）
-2. push 本仓库（本文件所在的提交即可）→ Actions 自动跑第一次构建，发布到 `https://duranchen.github.io/my-hexo/`。
+2. push 本仓库（本文件所在的提交即可）→ Actions 自动跑第一次构建，发布到 `https://duranchen.github.io/my-blog/`。
    该子路径下**样式是散的**——站点资源是根绝对路径 `/css/...`，这是预期现象，不是故障。
 3. **域名切换**（存在几分钟 404 窗口，挑个空闲时间做）：
    - duranchen.github.io 仓库 → Settings → Pages → 删除自定义域名 `blog.duranc.cc`
-   - my-hexo 仓库 → Settings → Pages → Custom domain 填 `blog.duranc.cc` → Save
+   - my-blog 仓库 → Settings → Pages → Custom domain 填 `blog.duranc.cc` → Save
    - 等页面提示 DNS 检查通过后，勾选 **Enforce HTTPS**
    - 同一个自定义域名只能被一个仓库占用，所以必须先删后加；`source/CNAME`（内容 `blog.duranc.cc`）会随构建进入产物，保持绑定不丢
 4. 打开 https://blog.duranc.cc 验证。**DNS 不用动**：Cloudflare 的 `blog` CNAME 仍指向 `duranchen.github.io`，GitHub 按主机名把流量路由到配置了该域名的仓库。
@@ -319,7 +319,7 @@ github-pages 232 | Error: The next theme could not be found.
 
 所以：**别删 `scripts/deploy-guard.js`；也别再把 `.deploy_git` 提交进版本库**（`.gitignore` 已忽略 `.deploy*/`）。
 
-> 那次事故还在本仓库的 `.git/config` 里把 `main` 的上游 `branch.main.remote` 改成了**页面仓库的地址**——于是裸敲 `git push` 会推到页面仓库，等于不跑 deploy 也可能重演事故。现已改回 `origin`（`git push --dry-run` + `GIT_TRACE` 已确认指向 `my-hexo`）。
+> 那次事故还在本仓库的 `.git/config` 里把 `main` 的上游 `branch.main.remote` 改成了**页面仓库的地址**——于是裸敲 `git push` 会推到页面仓库，等于不跑 deploy 也可能重演事故。现已改回 `origin`（`git push --dry-run` + `GIT_TRACE` 已确认指向 `origin`；核实当天仓库还叫 `my-hexo`，同日已改名 `my-blog`）。
 
 **2. `branch` 必须显式写成 `main`。**
 
@@ -389,7 +389,7 @@ git --git-dir="C:\Users\duran\OneDrive\Project\my-blog\.workbuddy\backup\duranch
 ## 从零恢复（换机器 / 清空 node_modules 后）
 
 ```bash
-git clone https://github.com/duranchen/my-hexo.git && cd my-hexo
+git clone https://github.com/duranchen/my-blog.git && cd my-blog
 
 # 1. 依赖（node_modules 不进版本库；Hexo 8 要求 Node ≥ 20.19.0）
 npm install
