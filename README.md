@@ -7,6 +7,7 @@
 
 - 本仓库：https://github.com/duranchen/my-hexo.git（分支 `main`）
 - 部署仓库：https://github.com/duranchen/duranchen.github.io.git
+- 本地目录：`OneDrive\Project\my-blog`（2026-09-17 由 `my-hexo` 改名而来，**只改了本地文件夹名，远端仓库名仍是 `my-hexo`**）
 - 线上域名：https://blog.duranc.cc —— `duranchen.github.io` 会跳转到这个自定义域名
 
 > ⚠️ **本仓库历史上落后于线上，2026-09-17 已追平。**
@@ -320,7 +321,7 @@ git clone https://github.com/duranchen/duranchen.github.io.git /tmp/pages-backup
 **撤销事故**（把线上 `main` 恢复成事故前的成品 `80b4eed786b53b51c6a4c8ed97b5edcf19bd30bd`）：
 
 ```powershell
-git --git-dir="C:\Users\duran\OneDrive\Project\my-hexo\.workbuddy\backup\duranchen-pages-mirror.git" `
+git --git-dir="C:\Users\duran\OneDrive\Project\my-blog\.workbuddy\backup\duranchen-pages-mirror.git" `
     push --force https://github.com/duranchen/duranchen.github.io.git `
     "80b4eed786b53b51c6a4c8ed97b5edcf19bd30bd:refs/heads/main"
 ```
