@@ -1,0 +1,13 @@
+﻿diff --git a/node_modules/hexo/lib/plugins/console/generate.js b/node_modules/hexo/lib/plugins/console/generate.js
+index eeae4cb..4da635c 100644
+--- a/node_modules/hexo/lib/plugins/console/generate.js
++++ b/node_modules/hexo/lib/plugins/console/generate.js
+@@ -173,7 +173,7 @@ function pipeStream() {
+ }
+ 
+ function CacheStream() {
+-  Transform.call(this);
++  Transform.call(this, { autoDestroy: false });
+ 
+   this._cache = [];
+ }
