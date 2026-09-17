@@ -1,0 +1,38 @@
+# NexT 8 主题配置（alternate theme config）
+# 覆盖 node_modules/hexo-theme-next/_config.yml 的默认值，随仓库提交，不直接改主题文件。
+# 参考：https://theme-next.js.org/docs/getting-started/configuration
+
+scheme: Pisces
+
+# 保持与旧版一致的「仅浅色」外观；如需深色模式切换，改为 true
+darkmode: false
+
+menu:
+  home: / || fa fa-home
+  categories: /categories || fa fa-th
+  archives: /archives || fa fa-archive
+  tags: /tags || fa fa-tags
+
+sidebar:
+  position: right
+  display: post
+
+avatar:
+  url: /images/avatar.jpg
+
+footer:
+  since: 2016
+
+# 评论：Disqus（短名 duranchen，与旧版一致）
+disqus:
+  enable: true
+  shortname: duranchen
+  count: true
+
+comments:
+  active: disqus
+
+# Google Analytics 4（gtag.js，G-… 测量 ID）。注意：不要加 cookie_domain，否则 _ga 会落到错误域。
+google_analytics:
+  tracking_id: G-Q2YWF1LSSV
+  only_pageview: false

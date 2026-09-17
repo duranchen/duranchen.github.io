@@ -3,8 +3,8 @@
 > 学习思考成长
 
 一个 2016 年的个人学习笔记博客，内容跨编程、英语、理财、成长、健身、新概念等方向。
-技术栈是 Hexo **8.1.2** + NexT 5.0.1（Pisces 方案），构建成静态站点后发布到 GitHub Pages。
-（2026-09-17 从 Hexo 3.2.2 升级，NexT 5 主题原封未动，产物经逐字节 + 像素级比对与升级前等价，见「Hexo 8 升级记录」。）
+技术栈是 Hexo **8.1.2** + NexT **8**（Pisces 方案，npm 包 `hexo-theme-next`），构建成静态站点后发布到 GitHub Pages。
+（2026-09-17 从 Hexo 3.2.2 升级，同日把主题从停维护的 NexT 5.0.1 迁到 NexT 8，见「Hexo 8 升级记录」与「主题升级记录」。）
 
 - 本仓库：https://github.com/duranchen/duranchen.github.io.git（分支 `main`）——**2026-09-17 起也是发布仓库**，push 即由 GitHub Actions 构建发布。用户站命名（`<user>.github.io`）：Pages 直接以**根路径** `https://duranchen.github.io/` 服务，无子路径问题
 - 旧部署仓库：https://github.com/duranchen/duranchen.github.io-archive.git（2026-09-17 晚改名，为本仓库让出用户站名；`hexo deploy` 时代的目标，已归档）
@@ -27,7 +27,7 @@
 |---|---|---|
 | Node.js | ≥ 20.19.0（Hexo 8 的硬性要求；本机 22.22.2 已验证） | |
 | 依赖包 | 见 `package.json` | `node_modules/` 未提交到 git，换机器或清空后需 `npm install` 重装 |
-| 主题 | NexT **5.0.1** | 位于 `themes/next/`，已提交；注意其自带 `package.json` 里 version 仍写 5.0.0，上游 tag 未同步，属正常 |
+| 主题 | NexT **8**（npm 包 `hexo-theme-next`） | 由 `npm install` 装到 `node_modules/`，**不提交**；配置在仓库根目录的 `_config.next.yml`（见「主题配置在哪改」） |
 
 ## 常用命令
 
@@ -38,7 +38,7 @@ Hexo 8 的 npm 安装已生成标准 shim（Windows 有 `node_modules/.bin/hexo.
 # 清空 public/（会重置构建缓存 db.json）
 node node_modules/hexo/bin/hexo clean
 
-# 构建（当前产物：196 个文件 / 约 6 s）
+# 构建（当前产物：175 个文件 / 约 2 s）
 node node_modules/hexo/bin/hexo generate
 
 # 本地预览 → http://localhost:4000
@@ -48,7 +48,7 @@ node node_modules/hexo/bin/hexo server
 # ⚠️ `hexo deploy` 已退役：deploy 配置与 hexo-deployer-git 均已移除，执行会直接报错——这是有意的
 ```
 
-Hexo 8 的构建日志干净（只有 `INFO  Validating config` 和 `INFO  196 files generated`，Hexo 3 时代的 14 条 WARN 已随升级消失）。判断构建是否正常，看这两个指标就够：
+Hexo 8 的构建日志干净（只有 `INFO  Validating config` 和 `INFO  175 files generated`，Hexo 3 时代的 14 条 WARN 已随升级消失）。判断构建是否正常，看这两个指标就够：
 
 - 出现 `INFO  xxx files generated`，且**没有** `WARN  No layout`（出现即主题没装好）
 - `public/` 里**没有 0 字节文件**（0 字节静默空壳是 Hexo 3.2.2 + 新版 Node 才有的坑，Hexo 8 不存在；回滚 Hexo 3 时需手动改一行，见下）
@@ -65,26 +65,13 @@ Hexo 3.2.2 把 `CacheStream.destroy` 重写成"清空缓存"（本想手动回�
 
 补丁文件 `patches/hexo-3.2.2-node-autodestroy.patch` 已于 2026-09-17 删除（项目已永久迁到 Hexo 8，本节仅存档）。若真要把 Hexo 回滚到 3.2.2，需手动在 `node_modules/hexo/lib/plugins/console/generate.js` 的 `CacheStream` 构造函数里把 `Transform.call(this)` 改成 `Transform.call(this, { autoDestroy: false })`，否则整站静默变空壳。
 
-### 2. 主题不在 npm 上，但已随仓库提供
+### 2. 主题走 npm 包，不随仓库提交
 
-NexT 5.x 用 `.swig` 模板，需要 `hexo-renderer-swig`（运行时还依赖 `swig-extras`）。这两个包已写进 `package.json`，正常 `npm install` 能拉回。
+2026-09-17 主题从停维护的 **NexT 5.0.1**（iissnan，Swig 模板）迁到 **NexT 8**（`next-theme/hexo-theme-next`，Nunjucks 模板）。新主题**以 npm 依赖安装**（`package.json` 里的 `hexo-theme-next`，CI 的 `npm ci` 会拉回），**不再作为文件提交**——`themes/next`、`themes/landscape` 两个旧目录已删除。
 
-主题本身在 npm 上不存在，但它**已经作为普通文件提交在本仓库里**（`themes/next` 243 个文件，含定制过的 `_config.yml` 与 GA4 片段）。所以：
-
-- **正常恢复不需要做任何事**，`git clone` 下来就有
-- **千万不要再 `git clone` 一次主题**——`themes/next` 已存在且非空，clone 会报错；真要覆盖就等于把仓库里对齐过的主题配置（Pisces / 头像 / 评论 / GA4）一并冲掉
-
-只有确实想把主题还原成上游原始版本时才这么做，并清楚后果：
-
-```bash
-rm -rf themes/next
-git clone --depth 1 --branch v5.0.1 https://github.com/iissnan/hexo-theme-next.git themes/next
-rm -rf themes/next/.git   # 必须删，否则主题被当成子模块、内容不进主仓库
-# 之后得手动改回：scheme= Pisces / avatar / disqus / since / google_analytics，
-# 以及重做 layout/_scripts/third-party/analytics/google-analytics.swig 的 GA4 改动
-```
-
-> 仓库里还有一个 `themes/landscape`（79 个文件）——Hexo 自带的默认主题，本项目没用（`theme: next`），是 2016 年原样留下的。
+- **正常恢复**：`git clone` + `npm install` 即可，主题由 npm 装到 `node_modules/hexo-theme-next`，Hexo 仍靠 `_config.yml` 的 `theme: next` 找到它
+- **定制不再改主题文件**：全部放仓库根目录的 `_config.next.yml`（Hexo 深合并到主题默认配置上），升级主题版本不会丢定制
+- **Swig 渲染器已移除**：`hexo-renderer-swig`、`swig-extras` 只为旧 Swig 主题服务，Hexo 8 自带 Nunjucks，`.njk` 模板开箱即用
 
 ### 3. 项目在 OneDrive 目录下，且仓库约定 CRLF
 
@@ -95,13 +82,13 @@ rm -rf themes/next/.git   # 必须删，否则主题被当成子模块、内容�
 
 ## Hexo 8 升级记录（2026-09-17）
 
-**Hexo 3.2.2 → 8.1.2，NexT 5.0.1 主题原封不动。** 升级在独立副本里先做完整验证（产物 193/193 逐字节比对 + 无头 Chrome 截图像素级比对），确认无损后才落到本仓库。
+**Hexo 3.2.2 → 8.1.2，NexT 5.0.1 主题原封不动。** 升级在独立副本里先做完整验证（产物 193/193 逐字节比对 + 无头 Chrome 截图像素级比对），确认无损后才落到本仓库。（同日随后把主题迁到 NexT 8，下方与 Swig/`themes/next` 相关的条目已随之作废，见「主题升级记录」。）
 
 **升级内容**：
 - `package.json` 全量升到 Hexo 8.1.2 生态（hexo-server 3 / deployer-git 4 / generator-* 2.x / renderer-marked 7 / renderer-stylus 3），新增 `package-lock.json`
-- **保留** `hexo-renderer-swig 1.1.0` + `swig-extras 0.0.1`——NexT 5 的 `.swig` 模板全靠它渲染
-- `themes/next/_config.yml` 补写 `author: 陈群` / `description: ever-growing`——Hexo 3 会把站点配置继承给主题，Hexo 8 不再这样做，不补则侧栏这两行渲染为空
-- `themes/next/layout/_partials/pagination.swig` 给 `paginator()` 加 `escape: false`——Hexo 8 默认转义 HTML，不加会把上一页/下一页的 `<i class="fa fa-angle-…">` 图标渲染成字面文本
+- ~~**保留** `hexo-renderer-swig 1.1.0` + `swig-extras 0.0.1`——NexT 5 的 `.swig` 模板全靠它渲染~~ **已作废**：主题迁到 NexT 8 后这两个包移除
+- ~~`themes/next/_config.yml` 补写 `author: 陈群` / `description: ever-growing`~~ **已作废**：NexT 8 直接读站点 `_config.yml` 的 `author` / `description`
+- ~~`themes/next/layout/_partials/pagination.swig` 给 `paginator()` 加 `escape: false`~~ **已作废**：NexT 8 分页用翻译字符串，无内联 HTML
 
 **升级后与 Hexo 3 产物的差异清单**（全部已核实、均可接受）：
 1. 作者链接前的小圆点颜色变了——这是 NexT 故意的彩蛋，`random-color()` 每次编译随机，本来每次构建都会变
@@ -109,6 +96,35 @@ rm -rf themes/next/.git   # 必须删，否则主题被当成子模块、内容�
 3. 同日发布的文章在列表/归档里的先后顺序可能与其它目录的构建不同——Hexo 对同 date 文章的排序依赖文件枚举顺序；本仓库目录内 Hexo 8 与 Hexo 3 的排序已验证一致，URL 不受任何影响（URL 由目录名 + front-matter date 决定）
 
 **回滚到 Hexo 3**：`package.json` 旧版在提交 `e55f533`（升级前最后一个提交），checkout 后 `npm install` 并按坑 1 手动改那行即可；Hexo 3 的 node_modules 另有 tar 备份在 `.workbuddy/backup/node_modules-hexo3-20260917.tar.gz`。
+
+---
+
+## 主题升级记录（NexT 5 → 8，2026-09-17）
+
+同日把主题从停维护的 **NexT 5.0.1**（iissnan，Swig 模板，最后维护约 2018 年）迁到维护中的 **NexT 8**（`next-theme/hexo-theme-next`，Nunjucks 模板，npm 包）。66 篇文章全为纯 Markdown、零 tag-plugin 用法，正文无需改动；`permalink` 未变，文章 URL 逐字不变。
+
+**改动**：
+- `package.json`：新增 `hexo-theme-next`，移除 `hexo-renderer-swig` + `swig-extras`（只为旧 Swig 主题服务；Hexo 8 自带 Nunjucks 渲染 `.njk`）
+- 删除 `themes/next/`（322 个文件）与 `themes/landscape/`（79 个文件）——主题改由 npm 安装，不再提交
+- 新增 `_config.next.yml`（alternate theme config）承载全部定制：`scheme: Pisces`、`darkmode: false`、菜单（含新增「标签」）、`sidebar.position: right`、`avatar.url`、`footer.since: 2016`、Disqus、GA4
+- `_config.yml`：`language: zh-Hans` → `zh-CN`（NexT 6.0.3 起语言代码改名，不改则界面回退英文）
+- 新增 `source/tags/index.md`——旧主题菜单里「标签」指向的 `/tags` 页此前是 404（本次补齐）
+
+**v5 → v8 配置映射**（仅列出旧版非默认值）：
+
+| v5 设置 | v8 键 |
+|---|---|
+| `scheme: Pisces` | `scheme: Pisces`（同） |
+| `since: 2016` | `footer.since: 2016`（移到 `footer` 下） |
+| `sidebar.position: right` | `sidebar.position: right` |
+| `avatar: /images/avatar.jpg` | `avatar.url: /images/avatar.jpg` |
+| `disqus_shortname: duranchen` | `disqus.enable: true` + `disqus.shortname: duranchen` + `comments.active: disqus` |
+| `google_analytics: G-Q2YWF1LSSV`（手工改写的 gtag.js 片段） | `google_analytics.tracking_id: G-Q2YWF1LSSV`（v8 内置 gtag.js，原生支持 GA4，无需再改模板） |
+| `author` / `description`（主题内补写） | 移除——v8 直接读站点 `_config.yml` 的 `author` / `description` |
+
+> 侧栏描述由旧值 `ever-growing` 变为站点的 `description`「记录一下生活和思考」（v8 读站点配置所致），属预期内的轻微视觉变化。
+
+**回滚**：旧主题文件与旧 `package.json` 都在 git 历史里（升级前 HEAD `48d0a3e`），checkout 后 `npm install` 即可回到 NexT 5。
 
 ---
 
@@ -131,8 +147,9 @@ rm -rf themes/next/.git   # 必须删，否则主题被当成子模块、内容�
 │   │   ├── fitness/           1 篇
 │   │   └── (根目录)            3 篇
 │   ├── images/            配图（2016/ 存正文图，根目录是头像 avatar.jpg）
-│   └── categories/        分类页入口
-├── themes/next/           NexT 5.0.1 主题
+│   ├── categories/        分类页入口
+│   └── tags/              标签页入口
+├── _config.next.yml       NexT 8 主题配置（alternate config，定制都放这，见「主题配置在哪改」）
 └── public/                构建产物，已 gitignore（不提交）
 ```
 
@@ -165,7 +182,7 @@ rm -rf themes/next/.git   # 必须删，否则主题被当成子模块、内容�
 |---|---|---|
 | 站点名 | 角落（`_config.yml`） | 角落 |
 | 副标题 | 记录一下生活和思考 | 记录一下生活和思考 |
-| `description` | ever-growing | ever-growing |
+| `description` | 记录一下生活和思考（`_config.yml`） | ever-growing（旧值；下次 CI 构建后随 meta description 同步为「记录一下生活和思考」） |
 | 篇数 | 65 | 65 |
 | 域名 | — | `blog.duranc.cc`（`duranchen.github.io` 301 至此） |
 | 构建时的 `url` | `https://blog.duranc.cc` | `http://duranchen.github.io`（旧值；下次 CI 构建后随 og:url/canonical 同步为 `https://blog.duranc.cc`） |
@@ -236,8 +253,8 @@ git push origin main          # 推上去 CI 自动构建发布，约 1~2 分钟
 | 官方示例 | 本仓库 | 原因 |
 |---|---|---|
 | `node-version: "20"` | `"22"` | 本机验证过的版本；Hexo 8 要求 ≥ 20.19.0 |
-| `npm install` | `npm ci` | `package-lock.json` 已入库，锁定依赖版本（swig 渲染器对版本敏感，见坑 2） |
-| checkout 带 `submodules: recursive` | 不带 | `themes/next` 是普通文件提交，不是 submodule |
+| `npm install` | `npm ci` | `package-lock.json` 已入库，锁定依赖版本 |
+| checkout 带 `submodules: recursive` | 不带 | 主题走 npm 包，无 submodule |
 
 构建命令走 `package.json` 的 `"build": "hexo clean && hexo generate"`，与官方文档一致。
 
@@ -393,41 +410,37 @@ npm install
 npm run build        # = hexo clean && hexo generate
 ```
 
-主题**不用单独获取**——`themes/next` 已随仓库提供（见上文坑 2）。发布也不用配置任何东西——push 到 `main` 即由 GitHub Actions 构建（见「部署」一节）。
+主题**由 npm 安装**——`npm install` 按 `package.json` 拉回 `hexo-theme-next`（见上文坑 2），无需 `git clone`。发布也不用配置任何东西——push 到 `main` 即由 GitHub Actions 构建（见「部署」一节）。
 
-验收标准：日志出现 `INFO  196 files generated`（文章数增长会变）、无 `No layout` 警告、`public/` 无 0 字节文件、产物含 `CNAME`。
+验收标准：日志出现 `INFO  175 files generated`（文章数增长会变）、无 `No layout` 警告、`public/` 无 0 字节文件、产物含 `CNAME`。
 
 ## 主题配置在哪改
 
-**站点头像、方案、评论、统计这些改 `themes/next/_config.yml`，不要改根目录的 `_config.yml`。** NexT 读的是 `theme.*`，写在站点配置里的同名键从来没生效过（历史上有过这种重复，已清理）。
+**站点头像、方案、评论、统计这些改根目录的 `_config.next.yml`，不要改 `node_modules/` 里的主题文件。** NexT 8 支持 alternate theme config：Hexo 会把 `_config.next.yml` 深合并到主题默认 `_config.yml` 之上，定制随仓库提交、升级主题不丢。
 
-当前对齐 2016 年线上站点的配置：
+当前对齐 2016 年线上站点的配置（都在 `_config.next.yml`）：
 
 | 配置项 | 值 |
 |---|---|
 | `scheme` | Pisces |
-| `since` | 2016 |
-| `avatar` | `/images/avatar.jpg` |
+| `footer.since` | 2016 |
+| `avatar.url` | `/images/avatar.jpg` |
 | `sidebar.position` | right |
-| `disqus_shortname` | duranchen |
-| `google_analytics` | `G-Q2YWF1LSSV`（GA4） |
+| `disqus.shortname` | duranchen（`disqus.enable: true`、`comments.active: disqus`） |
+| `google_analytics.tracking_id` | `G-Q2YWF1LSSV`（GA4） |
 
-> **Google Analytics 已从 Universal Analytics 换成 GA4。** 原先的 `UA-80234027-1` 属性早已停收数据，
-> 而 NexT 5.0.1 自带的统计片段用的是退役的 `analytics.js` + `ga('create', ...)`，**根本不认 GA4 的 `G-` ID**——
-> 所以不是把 ID 换个值就行，得把整段换成 gtag.js。
-> 改动在 `themes/next/layout/_scripts/third-party/analytics/google-analytics.swig`
-> （gtag.js 同时兼容 `G-` 与 `UA-` ID，故无需分支判断）。
+> **Google Analytics 4（GA4）。** NexT 8 内置的 `google_analytics` 走 gtag.js，原生支持 `G-` ID——
+> 不再需要像旧版那样手工改写 `google-analytics.swig`（那段定制已随旧主题删除）。
 >
 > 两个容易踩的点：
-> 1. **不要加 `cookie_domain`**。上游 NexT 7 的写法会写死 `config.url` 的域名，而这里 `url` 是
->    `duranchen.github.io`、实际入口却是 `blog.duranc.cc`——写死会让 `_ga` cookie 落到错误域上，访问量静默归零。
+> 1. **不要加 `cookie_domain`**。gtag.js 本就不需要 `cookie_domain`，别照搬上游 NexT 7 的写法去补——
 >    留空由 GA 自取当前主机名才是对的。
 > 2. **大陆访客基本加载不到 `googletagmanager.com`**，GA 数据会明显低于真实访问量。这是 GA 的先天限制，
->    UA 时代同样如此。若在意国内数据，可另挂一个不蒜子计数（主题自带 `busuanzi-counter.swig`）。
+>    UA 时代同样如此。若在意国内数据，可另挂一个不蒜子计数（主题自带 `busuanzi-counter`）。
 
 ## 仓库状态
 
-`node_modules/`、`public/`、`db.json`、`.deploy_git/` 都已移出版本控制，仓库从 7951 个追踪文件瘦到 **413 个**（主题 322 + 文章与配图 81 + 配置 10）。
+`node_modules/`、`public/`、`db.json`、`.deploy_git/` 都已移出版本控制，仓库从 7951 个追踪文件瘦到 **93 个**（主题 322 个文件已随主题升级移除——主题改走 npm 包，见「主题升级记录」；余下文章与配图 + 配置）。
 
 ## 待办
 
@@ -442,6 +455,7 @@ npm run build        # = hexo clean && hexo generate
 ### 已办（2026-09-17）
 
 - [x] **升级 Hexo 3.2.2 → 8.1.2**（NexT 5 主题原封未动，产物双重比对等价；详见「Hexo 8 升级记录」）
+- [x] **主题从停维护的 NexT 5.0.1 迁到 NexT 8**（npm 包 `hexo-theme-next`）：删除 `themes/next` + `themes/landscape`，定制移到 `_config.next.yml`，移除 Swig 渲染器，`language` 改 `zh-CN`，补齐缺失的 `/tags` 页（详见「主题升级记录」）
 - [x] **部署方式按官方文档切换为 GitHub Actions**：新增 `.github/workflows/pages.yml`，移除 `_config.yml` 的 `deploy:` 段与 `hexo-deployer-git` 依赖（详见「部署」一节）
 - [x] **修掉 `hexo deploy` 会把本仓库源码推上线上站点的致命缺陷**：新增 `scripts/deploy-guard.js`（挂在 `deployBefore`，删除无 `.git` 的 `.deploy_git`、自行 `git init` 并确保提交身份、写入 `.nojekyll`）。已用本地裸仓库做因果实验验证：停用防护时源码被推上去（411 个文件、含 `source/_posts`），启用后推的是站点（194 个文件、含 `.nojekyll`、零源码泄漏）
 - [x] **把 `main` 分支的上游从「页面仓库地址」改回 `origin`**（那次失败部署的副作用，`git push` 会因此推到页面仓库）
