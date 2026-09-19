@@ -2,6 +2,9 @@
   "name": "hexo-site",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "scripts": {
     "build": "hexo clean && hexo generate"
   },

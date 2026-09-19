@@ -31,7 +31,12 @@ skip_render:
 new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
-external_link: true # Open external links in new tab
+# Hexo 8 起 external_link 是对象（enable/field/exclude）；写成布尔值 true 时过滤器读到
+# undefined 的 enable，会静默禁用 —— 外链不再新开标签页。field: site 与默认值一致。
+external_link:
+  enable: true
+  field: site
+  exclude: ''
 filename_case: 0
 render_drafts: false
 post_asset_folder: false

@@ -47,6 +47,12 @@
  * from a checkout (it was committed to this repo back in 2016) has content but
  * no `.git` — exactly the fatal shape. Nothing warns you; the deploy "succeeds".
  *
+ * NOTE (2026-09-19): hexo-deployer-git has been removed from package.json and
+ * the `deploy` section deleted from _config.yml, so `hexo deploy` now fails
+ * with "Deployer not found" and the `deployBefore` event below never fires.
+ * This guard is dormant until a deployer is reinstalled — kept as a safety
+ * net for that day.
+ *
  * ===========================================================================
  * WHAT THIS DOES
  *
