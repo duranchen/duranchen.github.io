@@ -9,7 +9,7 @@
 - 本仓库：https://github.com/duranchen/duranchen.github.io.git（分支 `main`）——**2026-09-17 起也是发布仓库**，push 即由 GitHub Actions 构建发布。用户站命名（`<user>.github.io`）：Pages 直接以**根路径** `https://duranchen.github.io/` 服务，无子路径问题
 - 旧部署仓库：https://github.com/duranchen/duranchen.github.io-archive.git（2026-09-17 晚改名，为本仓库让出用户站名；`hexo deploy` 时代的目标，已归档）
 - 本地目录：`OneDrive\Project\my-blog`（2026-09-17 由 `my-hexo` 改名而来，**目录名到此为止，不再跟仓库名走**）。远端仓库当晚两连跳：`duranchen/my-hexo` → `duranchen/my-blog` → **`duranchen/duranchen.github.io`**（最终落回用户站命名；旧 URL 由 GitHub 自动重定向）
-- 线上域名：https://blog.duranc.cc —— Cloudflare 上的 CNAME 指向 `duranchen.github.io`，GitHub 按主机名路由到配置了该自定义域名的仓库
+- 线上域名：https://duranchen.github.io —— 2026-09-19 起从自定义域名 `blog.duranc.cc` 改回用户站根域名（GitHub 仓库 Settings → Pages 里的 Custom domain 已清除）
 
 > ⚠️ **本仓库历史上落后于线上，2026-09-17 已追平。**
 > 详见下文「线上站点与本仓库的差异」——2026-09-17 把线上多出的 29 篇文章抓了回来（两边内容量一致，各 65 篇）、
@@ -184,8 +184,8 @@ Hexo 3.2.2 把 `CacheStream.destroy` 重写成"清空缓存"（本想手动回�
 | 副标题 | 记录一下生活和思考 | 记录一下生活和思考 |
 | `description` | 记录一下生活和思考（`_config.yml`） | ever-growing（旧值；下次 CI 构建后随 meta description 同步为「记录一下生活和思考」） |
 | 篇数 | 65 | 65 |
-| 域名 | — | `blog.duranc.cc`（`duranchen.github.io` 301 至此） |
-| 构建时的 `url` | `https://blog.duranc.cc` | `http://duranchen.github.io`（旧值；下次 CI 构建后随 og:url/canonical 同步为 `https://blog.duranc.cc`） |
+| 域名 | — | `duranchen.github.io`（2026-09-19 起；此前为 `blog.duranc.cc`） |
+| 构建时的 `url` | `https://duranchen.github.io` | `https://blog.duranc.cc`（旧值；下次 CI 构建后随 og:url/canonical 同步为 `https://duranchen.github.io`） |
 
 站点名/副标题已于 2026-09-17 统一到线上正在用的值（原本仓库里是旧名「德智体美劳 / 小时候经常听，从来没弄懂过。」），当晚又由作者本人改为「角落 / 记录一下生活和思考」（提交 `91771ea`）。
 校验方式：构建后从 `public/index.html` 抽 `<title>`、`.site-title`、`.site-subtitle`、`meta[name=description]`，
@@ -228,6 +228,7 @@ Hexo 3.2.2 把 `CacheStream.destroy` 重写成"清空缓存"（本想手动回�
 1. **部署方式已切换**（2026-09-17）：`hexo deploy` 路径退役，push 到 `main` 即由 GitHub Actions 构建发布，**详见下面「部署」一节**；旧路径的事故分析保留在「历史档案」。
 2. **站点名与副标题**（2026-09-17）：白天曾统一为「十八般武艺 / 学习思考成长」，当晚由作者本人改为「角落 / 记录一下生活和思考」（提交 `91771ea`），并发布新文章《终于拥有自己的域名》（提交 `b28eced`）。
 3. **`url` 已改为 `https://blog.duranc.cc`**（2026-09-17）：站点真实入口是自定义域名，GitHub 会把 `duranchen.github.io` 301 到它，构建产物的 og:url/canonical 现在对齐真实入口而非重定向域名。旧的 `https://duranchen.github.io` 会残留在尚未重建的线上页面上，下次 push 由 CI 自动同步。
+4. **`url` 已改回 `https://duranchen.github.io`**（2026-09-19）：自定义域名 `blog.duranc.cc` 退役，站点回到用户站根域名。`_config.yml` 的 `url` 已还原，`source/CNAME` 已删除（不存在于本仓库），下次 push 由 CI 自动重建 og:url/canonical；GitHub 仓库 Settings → Pages 的 Custom domain 需手动清除，Cloudflare 的 `blog` CNAME 记录可一并删除。
 
 本仓库的价值在于它是**可构建的源文件快照**；线上站点是**成品**。现在两者通过 CI 直接打通——push 即发布，不需要、也不应该再跑本地 deploy。
 
